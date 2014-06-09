@@ -1,0 +1,7 @@
+*.mp4
+*.ogv
+*.pdf
+*.psd
+*.webm
+media*/*/*
+styles
