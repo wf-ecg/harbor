@@ -1,0 +1,29 @@
+// - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //
+/* HARBOR */
+$sky: #ccf5ff;
+$blu: #234593;
+$red: #d01221;
+$sea: #7ca8b2;
+
+$count: 4;
+$fullsize: 100%;
+
+@mixin skygrad(){
+    background-color: $sky;
+    @include background-image( linear-gradient(25deg, $sky 0%, white 30%, white 70%, $sky 100%) );
+}
+html {
+    zoom: 1.0;
+    @media (max-width: 900px) {zoom: 0.9;}
+    @media (max-width: 800px) {zoom: 0.8}
+}
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+@import "_base";
+@import "_head";
+@import "_foot";
+@import "_wrap";
+
+@import "_home";
+@import "_page";
+@import "_show";
+// - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //

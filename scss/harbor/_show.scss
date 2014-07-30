@@ -1,0 +1,85 @@
+// - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //
+/* HARBOR / Show */
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+@include keyframes(throb) {
+    33% { opacity: 1.0; }
+    55% { opacity: 0.3; }
+    55% { opacity: 0.5; }
+    66% { opacity: 0.3; }
+    77% { opacity: 1.0; }
+}
+
+.harbor .slideshow {
+    padding: 0;
+
+    * {
+        z-index: 1;
+    }
+    h2 {
+        left: 2rem;
+        position: absolute;
+        text-shadow: -1px -2px 1px rgba(255, 255, 255, 0.25);
+        top: 0.8em;
+        z-index: 9;
+    }
+    .flow {
+        position: absolute;
+        max-height: 111px;
+        top: -2.5em;
+        width: 100%;
+        z-index: 9;
+    }
+    .surf {
+        bottom: -1px;
+        position: absolute;
+        width: 100%;
+    }
+    ._projector {
+        &.iS-port {
+            background-color: $sea;
+            height: 26em;
+            width: 100%;
+            @include transition(height 1s);
+
+            img {
+                -webkit-filter: blur(0);
+                @include transition(all 1s);
+            }
+            &:hover, &.active {
+                img {
+                    -webkit-filter: blur(3px);
+                }
+            };
+            &.normal {
+                .iS-peg {
+                    background-color: $red;
+                    @include animation(throb 3s ease-in-out infinite);
+                }
+            }
+        }
+        .iS-proxy {
+            background-color: rgba(255, 255, 255, 0.5);
+            background-image: url(../images/shapes/pegs.png);
+            background-repeat: repeat-x;
+            border: 5px solid rgba(255, 255, 255, 0);
+            border-radius: 4px;
+            bottom: 1.5em;
+            box-sizing: content-box;
+            height: 14px;
+            position: absolute;
+            left: 2.25em;
+            width: 19px * $count - 5px;
+            z-index: 9;
+
+            .iS-peg {
+                background-color: $sea;
+                border-radius: 2px;
+                height: 100%;
+                left: 0;
+                position: absolute;
+                width: 14px;
+            }
+        }
+    }
+}
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */

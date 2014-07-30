@@ -1,0 +1,36 @@
+// - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //
+/* HARBOR / Misc */
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+.harbor {
+    header h1 {
+        left: -9999px;
+        position: absolute;
+    }
+}
+%cursor {
+    content: '»' !important;
+    left: -0.75em;
+    position: absolute;
+}
+.recreation {
+    a.rec::before {
+        @extend %cursor;
+    }
+    img.com {
+        display: none;
+    }
+}
+.commercial {
+    a.com::before {
+        @extend %cursor;
+    }
+    img.rec {
+        display: none;
+    }
+}
+
+// - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //
+.msie {
+    //behavior: url(pie/PIE.htc);
+}
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */

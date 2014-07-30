@@ -1,0 +1,47 @@
+// - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //
+/* HARBOR / Home */
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+.home .harbor {
+    article {
+        clear: left;
+        float: left;
+        padding-left: 8em;
+        padding-right: 1em;
+        width: 48%;
+
+        &:nth-child(odd) {
+            clear: none;
+            float: right;
+        }
+        img {
+            float: left;
+            margin-left: -6.66em;
+            margin-top: 0.1em;
+            padding: 0 1em 1em 0;
+        }
+        p {
+            font-size: small;
+            padding-left: 1px;
+        }
+        p.jump {
+            border-top: 2px solid $red;
+            color: $blu;
+            font-size: small;
+            font-weight: bold;
+            padding-top: 0.5em;
+            text-align: right;
+
+            a {
+                color: $blu;
+                font-size: 115%;
+                text-decoration: none;
+
+                &:hover {
+                    color: $red;
+                }
+            }
+
+        }
+    }
+}
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */

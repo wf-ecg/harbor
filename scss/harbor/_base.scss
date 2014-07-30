@@ -1,0 +1,83 @@
+// - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //
+/* HARBOR / Base */
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+* {
+    border: 0;
+    box-sizing: border-box;
+    font-family: "Arial Narrow";
+    margin: 0;
+    padding: 0;
+}
+html {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+body {
+    background-image: url('../images/bkgr/Brighton-Marina.jpg');
+    background-size: cover;
+    height: 100%;
+    position: relative;
+    width: 100%;
+
+    .harbor {
+        button {
+            cursor: pointer;
+
+            &.hover, &:hover {
+                border-style: outset;
+                cursor: pointer;
+            }
+            &:active {
+                border-style: inset;
+                cursor: move;
+            }
+        }
+        hr {
+            float: none;
+            clear: both;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            color: $blu;
+            font-weight: normal;
+            margin: 0.5em 0;
+        }
+        h2 {
+            font-size: 3.1em;
+        }
+        h3 {
+            font-size: 2.5em;
+        }
+        h4 {
+            color: $red;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        img {
+            @include nosel();
+            background-repeat: no-repeat;
+            border: 0;
+            vertical-align: middle;
+        }
+        nav {
+            font-size: small;
+
+            a {
+                text-decoration: none;
+            }
+        }
+        p {
+            margin: 0.8em 1em 0.8em 0;
+        }
+        section {
+            clear: both;
+            padding: 0.5em 2rem;
+            position: relative;
+        }
+        table {
+            border-collapse: collapse;
+        }
+    }
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */

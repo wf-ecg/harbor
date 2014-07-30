@@ -1,0 +1,69 @@
+// - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //
+/* HARBOR / Page */
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+.page .harbor {
+    .slideshow ._projector {
+
+        &.iS-port {
+            height: 21em;
+
+            img {
+                height: 125%;
+                @include transition(height 1s);
+            }
+        }
+    }
+
+    .content {
+        h3, h4 {
+            font-weight: bold;
+            margin-top: 0;
+            text-transform: uppercase;
+        }
+        .crumbs {
+            color: $red;
+            font-size: small;
+            font-weight: bold;
+            padding: 1em 0;
+            text-transform: uppercase;
+
+            a {
+                color: $red;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+        aside {
+            background-color: lighten($sky, 3%);
+            border: 2px solid $sky;
+            border-radius: 0.5rem 0 0 0.5rem;
+            border-right: 0;
+            float: right;
+            font-size: small;
+            margin-right: -2rem;
+            padding: 2rem 1rem 2rem 1rem;
+            width: 33%;
+
+            ul {
+                margin-left: 1rem;
+
+                li {
+                    margin-top: 0.5rem;
+                }
+            }
+        }
+        article {
+            clear: left;
+            float: left;
+            width: 66%;
+
+            p {
+                font-size: medium;
+                padding-left: 1px;
+            }
+        }
+    }
+}
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */

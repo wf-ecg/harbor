@@ -1,0 +1,35 @@
+// - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //
+/* HARBOR / Foot */
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+.harbor {
+    footer {
+        color: white;
+        font-family: sans-serif;
+        font-size: small;
+        height: 10em;
+        width: 100%;
+        vertical-align: -webkit-baseline-middle;
+        position: relative;
+
+        p {
+            bottom: 1em;
+            color: gray;
+            margin: 0.5em 2rem;
+            position: absolute;
+            width: 80%;
+        }
+        div {
+            max-width: 1500px;
+            margin: auto;
+            min-width: 960px;
+            width: 80%;
+        }
+        .silo {
+            position: absolute;
+            bottom: -10px;
+            right: 10px;
+        }
+    }
+}
+// - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
