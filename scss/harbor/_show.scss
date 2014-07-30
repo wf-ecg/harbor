@@ -8,6 +8,25 @@
     66% { opacity: 0.3; }
     77% { opacity: 1.0; }
 }
+.home .slideshow ._projector {
+    &.iS-port {
+        height: 26em;
+
+        img {
+            height: 100%;
+        }
+    }
+}
+
+.page .slideshow ._projector {
+    &.iS-port {
+        height: 21em;
+
+        img {
+            height: 124%;
+        }
+    }
+}
 
 .harbor .slideshow {
     padding: 0;
@@ -37,7 +56,6 @@
     ._projector {
         &.iS-port {
             background-color: $sea;
-            height: 26em;
             width: 100%;
             @include transition(height 1s);
 

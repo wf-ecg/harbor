@@ -9,6 +9,7 @@ var Main = (function ($, G, U) { // IIFE
         Df, body, html;
 
     Df = { // DEFAULTS
+        projector: null,
         inits: function () {
             body = $('body');
             html = $('html');
@@ -35,6 +36,7 @@ var Main = (function ($, G, U) { // IIFE
                     } else {
                         body.addClass('page ' + name);
                     }
+                    Df.projector.next();
                 });
             } else {
                 this.setAttribute('target', 'external');
@@ -45,10 +47,10 @@ var Main = (function ($, G, U) { // IIFE
     function bindProjector() {
 
         if (body.is('.home')) {
-            var projector = Projector.attach('._projector');
+            Df.projector = Projector.attach('._projector');
 
             if (html.is('.dev')) {
-                projector.toggle();
+                Df.projector.toggle();
             }
         }
     }

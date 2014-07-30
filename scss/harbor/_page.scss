@@ -2,17 +2,6 @@
 /* HARBOR / Page */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 .page .harbor {
-    .slideshow ._projector {
-
-        &.iS-port {
-            height: 21em;
-
-            img {
-                height: 125%;
-                @include transition(height 1s);
-            }
-        }
-    }
 
     .content {
         h3, h4 {

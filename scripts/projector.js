@@ -10,7 +10,6 @@ var Projector = (function ($, G, U) { // IIFE
 
     Df = { // DEFAULTS
         all: [],
-        speed: 999,
         current: null,
         inits: function () {},
     };

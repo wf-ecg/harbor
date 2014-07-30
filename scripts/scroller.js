@@ -10,7 +10,7 @@ var Scroller = (function ($, G, U) { // IIFE
 
     Df = { // DEFAULTS
         all: [],
-        speed: 3333, /* auto advance */
+        speed: 7777, /* auto advance */
         iscroll: {
             indicators: {
                 el: null, /* later */
