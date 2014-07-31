@@ -12,11 +12,11 @@ var Scroller = (function ($, G, U) { // IIFE
         all: [],
         speed: 7777, /* auto advance */
         iscroll: {
-            indicators: {
+            indicators: [{
                 el: null, /* later */
                 resize: false,
                 interactive: true,
-            },
+            }],
             keyBindings: true,
             eventPassthrough: true,
             momentum: false,
@@ -40,7 +40,12 @@ var Scroller = (function ($, G, U) { // IIFE
 
         ln = scroller.pages.length;
         pg = (1 + scroller.currentPage.pageX) % ln;
-        scroller.goToPage(pg, 0);
+        scroller._execEvent('beforeScrollStart'); // polyfill event
+
+        _.delay( function () {
+            scroller.goToPage(pg, 0);
+            scroller._execEvent('scrollStart');
+        }, Df.iscroll.snapSpeed);
     }
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -51,26 +56,25 @@ var Scroller = (function ($, G, U) { // IIFE
         if (U.debug(2)) {
             C.debug(name, '_autoScroll', scroller);
         }
-        var interval, pager;
+        var interva, indicat;
 
         if (!scroller.pages) {
             return;
         }
 
-        interval = W.setInterval(function () {
+        interva = W.setInterval(function () {
             scrollNext(scroller);
         }, Df.speed);
 
-        pager = W.isIE ? scroller.indicator1 : scroller.indicators[0];
+        indicat = W.isIE ? scroller.indicator1 : scroller.indicators[0];
 
-        $(pager.wrapper) //
+        $(indicat.wrapper) //
         .parent() //
         .one('click keypress touchend', function () {
             C.debug(name, 'click keypress touchend', scroller);
             $(this).find('.control').trigger('toggle');
         });
-
-        return interval;
+        return interva;
     }
 
     function _attachPort(viewSelector) {
@@ -84,7 +88,8 @@ var Scroller = (function ($, G, U) { // IIFE
         gauge = viewPort.find('.iS-proxy');
 
         gauge.on('mouseup touchend click', function (evt) {
-            var cds = {
+            var cds;
+            cds = {
                 t: $(evt.target),
                 x: evt.offsetX,
                 y: evt.offsetY,
@@ -111,8 +116,16 @@ var Scroller = (function ($, G, U) { // IIFE
             scrollNext(scroller);
         });
 
-        Df.iscroll.indicators.el = gauge.get(0);
-        scroller = new IScroll(viewPort.get(0), Df.iscroll);
+        Df.iscroll.indicators[0].el = gauge.get(0);
+        scroller = new IScroll(viewPort.get(0), Df.iscroll); //github.com/cubiq/iscroll
+
+        scroller.on('beforeScrollStart', function () {
+            viewPort.addClass('scrolling');
+        });
+        scroller.on('scrollEnd', function () {
+            viewPort.removeClass('scrolling');
+        });
+        scroller.on('flick', U.echoing('flick'));
 
         // store IScroll (internally and as data on wrapper)
         Df.all.push(scroller);

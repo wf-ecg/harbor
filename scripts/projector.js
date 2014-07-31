@@ -29,14 +29,15 @@ var Projector = (function ($, G, U) { // IIFE
             port: $(scroller.wrapper),
             scroller: scroller,
             status: 'active',
+            timer: null,
             actuate: function () {
                 if (Df.current) {
                     Df.current.reset();
                 }
                 if (this.status === 'active') {
-                    this.scroller.interval = Scroller.auto(this.scroller);
+                    this.timer = Scroller.auto(this.scroller);
                 } else {
-                    W.clearInterval(this.scroller.interval);
+                    W.clearInterval(this.timer);
                 }
             },
             changes: function (state) {

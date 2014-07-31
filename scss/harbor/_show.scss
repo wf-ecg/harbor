@@ -63,7 +63,7 @@
                 -webkit-filter: blur(0);
                 @include transition(all 1s);
             }
-            &:hover, &.active {
+            &:hover, &.scrolling {
                 img {
                     -webkit-filter: blur(3px);
                 }
@@ -72,6 +72,10 @@
                 .iS-peg {
                     background-color: $red;
                     @include animation(throb 3s ease-in-out infinite);
+
+                    &:hover {
+                        background-color: green;
+                    }
                 }
             }
         }
