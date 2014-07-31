@@ -36,7 +36,6 @@ var Main = (function ($, G, U) { // IIFE
                     } else {
                         body.addClass('page ' + name);
                     }
-                    Df.projector.next();
                 });
             } else {
                 this.setAttribute('target', 'external');

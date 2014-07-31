@@ -1,7 +1,7 @@
 <!--[if IE]><![endif]--><!DOCTYPE html>
 <!--[if lt IE 8]>       <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>          <html lang="en" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->  <html lang="en" class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]><!-->  <html lang="en" class="no-js robo"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
         <title>Harbor Risk</title>
@@ -16,10 +16,19 @@
         <link href="../styles/screen.css" media="all" rel="stylesheet" type="text/css">
         <link href="../styles/print.css" media="print" rel="stylesheet" type="text/css">
         <link href="../styles/misc.css" media="all" rel="stylesheet" type="text/css">
+        <link href='http://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
         <script defer src="../load.js"></script>
         <!--  -->
     </head>
-    <body class="loading home"><noscript> error: scripting is disabled </noscript>
+    <body class="loading home" onclick="
+
+        if ($(event.toElement).is(this)) {
+            $('#Flood').toggleClass('blur');
+        }
+
+          "><noscript> error: scripting is disabled </noscript>
+
+        <div id="Flood" class="blur"></div>
 
         <div class="harbor" id="Margin">
             <nav class="sub-top">
@@ -38,7 +47,13 @@
                         <a href="home.html"><img alt="logo" src="../images/logos/logo.png"></a>
 
                         <nav id="Programs">
-                            <img alt="spy" src="../images/icons/glass.png">
+                            <img alt="spy" src="../images/icons/glass.png" onclick="
+
+                            if ($(event.toElement).is(this)) {
+                                $('html').toggleClass('robo');
+                            }
+
+                           ">
                             <input class="search" type="text" value="Search">
 
                             <h4>
@@ -63,8 +78,8 @@
                                 <img class="com" src="../images/bkgr/slide-4.jpg">
                             </div>
 
-                            <div title="choices" class="iS-proxy">
-                                <span class="control iS-peg"></span>
+                            <div title="slideshow" class="iS-proxy">
+                                <span title="start/stop" class="control iS-peg"></span>
                             </div>
                         </div>
 

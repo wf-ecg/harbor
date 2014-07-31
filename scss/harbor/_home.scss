@@ -5,8 +5,9 @@
     article {
         clear: left;
         float: left;
-        padding-left: 8em;
-        padding-right: 1em;
+        font-weight: 400;
+        padding-left: 120px;
+        padding-right: 1rem;
         width: 48%;
 
         &:nth-child(odd) {
@@ -15,20 +16,16 @@
         }
         img {
             float: left;
-            margin-left: -6.66em;
-            margin-top: 0.1em;
-            padding: 0 1em 1em 0;
+            margin: 0.333rem 1rem 1rem -120px;
         }
         p {
             font-size: small;
-            padding-left: 1px;
         }
         p.jump {
             border-top: 2px solid $red;
             color: $blu;
-            font-size: small;
-            font-weight: bold;
-            padding-top: 0.5em;
+            font-weight: 600;
+            padding-top: 0.5rem;
             text-align: right;
 
             a {

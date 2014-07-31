@@ -80,7 +80,7 @@ var Scroller = (function ($, G, U) { // IIFE
     function _attachPort(viewSelector) {
         self.init();
         if (U.debug(2)) {
-            C.debug(name, '_attachPort viewport', viewSelector);
+            C.debug(name, '_attachPort viewSelector:', viewSelector);
         }
         var viewPort, gauge, scroller;
 
@@ -97,6 +97,7 @@ var Scroller = (function ($, G, U) { // IIFE
                 l: scroller.pages.length,
                 calc: function () {
                     if (!cds.t.is(gauge)) {
+                        scroller._execEvent('scrollEnd');
                         cds.x += cds.t.position().left;
                     }
                     cds.p = (cds.x / cds.w * cds.l) | 0;

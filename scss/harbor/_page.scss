@@ -4,16 +4,22 @@
 .page .harbor {
 
     .content {
+        h4 {
+            font-weight: 600;
+        }
+        h3 {
+            letter-spacing: -1px;
+        }
         h3, h4 {
-            font-weight: bold;
             margin-top: 0;
+            margin-left: -2px;
             text-transform: uppercase;
         }
         .crumbs {
             color: $red;
             font-size: small;
-            font-weight: bold;
-            padding: 1em 0;
+            font-weight: 600;
+            padding: 1rem 0;
             text-transform: uppercase;
 
             a {
@@ -30,7 +36,10 @@
             border-radius: 0.5rem 0 0 0.5rem;
             border-right: 0;
             float: right;
+            height: 33em;
             font-size: small;
+            font-weight: 400;
+            overflow-y: auto;
             margin-right: -2rem;
             padding: 2rem 1rem 2rem 1rem;
             width: 33%;
@@ -47,11 +56,6 @@
             clear: left;
             float: left;
             width: 66%;
-
-            p {
-                font-size: medium;
-                padding-left: 1px;
-            }
         }
     }
 }

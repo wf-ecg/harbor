@@ -3,31 +3,33 @@
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 @include keyframes(throb) {
     33% { opacity: 1.0; }
-    55% { opacity: 0.3; }
-    55% { opacity: 0.5; }
-    66% { opacity: 0.3; }
+    44% { opacity: 0.4; }
+    55% { opacity: 0.6; }
+    66% { opacity: 0.4; }
     77% { opacity: 1.0; }
+}
+.blur {
+    -webkit-filter: blur(3px);
+    @include transition(all 0.5s ease-in-out);
 }
 .home .slideshow ._projector {
     &.iS-port {
-        height: 26em;
+        height: 26rem;
 
         img {
             height: 100%;
         }
     }
 }
-
 .page .slideshow ._projector {
     &.iS-port {
-        height: 21em;
+        height: 22rem;
 
         img {
             height: 124%;
         }
     }
 }
-
 .harbor .slideshow {
     padding: 0;
 
@@ -38,13 +40,13 @@
         left: 2rem;
         position: absolute;
         text-shadow: -1px -2px 1px rgba(255, 255, 255, 0.25);
-        top: 0.8em;
+        top: 0.8rem;
         z-index: 9;
     }
     .flow {
         position: absolute;
         max-height: 111px;
-        top: -2.5em;
+        top: -2.5rem;
         width: 100%;
         z-index: 9;
     }
@@ -57,15 +59,18 @@
         &.iS-port {
             background-color: $sea;
             width: 100%;
-            @include transition(height 1s);
+            @include transition(all 0.5s);
 
             img {
                 -webkit-filter: blur(0);
-                @include transition(all 1s);
+                @include transition(all 0.25s ease-in);
+                @include transform( translate(1%, 0) scaleX(1.02) );
             }
-            &:hover, &.scrolling {
+            &.scrolling {
                 img {
-                    -webkit-filter: blur(3px);
+                    -webkit-filter: blur(2px);
+                    @include transform( translate(-0.5%, 0) scaleX(1.015) );
+                    opacity: 0.9;
                 }
             };
             &.normal {
@@ -85,11 +90,11 @@
             background-repeat: repeat-x;
             border: 5px solid rgba(255, 255, 255, 0);
             border-radius: 4px;
-            bottom: 1.5em;
+            bottom: 1.5rem;
             box-sizing: content-box;
             height: 14px;
             position: absolute;
-            left: 2.25em;
+            left: 2.25rem;
             width: 19px * $count - 5px;
             z-index: 9;
 

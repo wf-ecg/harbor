@@ -9,7 +9,7 @@
 }
 %cursor {
     content: '»' !important;
-    left: -0.75em;
+    left: -0.75rem;
     position: absolute;
 }
 .recreation {
@@ -32,6 +32,32 @@ ol.alpha {
     list-style-type: lower-alpha;
 }
 
+body {
+    #Flood {
+        background-image: url("../images/bkgr/Brighton-Marina.jpg");
+        background-size: cover;
+        height: 100%;
+        left: 0;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: -1;
+    }
+}
+.robo {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 90%;
+}
+html.mobile {
+    .desktop {
+        display: none;
+    }
+}
+html.desktop {
+    .mobile {
+        display: none;
+    }
+}
 // - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //
 .msie {
     //behavior: url(pie/PIE.htc);
