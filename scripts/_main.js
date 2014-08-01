@@ -1,6 +1,6 @@
 /*jslint es5:true, white:false */
 /*globals _, C, W, Glob, Util, jQuery,
-        Scroller, Projector, */
+        Anchor, Extract, Projector, */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var Main = (function ($, G, U) { // IIFE
     'use strict';
@@ -18,50 +18,62 @@ var Main = (function ($, G, U) { // IIFE
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     // HELPERS (defaults dependancy only)
 
-    function classify(name) {
-        body.find('.content').slideUp(0);
+    // func to contextualize content
+    function classify(doc) {
+        body.find('.content').slideUp(0); // hide old content
 
         return function () {
+            C.log('classify', doc);
+
             body.removeClass();
 
-            if (name === 'home') {
+            if (doc === 'home') { // add class for page type
                 body.addClass('home');
             } else {
-                body.addClass('page ' + name);
+                body.addClass('page ' + doc);
             }
-            body.find('.content').slideDown();
+            body.find('.content').slideDown(); // reveal again
+            Anchor.write(doc);
         };
+    }
+
+    // func to deliver content
+    function runExtractor(doc) {
+        Extract.page(doc + '.html', classify(doc));
     }
 
     function bindExtractor() {
         var hash = Anchor.read() || 'home';
 
-        Extract.page( hash + '.html', classify(hash));
+        runExtractor(hash); // auto retore from hash
 
+        // func to triage event
         $('body').on('click', 'a', function (evt) {
-            var page = this.attributes.getNamedItem('href').value;
-            var name = page.split('.');
+            var url = this.attributes.getNamedItem('href').value;
+            var doc = url.split('.');
 
-            name = name[1] ? name[0] : '#';
+            // refers to document or hash?
+            doc = doc[1] ? doc[0] : '#';
 
-            if (name.charAt(0) === '#') {
-                return;
-            } else {
-                Anchor.write(name);
+            function isInternal(url) {
+                var ext = /^(http|\/\/)/.exec(url);
+                return !ext;
             }
 
-            // for internal pages
-            if (!/^(http|\/\/)/.exec(page)) {
-                evt.preventDefault();
-                Extract.page(page, classify(name));
-            } else {
-                this.setAttribute('target', 'external');
+            if (doc.charAt(0) !== '#') {
+
+                if (isInternal(url)) {
+                    evt.preventDefault();
+                    // load instead of open
+                    runExtractor(doc);
+                } else {
+                    this.setAttribute('target', 'external');
+                }
             }
         });
     }
 
     function bindProjector() {
-
         if (body.is('.home')) {
             Df.projector = Projector.attach('._projector');
 
@@ -71,9 +83,21 @@ var Main = (function ($, G, U) { // IIFE
         }
     }
 
+    function bindFloater(delay) {
+        routie('glossary', Floater.bind);
+
+        if (delay) {
+            return _.delay(bindFloater);
+        }
+        if (body.is('.glossary')) {
+            Floater.bind('.content h5:visible','.content aside ul:visible');
+        }
+    }
+
     function bindings() {
         Anchor.init();
         Extract.init();
+        bindFloater();
         bindProjector();
         bindExtractor();
     }
@@ -110,9 +134,3 @@ var Main = (function ($, G, U) { // IIFE
 
 
  */
-
-function foo(me, evt) {
-    console.log(me, evt);
-    $(me).find('a').removeClass('active');
-    $(evt.target).addClass('active');
-}

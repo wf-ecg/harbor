@@ -71,7 +71,9 @@ var Scroller = (function ($, G, U) { // IIFE
         $(indicat.wrapper) //
         .parent() //
         .one('click keypress touchend', function () {
-            C.debug(name, 'click keypress touchend', scroller);
+            if (U.debug(2)) {
+                C.debug(name, 'click keypress touchend', scroller);
+            }
             $(this).find('.control').trigger('toggle');
         });
         return interva;

@@ -54,8 +54,13 @@ Glob = new Global('Globals');
             G.loc + 'js-view.js',
             G.loc + 'Page.js',
             G.loc + 'extract.js',
+            G.loc + 'routie.js',
         ],
         complete: function () {
+            routie('*/:xx', function (x) {
+                //this gets called when hash == #users
+                C.warn('routie use!', this, x);
+            });
         },
     };
 
@@ -74,6 +79,7 @@ Glob = new Global('Globals');
     Load.main = {
         both: [
             G.src + 'anchor.js',
+            G.src + 'floater.js',
             G.src + 'projector.js',
             G.src + 'scroller.js',
             G.src + '_main.js',

@@ -1,6 +1,7 @@
 // - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //
-/* HARBOR / Misc */
+/* Misc */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+@import "core/_all";
 .harbor {
     header h1 {
         left: -9999px;
@@ -71,12 +72,16 @@ body {
     aside {
         background-color: rgba(255,255,255,0.9);
         box-shadow: 3px 2px 11px black;
-        height: 60%;
+        height: 70%;
         position: fixed;
-        right: 0;
-        top: 35%;
+        right: -9rem;
+        top: 20%;
         z-index: 11;
+        @include transition(right 0.5s ease-out);
 
+        &:hover {
+            right: 0;
+        }
         a {
             border-bottom: 1px dotted;
             color: black;
@@ -95,6 +100,12 @@ body {
             list-style-type: none;
         }
     }
+}
+.target {
+    background-color: $hilite;
+}
+:target, h5[id] {
+    @include transition( background-color 0.5s ease-out 0 );
 }
 
 // - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //

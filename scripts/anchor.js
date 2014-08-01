@@ -21,29 +21,23 @@ var Anchor = (function ($, G, U) { // IIFE
     /// INTERNAL
 
     function _reset() {
-        if (U.debug(2)) {
-            C.debug(name, '_reset', x);
-        }
         L.href = L.origin + L.pathname;
     }
 
     function _read() {
-        if (U.debug(2)) {
-            C.debug(name, '_read', x);
+        var nom = L.hash.slice(1);
+        var cut = /[\,\&\/]/;
+
+        nom = (!nom || nom.length < 3) ? '' : nom;
+        nom = nom.split(cut);
+
+        if (U.debug(1)) {
+            C.debug(name, '_read', nom);
         }
-        var tmp = L.hash.replace('/','');
-        var cut = /[\,\&]/;
-
-        tmp = (!tmp || tmp.length < 2) ? '' : tmp.slice(1);
-        tmp = tmp.match(cut) ? tmp.split(cut) : tmp;
-
-        return tmp;
+        return (nom[0] || nom[1]);
     }
 
     function _write(str) {
-        if (U.debug(2)) {
-            C.debug(name, '_write', x);
-        }
         L.hash = str;
     }
 
