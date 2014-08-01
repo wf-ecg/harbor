@@ -28,8 +28,12 @@
         display: none;
     }
 }
-ol.alpha {
-    list-style-type: lower-alpha;
+ol {
+    margin-left: 2rem;
+
+    &.alpha {
+        list-style-type: lower-alpha;
+    }
 }
 
 body {
@@ -43,23 +47,62 @@ body {
         width: 100%;
         z-index: -1;
     }
+    .content {
+        display: none;
+    }
 }
 .robo {
     font-family: 'Roboto Condensed', sans-serif;
     font-size: 90%;
 }
-html.mobile {
-    .desktop {
-        display: none;
+
+.page.glossary #Page {
+    a[id] {
+        display: block;
+        height: 0px;
+        position: relative;
+        top: -9rem;
+        width: 0px;
+
+        &:after {
+            content: ' ';
+        }
+    }
+    aside {
+        background-color: rgba(255,255,255,0.9);
+        box-shadow: 3px 2px 11px black;
+        height: 60%;
+        position: fixed;
+        right: 0;
+        top: 35%;
+        z-index: 11;
+
+        a {
+            border-bottom: 1px dotted;
+            color: black;
+            text-decoration: none;
+
+            &:hover {
+                color: blue;
+            }
+            &:before {
+                content: '¤';
+                left: 1rem;
+                position: absolute;
+            }
+        }
+        li {
+            list-style-type: none;
+        }
     }
 }
-html.desktop {
-    .mobile {
-        display: none;
-    }
-}
+
 // - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //
 .msie {
     //behavior: url(pie/PIE.htc);
+}
+html {
+    &.mobile {.desktop {display: none;}}
+    &.desktop {.mobile {display: none;}}
 }
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */

@@ -62,17 +62,18 @@ Glob = new Global('Globals');
     Load.font = {
         test: ROOT.conf.nom === 'localhost' || ROOT.conf.nom === 'qla1',
         yep: [
-            G.lib + 'fonts/archer.ssm.css',
-            G.lib + 'fonts/archer.ssm.itl.css',
+            // G.lib + 'fonts/archer.ssm.css',
+            // G.lib + 'fonts/archer.ssm.itl.css',
         ],
         nope: [
             /* '//cloud.typography.com/6819872/620964/css/fonts.css', Normal */
-            '//cloud.typography.com/6819872/633184/css/fonts.css', /* ScrnSmrt */
+            // '//cloud.typography.com/6819872/633184/css/fonts.css', /* ScrnSmrt */
         ],
     };
 
     Load.main = {
         both: [
+            G.src + 'anchor.js',
             G.src + 'projector.js',
             G.src + 'scroller.js',
             G.src + '_main.js',

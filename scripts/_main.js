@@ -18,25 +18,42 @@ var Main = (function ($, G, U) { // IIFE
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     // HELPERS (defaults dependancy only)
 
+    function classify(name) {
+        body.find('.content').slideUp(0);
+
+        return function () {
+            body.removeClass();
+
+            if (name === 'home') {
+                body.addClass('home');
+            } else {
+                body.addClass('page ' + name);
+            }
+            body.find('.content').slideDown();
+        };
+    }
+
     function bindExtractor() {
-        Extract.init();
+        var hash = Anchor.read() || 'home';
+
+        Extract.page( hash + '.html', classify(hash));
 
         $('body').on('click', 'a', function (evt) {
             var page = this.attributes.getNamedItem('href').value;
-            var name = page.split('.')[0];
+            var name = page.split('.');
+
+            name = name[1] ? name[0] : '#';
+
+            if (name.charAt(0) === '#') {
+                return;
+            } else {
+                Anchor.write(name);
+            }
 
             // for internal pages
             if (!/^(http|\/\/)/.exec(page)) {
                 evt.preventDefault();
-
-                Extract.page(page, function () {
-                    body.removeClass();
-                    if (name === 'home') {
-                        body.addClass('home');
-                    } else {
-                        body.addClass('page ' + name);
-                    }
-                });
+                Extract.page(page, classify(name));
             } else {
                 this.setAttribute('target', 'external');
             }
@@ -55,8 +72,10 @@ var Main = (function ($, G, U) { // IIFE
     }
 
     function bindings() {
-        bindExtractor();
+        Anchor.init();
+        Extract.init();
         bindProjector();
+        bindExtractor();
     }
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
