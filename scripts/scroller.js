@@ -29,7 +29,9 @@ var Scroller = (function ($, G, U) { // IIFE
         inits: function () {},
     };
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-    // HELPERS (defaults dependancy only)
+    /// HELPERS
+    //  defaults dependancy only
+
     Scroller.wrap = function () {};
 
     function scrollNext(scroller) {
@@ -50,7 +52,7 @@ var Scroller = (function ($, G, U) { // IIFE
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     /// INTERNAL
-    /// attach expand/contract/status events to items with _reveal
+    //  attach expand/contract/status events to items with _reveal
 
     function _autoScroll(scroller) {
         if (U.debug(2)) {

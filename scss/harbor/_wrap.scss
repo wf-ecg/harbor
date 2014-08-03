@@ -1,7 +1,17 @@
 // - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //
 /* HARBOR / Wrap */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-#Margin.harbor {
+#Flood {
+    background-image: url("../images/bkgr/Brighton-Marina.jpg");
+    background-size: cover;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+}
+#Body {
     background-color: rgba(255, 255, 255, 0.3);
     box-shadow: 0px 0px 11px rgba(0, 0, 0, 0.3);
     margin: auto;
@@ -38,14 +48,11 @@
             float: left;
         }
     }
-    #Border {
+    #Wrap {
         background-color: white;
-        margin: auto;
-        min-height: 750px;
         padding: 0.7rem;
-        width: 100%;
     }
-    #Page {
+    #Main {
         @include skygrad();
         border: 2px solid $sky;
         border-radius: 1rem;
@@ -55,9 +62,4 @@
         }
     }
 }
-// - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //
-// [min|max]- width * height
-// [min|max]- device-width * device-height
-// [min|max]- aspect-ratio * device-aspect-ratio
-// orientation :[port|land]
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */

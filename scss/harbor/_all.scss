@@ -17,6 +17,11 @@ html {
     @media (max-width: 900px) {zoom: 0.9;}
     @media (max-width: 800px) {zoom: 0.8}
 }
+.robo {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 90%;
+}
+
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 @import "_base";
 @import "_head";

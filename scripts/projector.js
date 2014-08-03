@@ -14,12 +14,13 @@ var Projector = (function ($, G, U) { // IIFE
         inits: function () {},
     };
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-    // HELPERS (defaults dependancy only)
+    /// HELPERS
+    //  defaults dependancy only
     Projector.wrap = function () {};
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     /// INTERNAL
-    /// attach expand/contract/status events to items with _reveal
+    //  attach expand/contract/status events to items with _reveal
 
     function decorate(scroller) {
         if (U.debug(2)) {

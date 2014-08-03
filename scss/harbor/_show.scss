@@ -26,7 +26,7 @@
         height: 25rem;
 
         img {
-            height: 124%;
+            height: 115%; // compensate (.home vs .page) for iS-port
         }
     }
 }

@@ -10,6 +10,8 @@ var Floater = (function ($, G, U) { // IIFE
 
     Df = { // DEFAULTS
         box: $(W.isIE ? 'html' : 'body'),
+        last: $(null),
+        space: 33,
         inits: function () {},
     };
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -20,45 +22,64 @@ var Floater = (function ($, G, U) { // IIFE
 
         var str = this.attributes.getNamedItem('href').value;
 
-        self.scroll(str);
+        self.jump(str);
     }
+
+    // EASE
+    $.extend($.easing, {
+        circ: function ( p ) {
+            function easeIn( p ) {
+                return 1 - Math.sqrt( 1 - p * p );
+            }
+            return p < 0.5 ? easeIn( p * 2 ) / 2 : 1 - easeIn( p * -2 + 2 ) / 2;
+        },
+    });
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     /// INTERNAL
 
-    function _scroll(ele, amt) {
-        amt = amt || 0;
-        ele = $(ele || Df.box);
+    function _jump(ele, xtra) {
+        var amt, aprx, diff;
 
-        if (U.debug()) {
-            C.debug(name, '_scroll', [amt + 'px', ele]);
-        }
+        xtra = xtra || 0;
+        ele = $(ele || Df.box);
+        amt = ele.offset().top | 0;
+        aprx = (amt * 0.95 - xtra) | 0;
 
         if (ele.length) {
-            ele.addClass('target');
+            Df.last.removeClass('target');
+            Df.last = ele.addClass('target');
 
             Df.box.stop().animate({
-                scrollTop: ele.offset().top + amt,
-            }, 666, function () {
-                if (!amt) {
-                    _scroll(ele, -99);
+                scrollTop: aprx,
+            }, 333, 'circ', function () {
+                diff = Math.abs(ele.offset().top - amt) | 0;
+
+                if (U.debug(1)) {
+                    C.debug(name, '_jump', {
+                        amt: amt,
+                        xtra: xtra,
+                        aprx: aprx,
+                        diff: diff,
+                        ele: [ele],
+                    });
                 }
-                _.delay(function () {
-                    ele.removeClass('target');
-                }, 999);
+                if (!xtra || diff > Df.space) {
+                    _jump(ele, diff || Df.space);
+                } else {
+                    C.debug('jumped');
+                }
             });
         }
     }
 
-    function _bind(eles, toc) {
+    function _bind(these, index) {
+        these = $(these || '.content h5:visible');
+        index = $(index || '.content aside ul:visible');
+
         if (U.debug()) {
-            C.debug(name, '_bind', [eles, toc]);
+            C.debug(name, '_bind', [these, index]);
         }
-
-        var these, index;
-
-        these = $(eles || '.content h5:visible');
-        index = $(toc || '.content aside ul:visible');
 
         if (index.children().length) {
             return;
@@ -98,7 +119,7 @@ var Floater = (function ($, G, U) { // IIFE
         __: Df,
         init: _init,
         bind: _bind,
-        scroll: _scroll,
+        jump: _jump,
     });
 
     return self;

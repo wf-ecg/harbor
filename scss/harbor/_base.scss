@@ -15,7 +15,7 @@ html {
 }
 body {
     background-color: $sea;
-    background-image: url('../images/bkgr/Brighton-Marina.jpg');
+    // background-image: url('../images/bkgr/Brighton-Marina.jpg');
     background-size: cover;
     height: 100%;
     padding: 2% 1%;
@@ -28,16 +28,10 @@ body {
 
             &.hover, &:hover {
                 border-style: outset;
-                cursor: pointer;
             }
             &:active {
                 border-style: inset;
-                cursor: move;
             }
-        }
-        hr {
-            float: none;
-            clear: both;
         }
         h1, h2, h3, h4, h5, h6 {
             color: $blu;
@@ -69,10 +63,11 @@ body {
                 margin-top: 0;
             }
         }
+        hr {
+            clear: both;
+        }
         img {
             @include nosel();
-            background-repeat: no-repeat;
-            border: 0;
             vertical-align: middle;
         }
         nav {
@@ -86,16 +81,11 @@ body {
             margin: 0.8rem 1rem 0.8rem 0;
         }
         section {
-            clear: both;
             font-size: medium;
             font-weight: 100;
             padding: 0.5rem 2rem;
             position: relative;
         }
-        table {
-            border-collapse: collapse;
-        }
     }
 }
-
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */

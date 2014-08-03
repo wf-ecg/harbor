@@ -23,7 +23,7 @@ var Main = (function ($, G, U) { // IIFE
         body.find('.content').slideUp(0); // hide old content
 
         return function () {
-            C.log('classify', doc);
+            C.debug(name, 'classify', doc);
 
             body.removeClass();
 

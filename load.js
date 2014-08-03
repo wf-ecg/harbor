@@ -5,10 +5,11 @@
 'use strict';
 var Glob, Load;
 
-Glob = new Global('Globals');
+Glob = new Global('Glob');
 
 (function ($, M, G) {
     'use strict';
+    var U;
     W.G = G;
     W.Load = {};
 
@@ -52,14 +53,15 @@ Glob = new Global('Globals');
         both: [
             G.loc + '_util.js',
             G.loc + 'js-view.js',
-            G.loc + 'Page.js',
             G.loc + 'extract.js',
+            G.loc + 'fetch.js',
             G.loc + 'routie.js',
         ],
         complete: function () {
-            routie('*/:xx', function (x) {
+            U = Util;
+            routie(':xxx:yyy:zzz', function (xxx, yyy, zzz) {
                 //this gets called when hash == #users
-                C.warn('routie use!', this, x);
+                C.warn('routie use!', U.arrg(arguments), this);
             });
         },
     };
