@@ -46,7 +46,7 @@ var Scroller = (function ($, G, U) { // IIFE
 
         _.delay( function () {
             scroller.goToPage(pg, 0);
-        }, Df.iscroll.snapSpeed);
+        }, Df.iscroll.snapSpeed / 3);
     }
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -110,7 +110,7 @@ var Scroller = (function ($, G, U) { // IIFE
             prox.calc();
 
             if (U.debug(2)) {
-                C.debug(name, 'gauge calc', evt.type, prox);
+                C.debug(name, '_attachPort gauge calc', evt.type, prox);
             }
             scroller._execEvent('scrollStart'); // polyfill event
             scroller.goToPage(prox.pg, 0);
