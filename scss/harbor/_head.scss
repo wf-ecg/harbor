@@ -10,7 +10,7 @@
     }
     nav#Programs {
         float: right;
-        margin: 0.5rem;
+        margin: 2.5rem 1rem 0;
 
         a {
             color: $red;
@@ -33,16 +33,6 @@
             margin-left: 3rem;
             position: relative;
             z-index: 1;
-        }
-        .search {
-            background-color: white;
-            border-radius: 1rem;
-            border: 1px solid #eee;
-            color: gray;
-            display: inline;
-            padding: 4px;
-            padding-left: 1.5rem;
-            width: 18rem;
         }
     }
 }
