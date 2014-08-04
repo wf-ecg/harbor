@@ -1,34 +1,6 @@
 // - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //
 /* Misc */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-@import "core/_all";
-.harbor {
-    header h1 {
-        left: -9999px;
-        position: absolute;
-    }
-}
-%cursor {
-    content: '»' !important;
-    left: -0.75rem;
-    position: absolute;
-}
-.recreation {
-    a.rec::before {
-        @extend %cursor;
-    }
-    img.com {
-        display: none;
-    }
-}
-.commercial {
-    a.com::before {
-        @extend %cursor;
-    }
-    img.rec {
-        display: none;
-    }
-}
 ol {
     margin-left: 2rem;
 
@@ -42,15 +14,6 @@ body {
         display: none;
     }
 }
-.blur {
-    @include filter( blur(3px) );
-    @include transition( 0.5s ease-in-out );
-}
-.target {
-    background-color: $hilite;
-    @include transition( background-color 0.5s ease-out 1s );
-}
-
 // - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //
 .msie {
     //behavior: url(pie/PIE.htc);

@@ -7,6 +7,11 @@
         position: relative;
         width: 100%;
         z-index: 11;
+
+        h1 {
+            left: -9999px;
+            position: absolute;
+        }
     }
     nav#Programs {
         float: right;
