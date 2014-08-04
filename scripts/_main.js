@@ -20,6 +20,11 @@ var Main = (function ($, G, U) { // IIFE
 
     // func to contextualize content
     function classify(doc) {
+
+        if (body.is('.' + doc)) {
+            return;
+        }
+
         body.find('.content').slideUp(0); // hide old content
 
         return function () {
