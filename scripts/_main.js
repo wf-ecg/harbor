@@ -20,16 +20,14 @@ var Main = (function ($, G, U) { // IIFE
 
     // func to contextualize content
     function classify(doc) {
-
         if (body.is('.' + doc)) {
             return;
         }
 
-        body.find('.content').slideUp(0); // hide old content
-
-        return function () {
+        return function (oldDom) {
             C.debug(name, 'classify', doc);
 
+            oldDom.hide();
             body.removeClass();
 
             if (doc === 'home') { // add class for page type
