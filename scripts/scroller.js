@@ -17,9 +17,9 @@ var Scroller = (function ($, G, U) { // IIFE
                 resize: false,
                 interactive: true,
             }],
-            keyBindings: true,
-            eventPassthrough: true,
-            momentum: false,
+            keyBindings: false,
+            eventPassthrough: false,
+            momentum: true,
             scrollX: 1,
             scrollY: 0,
             snap: true,
@@ -124,7 +124,7 @@ var Scroller = (function ($, G, U) { // IIFE
         Df.iscroll.indicators[0].el = gauge.get(0);
         scroller = new IScroll(viewPort.get(0), Df.iscroll); //github.com/cubiq/iscroll
 
-        scroller.on('beforeScrollStart', function () {
+        scroller.on('scrollStart', function () {
             viewPort.addClass('scrolling');
         });
         scroller.on('scrollEnd', function () {

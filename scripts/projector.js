@@ -43,7 +43,7 @@ var Projector = (function ($, G, U) { // IIFE
             },
             changes: function (state) {
                 if (this.status !== state) {
-                    this.port.removeClass(this.status);
+                    this.port.removeClass('scrolling ' + this.status);
                     this.status = state;
                     this.port.addClass(this.status);
                     return true;

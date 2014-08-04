@@ -28,22 +28,19 @@
             border-radius: 0.5rem 0 0 0.5rem;
             border-right: 0;
             float: right;
-            height: 33em;
+            //height: 33em;
             font-size: small;
             font-weight: 400;
-            overflow: hidden;
+            overflow-y: auto;
             margin-right: -2rem;
             padding: 2rem 1rem 2rem 1rem;
             width: 33%;
 
-            &:hover {
-                overflow-y: auto;
-            }
             ul {
-                margin-left: 1rem;
+                margin-left: 1.25rem;
 
                 li {
-                    margin-top: 0.5rem;
+                    margin-top: 0.25rem;
                 }
             }
         }
