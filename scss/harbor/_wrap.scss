@@ -23,14 +23,19 @@
     > nav {
         color: white;
         text-align: right;
-        text-shadow: 0 0 3px black;
 
         a {
             color: white;
-            padding: 2px 0.8rem;
+            text-shadow: 0 0 3px black;
 
-            &:last-child {
-                padding-right: 0;
+            &:before {
+                color: white;
+                content: '|';
+                padding: 0 1em;
+                text-shadow: 0 0 3px black;
+            }
+            &:first-child:before {
+                content: '';
             }
             &:hover {
                 color: $red;

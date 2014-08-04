@@ -92,6 +92,10 @@ var Main = (function ($, G, U) { // IIFE
 
         bindProjector();
         bindExtractor();
+
+        $('nav.sub-top').dblclick(function () {
+            $(this).toggleClass('fixed shadow');
+        })
     }
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */

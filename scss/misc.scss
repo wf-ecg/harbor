@@ -8,10 +8,28 @@ ol {
         list-style-type: lower-alpha;
     }
 }
+.content {
+    display: none;
+}
+nav.sub-top.fixed {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 0.5rem 0 0 0;
+    bottom: -1%;
+    font-size: 0;
+    position: fixed;
+    right: 0%;
 
-body {
-    .content {
-        display: none;
+    a {
+        clear: both;
+        float: left;
+        font-size: small;
+        padding: 1em !important;
+        text-align: center;
+        width: 7rem;
+
+        &:before {
+            display: none;
+        }
     }
 }
 // - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //
