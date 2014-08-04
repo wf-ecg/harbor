@@ -55,7 +55,7 @@ var Floater = (function ($, G, U) { // IIFE
             }, 333, 'circ', function () {
                 diff = Math.abs(ele.offset().top - amt) | 0;
 
-                if (U.debug(1)) {
+                if (U.debug(2)) {
                     C.debug(name, '_jump', {
                         amt: amt,
                         xtra: xtra,
@@ -67,7 +67,7 @@ var Floater = (function ($, G, U) { // IIFE
                 if (!xtra || diff > Df.space) {
                     _jump(ele, diff || Df.space);
                 } else {
-                    C.debug('jumped');
+                    C.debug(name, '_jump done');
                 }
             });
         }

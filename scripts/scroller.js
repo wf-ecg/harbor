@@ -42,12 +42,11 @@ var Scroller = (function ($, G, U) { // IIFE
 
         ln = scroller.pages.length;
         pg = (1 + scroller.currentPage.pageX) % ln;
-        scroller._execEvent('beforeScrollStart'); // polyfill event
+        scroller._execEvent('scrollStart'); // polyfill event
 
         _.delay( function () {
             scroller.goToPage(pg, 0);
-            scroller._execEvent('scrollStart');
-        }, Df.iscroll.snapSpeed);
+        }, Df.iscroll.snapSpeed / 3);
     }
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -91,30 +90,30 @@ var Scroller = (function ($, G, U) { // IIFE
         viewPort = $(viewSelector);
         gauge = viewPort.find('.iS-proxy');
 
-        gauge.on('mouseup touchend click', function (evt) {
-            var cds;
-            cds = {
-                t: $(evt.target),
+        if (U.debug(2)) {
+            C.debug(name, '_attachPort', viewPort, gauge);
+        }
+
+        gauge.on('click', function (evt) {
+            var prox = {
+                pg: null,
+                w: gauge.outerWidth(),
                 x: evt.offsetX,
                 y: evt.offsetY,
-                w: gauge.innerWidth(),
-                l: scroller.pages.length,
+                ln: scroller.pages.length,
+                et: $(evt.target),
+                ev: evt,
                 calc: function () {
-                    if (!cds.t.is(gauge)) {
-                        scroller._execEvent('scrollEnd');
-                        cds.x += cds.t.position().left;
-                    }
-                    cds.p = (cds.x / cds.w * cds.l) | 0;
-                    C.warn(cds);
-                    return (cds.p);
+                    this.pg = (this.x / this.w * this.ln) | 0;
                 },
             };
-            if (!cds.x) { // touch device has no offsetX?
-                evt.preventDefault();
-                gauge.trigger('advance.' + name);
-            } else {
-                scroller.goToPage(cds.calc(), 0);
+            prox.calc();
+
+            if (U.debug(2)) {
+                C.debug(name, '_attachPort gauge calc', evt.type, prox);
             }
+            scroller._execEvent('scrollStart'); // polyfill event
+            scroller.goToPage(prox.pg, 0);
         });
 
         gauge.on('advance.' + name, function () {
@@ -130,7 +129,6 @@ var Scroller = (function ($, G, U) { // IIFE
         scroller.on('scrollEnd', function () {
             viewPort.removeClass('scrolling');
         });
-        scroller.on('flick', U.echoing('flick'));
 
         // store IScroll (internally and as data on wrapper)
         Df.all.push(scroller);

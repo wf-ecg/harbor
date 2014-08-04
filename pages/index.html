@@ -28,14 +28,14 @@
 
           "><noscript> error: scripting is disabled </noscript>
 
-        <div id="Flood" class="blur"></div>
+        <div id="Flood" class=""></div>
 
-        <div class="harbor" id="Body">
+        <div class="harbor shadow" id="Body">
             <nav class="sub-top">
-                <a href="home.html">Home</a>|
-                <a href="about.html">About Us </a>|
-                <a href="glossary.html">Glossary</a>|
-                <a href="guide.html">Submission Guidelines</a>|
+                <a href="home.html">Home</a>
+                <a href="about.html">About Us </a>
+                <a href="glossary.html">Glossary</a>
+                <a href="guide.html">Submission Guidelines</a>
                 <a href="contact.html">Contact Us</a>
             </nav>
 
@@ -47,20 +47,27 @@
                         <a href="home.html"><img alt="logo" src="../images/logos/logo.png"></a>
 
                         <nav id="Programs">
-                            <img alt="spy" src="../images/icons/glass.png" onclick="
-
-                            if ($(event.toElement).is(this)) {
-                                $('html').toggleClass('robo');
-                            }
-
-                           ">
-                            <input class="search" type="text" value="Search">
-
                             <h4>
                                 <a class="rec" href="recreation.html">Recreational Marine</a>
                                 <a class="com" href="commercial.html">Commercial Marine</a>
                             </h4>
                         </nav>
+
+                        <!-- Search Harbor Risk on the Web-->
+                        <script>
+                            (function() {
+                                var cx = '006146512309439838370:zwrrqyaixxi';
+                                var gcse = document.createElement('script');
+                                gcse.type = 'text/javascript';
+                                gcse.async = true;
+                                gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                                    '//www.google.com/cse/cse.js?cx=' + cx;
+                                var s = document.getElementsByTagName('script')[0];
+                                s.parentNode.insertBefore(gcse, s);
+                            })();
+                        </script>
+                        <gcse:search></gcse:search>
+
                     </header>
 
                     <section class="slideshow">
@@ -102,9 +109,9 @@
             </div>
 
             <nav class="sub-bot">
-                <a href="https://www.agencyresources.com/copyright.html">Copyright</a>|
-                <a href="https://www.agencyresources.com/copyright.html">Privacy Security &amp; Legal</a>|
-                <a href="https://www.agencyresources.com/copyright.html">Terms of Use</a>|
+                <a href="https://www.agencyresources.com/copyright.html">Copyright</a>
+                <a href="https://www.agencyresources.com/copyright.html">Privacy Security &amp; Legal</a>
+                <a href="https://www.agencyresources.com/copyright.html">Terms of Use</a>
                 <a href="https://www.agencyresources.com/sitemap.html">Sitemap</a>
                 <span class="disc">© 2014 Wells Fargo Insurance Services USA, Inc. All rights reserved.</span>
             </nav>

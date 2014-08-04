@@ -8,6 +8,9 @@
     66% { opacity: 0.6; }
     77% { opacity: 1.0; }
 }
+$peg: 14px;
+$gap: 5px;
+
 .harbor .slideshow {
     padding: 0;
 
@@ -73,10 +76,10 @@
         border-radius: 4px;
         bottom: 1.5rem;
         box-sizing: content-box;
-        height: 14px;
+        height: $peg;
         left: 2.25rem;
         position: absolute;
-        width: 19px * $count - 5px;
+        width: ($peg + $gap) * $count - $gap;
         z-index: 9;
     }
     .iS-peg {
@@ -85,7 +88,7 @@
         height: 100%;
         left: 0;
         position: absolute;
-        width: 14px;
+        width: $peg;
     }
 }
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */

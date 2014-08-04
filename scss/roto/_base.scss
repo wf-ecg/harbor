@@ -10,6 +10,9 @@
     position: relative;
     text-align: center;
 
+    .loading & {
+        visibility: hidden;
+    }
     .iS-view {
         height: 100%;
         position: relative;
