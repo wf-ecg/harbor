@@ -7,6 +7,8 @@ $sea: #7ca8b2;
 
 $count: 4;
 $fullsize: 100%;
+$show_tall: 25rem;
+$show_xtra: 4rem;
 
 @mixin skygrad(){
     background-color: $sky;
@@ -26,6 +28,7 @@ html {
 @import "_base";
 @import "_head";
 @import "_foot";
+@import "_gloss";
 @import "_wrap";
 
 @import "_home";

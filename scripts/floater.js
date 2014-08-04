@@ -92,9 +92,8 @@ var Floater = (function ($, G, U) { // IIFE
             me = $(this);
             ele = $('<a>');
 
-            // make id from initials
-            id = me.text().match(/\b\w/g);
-            id = '§' + id.join('');
+            id = me.text().match(/\b\w/g); //   make id from initials
+            id = '__' + id.join(''); //         prefix programatic id
 
             // add anchor # id to index
             me.attr('id', id);

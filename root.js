@@ -2,8 +2,7 @@
 /*globals window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var W = window,
-C = W.console,
-D = W.document;
+C = W.console;
 W.debug = Number(new Date('2014/07/29') > new Date());
 W.ROOT = ({
     base: 0,
@@ -77,14 +76,14 @@ W.ROOT = ({
         var R = this;
         R.D = W.document;
         R.L = W.location;
-        if (C && C.groupCollapsed) {
-            C.groupCollapsed('ROOT', R);
-        }
         R._host(this);
         R._tops(this);
         R._down(this);
         R._wrap(this);
         delete R.init;
+        if (C && C.groupCollapsed) {
+            C.groupCollapsed('ROOT', R);
+        }
         return R;
     },
 }.init());

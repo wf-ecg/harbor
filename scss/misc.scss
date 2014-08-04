@@ -42,49 +42,9 @@ body {
         display: none;
     }
 }
-.page.glossary #Main {
-    a[id] {
-        display: block;
-        height: 0px;
-        position: relative;
-        top: -9rem;
-        width: 0px;
-
-        &:after {
-            content: ' ';
-        }
-    }
-    aside {
-        background-color: rgba(255,255,255,0.9);
-        box-shadow: 3px 2px 11px black;
-        height: 70%;
-        position: fixed;
-        right: -9rem;
-        top: 20%;
-        z-index: 11;
-        @include transition(right 0.5s ease-out);
-
-        &:hover {
-            right: 0;
-        }
-        a {
-            border-bottom: 1px dotted;
-            color: black;
-            text-decoration: none;
-
-            &:hover {
-                color: blue;
-            }
-            &:before {
-                content: '¤';
-                left: 1rem;
-                position: absolute;
-            }
-        }
-        li {
-            list-style-type: none;
-        }
-    }
+.blur {
+    @include filter( blur(3px) );
+    @include transition( 0.5s ease-in-out );
 }
 .target {
     background-color: $hilite;

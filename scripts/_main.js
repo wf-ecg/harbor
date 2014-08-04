@@ -74,12 +74,10 @@ var Main = (function ($, G, U) { // IIFE
     }
 
     function bindProjector() {
-        if (body.is('.home')) {
-            Df.projector = Projector.attach('._projector');
+        Df.projector = Projector.attach('.iS-port');
 
-            if (html.is('.dev')) {
-                Df.projector.toggle();
-            }
+        if (html.is('.dev')) {
+            Df.projector.toggle();
         }
     }
 

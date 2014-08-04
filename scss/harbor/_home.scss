@@ -2,6 +2,14 @@
 /* HARBOR / Home */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 .home .harbor {
+    .slideshow .iS-port {
+        height: $show_tall + $show_xtra;
+
+        img {
+            top: 0;
+        }
+    }
+
     article {
         clear: left;
         float: left;

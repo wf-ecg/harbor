@@ -31,11 +31,14 @@
             height: 33em;
             font-size: small;
             font-weight: 400;
-            overflow-y: auto;
+            overflow: hidden;
             margin-right: -2rem;
             padding: 2rem 1rem 2rem 1rem;
             width: 33%;
 
+            &:hover {
+                overflow-y: auto;
+            }
             ul {
                 margin-left: 1rem;
 
