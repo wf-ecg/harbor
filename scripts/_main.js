@@ -81,21 +81,12 @@ var Main = (function ($, G, U) { // IIFE
         }
     }
 
-    function bindFloater(delay) {
-        routie('glossary', Floater.bind);
-
-        if (delay) {
-            return _.delay(bindFloater);
-        }
-        if (body.is('.glossary')) {
-            Floater.bind('.content h5:visible','.content aside ul:visible');
-        }
-    }
-
     function bindings() {
         Anchor.init();
         Extract.init();
-        bindFloater();
+
+        routie('glossary', Floater.bind);
+
         bindProjector();
         bindExtractor();
     }
