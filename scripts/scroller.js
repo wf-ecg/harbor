@@ -91,13 +91,13 @@ var Scroller = (function ($, G, U) { // IIFE
         viewPort = $(viewSelector);
         gauge = viewPort.find('.iS-proxy');
 
-        gauge.on('mouseup touchend click', function (evt) {
+        gauge.on('click', function (evt) {
             var cds;
             cds = {
                 t: $(evt.target),
                 x: evt.offsetX,
                 y: evt.offsetY,
-                w: gauge.innerWidth(),
+                w: gauge.outerWidth(),
                 l: scroller.pages.length,
                 calc: function () {
                     if (!cds.t.is(gauge)) {
