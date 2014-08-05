@@ -93,9 +93,9 @@ var Main = (function ($, G, U) { // IIFE
             $(this).next().toggle('fast');
         });
 
-        var header = $('#Main');
+        var header = $('#Body');
 
-        $('.zslideshow').on('inview', function (a,b,c,d) {
+        $('.slideshow').on('inview', function (a,b,c,d) {
             C.log(b,c,d)
             if (d === 'both') {
                 header.removeClass('fixed');

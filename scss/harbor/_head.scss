@@ -11,6 +11,7 @@
         position: absolute;
         /* position: fixed; */
         text-align: left;
+        top: 2.5rem;
         z-index: 11;
 
         h1 {
@@ -21,14 +22,26 @@
             display: inline-block;
             margin-left: 2rem;
             margin-top: 0.5rem;
-            position: relative;
+            position: absolute;
             z-index: 1;
         }
     }
+    &.fixed {
+        header {
+            @include transition( top 0.5s ease-in );
+            background: url(../images/logos/logo-head.png) no-repeat;
+            margin-top: -99px;
+            position: fixed;
+            top: 99px;
 
+            .logo img {
+                visibility: hidden;
+            }
+        }
+    }
     #Programs {
         float: right;
-        margin: 3rem 3rem 0;
+        margin: 3rem 3rem 1rem;
 
         a {
             color: $red;

@@ -11,50 +11,11 @@
     width: 100%;
     z-index: -1;
 }
-
-#Main.fixed {
-    margin-top: 4rem;
-
-    header {
-        @include transition( top  0.5s cubic() );
-        background: url(../images/logos/logo-head.png) no-repeat;
-        margin: 0 -2rem;
-        position: fixed;
-        top: 0;
-
-        .logo img {
-            visibility: hidden;
-        }
-        nav {
-            margin-right: 3rem;
-        }
-        #___gcse_0 {
-            margin-right: 2rem;
-        }
-    }
-}
-#Wrap {
-    background-color: white;
-    padding: 0.7rem;
-}
-#Main {
-    @include skygrad();
-    border: 2px solid $sky;
-    border-radius: 1rem;
-    margin-bottom: 8rem;
-    padding-bottom: 1rem;
-    padding-top: 8rem;
-
-    .msie & {
-        background: white;
-    }
-}
-
 #Body {
     background-color: rgba(255, 255, 255, 0.3);
     margin: 1rem auto;
-    min-width: 57rem;
     max-width: 70rem;
+    min-width: 57rem;
     padding: 0.75rem 1.25rem;
     width: 98%;
 
@@ -92,4 +53,21 @@
         }
     }
 }
+#Wrap {
+    background-color: white;
+    padding: 0.7rem;
+}
+#Main {
+    @include skygrad();
+    border: 2px solid $sky;
+    border-radius: 1rem;
+    margin-bottom: 8rem;
+    padding-bottom: 1rem;
+    padding-top: 8rem;
+
+    .msie & {
+        background: white;
+    }
+}
+
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
