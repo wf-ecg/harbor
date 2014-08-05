@@ -92,6 +92,16 @@ var Main = (function ($, G, U) { // IIFE
         $('.content').on('click', '.dropdown', function (evt) {
             $(this).next().toggle('fast');
         });
+
+        var header = $('header');
+
+        $('.flow').on('inview', function (a,b,c,d) {
+            if (d === 'both') {
+                header.removeClass('fixed');
+            } else {
+                header.addClass('fixed');
+            }
+        });
     }
 
     function bindings() {

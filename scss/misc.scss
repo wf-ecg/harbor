@@ -23,6 +23,17 @@ ol {
         content: 'Show/Hide';
     }
 }
+#Main header.fixed {
+    background: url(../images/logos/logo-head.png) no-repeat;
+    position: fixed;
+    margin: 0 -30px;
+    top: 0;
+    width: 980px;
+
+    .logo img {
+        visibility: hidden;
+    }
+}
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 nav.sub-top.fixed {
     background: rgba(255, 255, 255, 0.3);
