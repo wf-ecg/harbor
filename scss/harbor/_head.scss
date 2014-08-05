@@ -26,7 +26,7 @@
 
     #Programs {
         float: right;
-        margin: 2.5rem 1rem 0;
+        margin: 3rem 3rem 0;
 
         a {
             color: $red;
@@ -43,12 +43,38 @@
                 color: $blu;
             }
         }
-        img {
-            display: inline;
-            left: 1.6rem;
-            margin-left: 3rem;
-            position: relative;
-            z-index: 1;
+    }
+
+    #___gcse_0 {
+        position: absolute;
+        right: 2rem;
+        top: 1rem;
+        width: 33%;
+
+        .gsc-search-button, .gsc-above-wrapper-area, .gsc-cursor-box, .gsst_b {
+            display: none;
+        }
+        .gsc-url-top, .gsc-thumbnail-inside {
+            padding: 0;
+        }
+        .gsc-control-cse {
+            background-color: transparent;
+            border: 0;
+            padding: 0.5em;
+        }
+        .gsc-results-wrapper-overlay {
+            box-sizing: content-box;
+            left: 12.5%;
+        }
+        .gsc-input-box {
+            border: 1px solid #eee;
+            border-radius: 1rem;
+            color: gray;
+        }
+        .gsc-input {
+            color: gray;
+            font-size: 1em;
+            padding: 0;
         }
     }
 }
