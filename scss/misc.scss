@@ -13,15 +13,14 @@ ol {
 }
 .dropdown {
     &:after {
-        content: '▿';
-        font-size: x-large;
+        content: '⋁'; // ▿ ▼
+        font-size: small;
         line-height: 0;
-        padding-left: 0.5em;
+        padding-left: 0.25em;
     }
     &:hover:after {
-        content: 'Reveal';
-        font-size: x-small;
         color: gray;
+        content: 'Show/Hide';
     }
 }
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
