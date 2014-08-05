@@ -12,6 +12,8 @@ ol {
     display: none;
 }
 .dropdown {
+    cursor: pointer;
+
     &:after {
         content: '⋁'; // ▿ ▼
         font-size: small;
