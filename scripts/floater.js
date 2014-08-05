@@ -11,7 +11,7 @@ var Floater = (function ($, G, U) { // IIFE
     Df = { // DEFAULTS
         box: $(W.isIE ? 'html' : 'body'),
         last: $(null),
-        space: 33,
+        space: 99,
         inits: function () {},
     };
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -68,6 +68,7 @@ var Floater = (function ($, G, U) { // IIFE
                     _jump(ele, diff || Df.space);
                 } else {
                     C.debug(name, '_jump done');
+                    Df.last.click();
                 }
             });
         }

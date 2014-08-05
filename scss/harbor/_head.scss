@@ -14,6 +14,7 @@
         top: 2.5rem;
         z-index: 11;
 
+        .msie & { margin-bottom: 3rem; margin-left: 0rem; margin-top: 2rem; }
         h1 {
             left: -9999px;
             position: absolute;
@@ -33,6 +34,7 @@
             margin-top: -99px;
             position: fixed;
             top: 99px;
+            .msie & { margin-top: 0; top: 0; }
 
             .logo img {
                 visibility: hidden;
@@ -43,6 +45,7 @@
         float: right;
         margin: 3rem 3rem 1rem;
 
+        .msie & { margin-bottom: 3rem; }
         a {
             color: $red;
             line-height: 2;
