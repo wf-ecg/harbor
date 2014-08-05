@@ -52,6 +52,7 @@ Glob = new Global('Glob');
         ],
         both: [
             G.loc + '_util.js',
+            G.loc + 'jq-inview.js',
             G.loc + 'js-view.js',
             G.loc + 'extract.js',
             G.loc + 'fetch.js',
