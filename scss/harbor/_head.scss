@@ -3,13 +3,13 @@
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 .harbor {
     header {
-        background: rgba(255, 25, 25, 0.3);
+        /* background: rgba(255, 25, 25, 0.3); */
         color: darkblue;
         margin: 0 -1.25rem;
         max-width: 70rem;
         min-width: 57rem;
         position: absolute;
-        /* position: fixed!important; */
+        /* position: fixed; */
         text-align: left;
         z-index: 11;
 
@@ -18,7 +18,9 @@
             position: absolute;
         }
         .logo {
-            margin-left: 1rem;
+            display: inline-block;
+            margin-left: 2rem;
+            margin-top: 0.5rem;
             position: relative;
             z-index: 1;
         }

@@ -16,10 +16,10 @@
     margin-top: 4rem;
 
     header {
+        @include transition( top  0.5s cubic() );
         background: url(../images/logos/logo-head.png) no-repeat;
         margin: 0 -2rem;
         position: fixed;
-        @include transition( top  0.5s cubic() );
         top: 0;
 
         .logo img {
@@ -41,6 +41,8 @@
     @include skygrad();
     border: 2px solid $sky;
     border-radius: 1rem;
+    margin-bottom: 8rem;
+    padding-bottom: 1rem;
     padding-top: 8rem;
 
     .msie & {
