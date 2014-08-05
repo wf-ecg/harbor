@@ -1,6 +1,6 @@
 /*jslint es5:true, white:false */
 /*globals _, C, W, Glob, Util, jQuery,
-        Anchor, Extract, Projector, */
+        Anchor, Extract, Floater, Projector, routie, */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var Main = (function ($, G, U) { // IIFE
     'use strict';
@@ -95,7 +95,7 @@ var Main = (function ($, G, U) { // IIFE
 
         $('nav.sub-top').dblclick(function () {
             $(this).toggleClass('fixed shadow');
-        })
+        });
     }
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */

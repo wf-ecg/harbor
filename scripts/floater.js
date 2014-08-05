@@ -1,6 +1,6 @@
 /*jslint es5:true, white:false */
 /*globals _, C, W, Glob, Util, jQuery,
-        IScroll, */
+        , */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var Floater = (function ($, G, U) { // IIFE
     'use strict';
