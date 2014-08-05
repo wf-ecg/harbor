@@ -5,10 +5,14 @@
     content: '»' !important;
     left: -0.75rem;
     position: absolute;
+
+    .msie & {
+        position: static;
+    }
 }
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 .recreation {
-    a.rec::before {
+    a.rec:before {
         @extend %cursor;
     }
     img.com {
@@ -16,7 +20,7 @@
     }
 }
 .commercial {
-    a.com::before {
+    a.com:before {
         @extend %cursor;
     }
     img.rec {

@@ -28,7 +28,7 @@
             &:hover {
                 color: $blu;
             }
-            &.active::before, &:hover::before {
+            &.active:before, &:hover:before {
                 color: $blu;
             }
         }
