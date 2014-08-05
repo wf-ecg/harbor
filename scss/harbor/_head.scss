@@ -3,17 +3,28 @@
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 .harbor {
     header {
+        background: rgba(255, 25, 25, 0.3);
         color: darkblue;
-        position: relative;
-        width: 100%;
+        margin: 0 -1.25rem;
+        max-width: 70rem;
+        min-width: 57rem;
+        position: absolute;
+        /* position: fixed!important; */
+        text-align: left;
         z-index: 11;
 
         h1 {
             left: -9999px;
             position: absolute;
         }
+        .logo {
+            margin-left: 1rem;
+            position: relative;
+            z-index: 1;
+        }
     }
-    nav#Programs {
+
+    #Programs {
         float: right;
         margin: 2.5rem 1rem 0;
 

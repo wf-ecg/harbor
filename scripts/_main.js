@@ -93,9 +93,10 @@ var Main = (function ($, G, U) { // IIFE
             $(this).next().toggle('fast');
         });
 
-        var header = $('header');
+        var header = $('#Main');
 
-        $('.flow').on('inview', function (a,b,c,d) {
+        $('.zslideshow').on('inview', function (a,b,c,d) {
+            C.log(b,c,d)
             if (d === 'both') {
                 header.removeClass('fixed');
             } else {

@@ -20,9 +20,12 @@ body {
     height: 100%;
     overflow-y: scroll;
     position: relative;
+    text-align: center;
     width: 100%;
 
     .harbor {
+        text-align: left;
+
         button {
             cursor: pointer;
 
@@ -32,6 +35,9 @@ body {
             &:active {
                 border-style: inset;
             }
+        }
+        div {
+            position: relative;
         }
         h1, h2, h3, h4, h5, h6 {
             color: $blu;

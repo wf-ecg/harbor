@@ -20,13 +20,7 @@
         <script defer src="../load.js"></script>
         <!--  -->
     </head>
-    <body class="loading" onclick="
-
-        if ($(event.toElement).is(this)) {
-            $('#Flood').toggleClass('blur');
-        }
-
-          "><noscript> error: scripting is disabled </noscript>
+    <body class="loading" onclick="if ($(event.toElement).is(this)) {$('#Flood').toggleClass('blur');}"><noscript> error: scripting is disabled </noscript>
 
         <div id="Flood" class=""></div>
 
@@ -39,36 +33,43 @@
                 <a href="contact.html">Contact Us</a>
             </nav>
 
+            <header>
+                <h1>Harbor Risk</h1>
+                <a class="logo" href="home.html"><img alt="logo" src="../images/logos/logo.png"></a>
+
+                <nav id="Programs">
+                    <h4>
+                        <a class="rec" href="recreation.html">Recreational Marine</a>
+                        <a class="com" href="commercial.html">Commercial Marine</a>
+                    </h4>
+                </nav>
+                <p style="height: 1px;">
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                </p>
+                <!-- Search Harbor Risk on the Web-->
+                <script>
+                    (function() {
+                        var cx = '006146512309439838370:zwrrqyaixxi';
+                        var gcse = document.createElement('script');
+                        gcse.type = 'text/javascript';
+                        gcse.async = true;
+                        gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                            '//www.google.com/cse/cse.js?cx=' + cx;
+                        var s = document.getElementsByTagName('script')[0];
+                        s.parentNode.insertBefore(gcse, s);
+                    })();
+                </script>
+                <gcse:search></gcse:search>
+
+            </header>
+
             <div id="Wrap">
                 <div id="Main">
-
-                    <header>
-                        <h1>Harbor Risk</h1>
-                        <a class="logo" href="home.html"><img alt="logo" src="../images/logos/logo.png"></a>
-
-                        <nav id="Programs">
-                            <h4>
-                                <a class="rec" href="recreation.html">Recreational Marine</a>
-                                <a class="com" href="commercial.html">Commercial Marine</a>
-                            </h4>
-                        </nav>
-
-                        <!-- Search Harbor Risk on the Web-->
-                        <script>
-                            (function() {
-                                var cx = '006146512309439838370:zwrrqyaixxi';
-                                var gcse = document.createElement('script');
-                                gcse.type = 'text/javascript';
-                                gcse.async = true;
-                                gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
-                                    '//www.google.com/cse/cse.js?cx=' + cx;
-                                var s = document.getElementsByTagName('script')[0];
-                                s.parentNode.insertBefore(gcse, s);
-                            })();
-                        </script>
-                        <gcse:search></gcse:search>
-
-                    </header>
 
                     <section class="slideshow">
                         <img class="flow" alt="flow" src="../images/shapes/flow.png">
@@ -95,17 +96,18 @@
 
                     <section class="content"></section>
 
-                    <footer><p>
-                            Products and services are offered through Harbor Risk, an affiliate of Safehold Special Risk Inc.
-                            Safehold Special Risk Inc., dba Safehold Special Risk & Insurance Services, Inc. in California is
-                            a non-bank insurance agency affiliate of Wells Fargo & Company. Coverage is provided by unaffiliated
-                            insurance companies with the exception of crop and flood insurance which may be underwritten by
-                            Safehold Special Risk, Inc.’s affiliate, Rural Community Insurance Company.
-                        </p>
-                        <img class="silo" alt="silo" src="../images/logos/logo-silo.png">
-                    </footer>
-
                 </div>
+
+                <footer>
+                    <p>
+                        Products and services are offered through Harbor Risk, an affiliate of Safehold Special Risk Inc.
+                        Safehold Special Risk Inc., dba Safehold Special Risk & Insurance Services, Inc. in California is
+                        a non-bank insurance agency affiliate of Wells Fargo & Company. Coverage is provided by unaffiliated
+                        insurance companies with the exception of crop and flood insurance which may be underwritten by
+                        Safehold Special Risk, Inc.’s affiliate, Rural Community Insurance Company.
+                    </p>
+                    <img class="silo" alt="silo" src="../images/logos/logo-silo.png">
+                </footer>
             </div>
 
             <nav class="sub-bot">
@@ -115,7 +117,7 @@
                 <a href="https://www.agencyresources.com/sitemap.html">Sitemap</a>
                 <span class="disc">© 2014 Wells Fargo Insurance Services USA, Inc. All rights reserved. ECG-1198972</span>
             </nav>
-        </div>
 
+        </div>
     </body>
 </html>
