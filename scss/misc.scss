@@ -11,6 +11,20 @@ ol {
 .content {
     display: none;
 }
+.dropdown {
+    &:after {
+        content: '▿';
+        font-size: x-large;
+        line-height: 0;
+        padding-left: 0.5em;
+    }
+    &:hover:after {
+        content: 'Reveal';
+        font-size: x-small;
+        color: gray;
+    }
+}
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 nav.sub-top.fixed {
     background: rgba(255, 255, 255, 0.3);
     border-radius: 0.5rem 0 0 0;
