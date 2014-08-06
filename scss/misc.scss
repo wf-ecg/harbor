@@ -11,42 +11,6 @@ ol {
 .content {
     display: none;
 }
-.dropdown {
-    cursor: pointer;
-
-    &:after {
-        content: '⋁'; // ▿ ▼
-        font-size: small;
-        line-height: 0;
-        padding-left: 0.25em;
-    }
-    &:hover:after {
-        color: gray;
-        content: 'Show/Hide';
-    }
-}
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-nav.sub-top.fixed {
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 0.5rem 0 0 0;
-    bottom: -1%;
-    font-size: 0;
-    position: fixed;
-    right: 0%;
-
-    a {
-        clear: both;
-        float: left;
-        font-size: small;
-        padding: 1em !important;
-        text-align: center;
-        width: 7rem;
-
-        &:before {
-            display: none;
-        }
-    }
-}
 // - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //
 .msie {
     //behavior: url(pie/PIE.htc);
