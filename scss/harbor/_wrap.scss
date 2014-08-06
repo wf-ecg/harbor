@@ -52,6 +52,37 @@
         }
     }
 }
+#Body.fixed {
+    header {
+        margin-top: -99px;
+        position: fixed;
+        top: 90px;
+        .msie & { top: 0; margin-top: 0; }
+    }
+    nav.sub-top {
+        top: 1rem;
+        z-index: 12;
+
+        a {
+            color: $blu;
+            text-shadow: 0 0 3px black;
+            font-weight: 600;
+            text-shadow: none;
+
+            &:before {
+                color: $blu;
+                text-shadow: none;
+            }
+            &:hover { color: $red; }
+        }
+    }
+    #Programs {
+        top: 1.5rem;
+    }
+    #___gcse_0 {
+        display: none;
+    }
+}
 #Wrap {
     background-color: white;
     padding: 0.7rem;
@@ -64,9 +95,6 @@
     padding-bottom: 1rem;
     padding-top: 7rem;
 
-    .msie & {
-        background: white;
-    }
+    .msie & { background: white; }
 }
-
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */

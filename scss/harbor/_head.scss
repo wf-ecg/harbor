@@ -2,15 +2,9 @@
 /* HARBOR / Head */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 .harbor {
-    &.fixed header {
-        margin-top: -99px;
-        position: fixed;
-        top: 90px;
-    }
     header {
         /* background: rgba(255, 25, 25, 0.3); */
         /* position: fixed; */
-        color: $blu;
         margin: 0 -1.2rem;
         max-width: 70rem;
         min-width: 57rem;
@@ -19,6 +13,7 @@
         text-align: left;
         top: 3.5rem;
         z-index: 11;
+        .msie & { padding: 0; margin: 0; top: 4.25rem; }
 
         h1 {
             left: -9999px;
@@ -27,6 +22,7 @@
         p {
             height: 99px;
             margin: 0 1.25rem;
+            .msie & { margin: 0 0.75rem; }
         }
         .logo {
             visibility: hidden;
@@ -41,21 +37,8 @@
             width: 100%;
             z-index: -1;
         }
-        .msie & { margin-bottom: 3rem; margin-left: 0rem; margin-top: 2rem; }
     }
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-    &.fixed nav.sub-top {
-        top: 1rem;
-        z-index: 12;
-
-        a {
-            color: $blu !important;
-            font-weight: 600;
-            text-shadow: none !important;
-
-            &:hover { color: $red !important; }
-        }
-    }
     nav.sub-top {
         @include transition( top 0.1s linear translateZ(0px));
         position: absolute;
@@ -63,9 +46,6 @@
         top: -2.75rem;
     }
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-    &.fixed #Programs {
-        top: 1.5rem;
-    }
     #Programs {
         @include transition( top 0.2s linear );
         margin: 1rem 6rem 1rem;
@@ -86,9 +66,6 @@
         }
     }
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-    &.fixed #___gcse_0 {
-        display: none;
-    }
     #___gcse_0 {
         position: absolute;
         right: 4rem;
