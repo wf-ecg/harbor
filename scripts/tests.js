@@ -26,7 +26,7 @@ var Tests = (function ($, G, U) { // IIFE
 
     function bindBlur() {
         $('body').click(function (evt) {
-            if ($(!W.isIE && event.toElement).is(this)) {
+            if (!W.isIE && $(evt.toElement).is(this)) {
                 $('#Flood').toggleClass('blur');
             }
         });
@@ -42,7 +42,7 @@ var Tests = (function ($, G, U) { // IIFE
         var header = $('#Body');
 
         $('.slideshow').on('inview', function (a, b, c, d) {
-            C.log(b, c, d)
+            C.log(b, c, d);
             if (d === 'both') {
                 header.removeClass('fixed');
             } else {
@@ -65,8 +65,8 @@ var Tests = (function ($, G, U) { // IIFE
     }
 
     function bindings() {
-        bindBlur();
         // bindAltnav();
+        bindBlur();
         bindDrops();
         bindFixed();
         bindSearch();
