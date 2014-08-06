@@ -94,7 +94,7 @@ Glob = new Global('Glob');
     };
 
     Load.test = {
-        test: W.debug > 0,
+        test: W.debug >= 0,
         yep: [G.src + 'tests.js'],
         nope: [
             'http://www.wellsfargomedia.com/lib/js/ecg-ga.js',

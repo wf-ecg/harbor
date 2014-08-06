@@ -41,12 +41,12 @@ var Tests = (function ($, G, U) { // IIFE
     function bindFixed() {
         var header = $('#Body');
 
-        $('.slideshow').on('inview', function (a, b, c, d) {
+        $('#Wrap').on('inview', function (a, b, c, d) {
             C.log(b, c, d);
-            if (d === 'both') {
-                header.removeClass('fixed');
-            } else {
+            if (d === 'bottom') {
                 header.addClass('fixed');
+            } else {
+                header.removeClass('fixed');
             }
         });
     }
