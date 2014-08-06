@@ -86,6 +86,7 @@ Glob = new Global('Glob');
             G.src + 'projector.js',
             G.src + 'scroller.js',
             G.src + '_main.js',
+            G.src + 'tests.js'
         ],
         complete: function () {
             ROOT.loaded($);
@@ -95,7 +96,7 @@ Glob = new Global('Glob');
 
     Load.test = {
         test: W.debug >= 0,
-        yep: [G.src + 'tests.js'],
+        yep: [],
         nope: [
             'http://www.wellsfargomedia.com/lib/js/ecg-ga.js',
         ],
