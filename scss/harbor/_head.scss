@@ -53,6 +53,8 @@
         right: 0;
         top: 1rem;
 
+        .msie & { margin-right: 4.5rem; }
+
         a {
             color: $red;
             line-height: 2;
