@@ -51,11 +51,25 @@ var Tests = (function ($, G, U) { // IIFE
         });
     }
 
+    function bindSearch() {
+        var cx, gcse, s;
+        cx = '006146512309439838370:zwrrqyaixxi';
+
+        gcse = W.document.createElement('script');
+        gcse.async = true;
+        gcse.src = '//www.google.com/cse/cse.js?cx=' + cx;
+        gcse.type = 'text/javascript';
+
+        s = W.document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(gcse, s);
+    }
+
     function bindings() {
-        bindAltnav();
         bindBlur();
+        // bindAltnav();
         bindDrops();
         bindFixed();
+        bindSearch();
     }
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
