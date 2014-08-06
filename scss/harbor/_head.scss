@@ -29,7 +29,7 @@
     }
     &.fixed {
         header {
-            @include transition( top 0.5s ease-in );
+            @include transition( top 0.5s ease-out );
             background: url(../images/logos/logo-head.png) no-repeat;
             margin-top: -99px;
             position: fixed;

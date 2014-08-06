@@ -32,8 +32,10 @@ var Main = (function ($, G, U) { // IIFE
 
             if (doc === 'home') { // add class for page type
                 body.addClass('home');
+                Floater.jump('#Body');
             } else {
                 body.addClass('page ' + doc);
+                Floater.jump('#Main');
             }
             body.find('.content').slideDown(); // reveal again
             Anchor.write(doc);
