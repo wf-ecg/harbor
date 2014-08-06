@@ -8,6 +8,8 @@
     padding: 0;
 }
 html {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
     font-family: "Arial Narrow";
     height: 100%;
     position: absolute;
@@ -92,6 +94,9 @@ body {
             font-weight: 100;
             padding: 0.5rem 2rem;
             position: relative;
+        }
+        td img {
+            display: inline-block; // fight html5 table looseness
         }
     }
 }
