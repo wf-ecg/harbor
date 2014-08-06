@@ -2,6 +2,11 @@
 /* HARBOR / Head */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 .harbor {
+    &.fixed header {
+        margin-top: -99px;
+        position: fixed;
+        top: 90px;
+    }
     header {
         /* background: rgba(255, 25, 25, 0.3); */
         /* position: fixed; */
@@ -23,20 +28,12 @@
             height: 99px;
             margin: 0 1.25rem;
         }
-        nav.sub-top {
-            @include transition( top 0.1s linear );
-
-            position: absolute;
-            right: 4rem;
-            top: -2.75rem;
-        }
         .logo {
-            display: inline-block;
+            //visibility: hidden;
             margin-left: 1rem;
             margin-top: 0rem;
             position: absolute;
             top: 0;
-            z-index: 1;
         }
         .flow {
             border-radius: 1rem;
@@ -46,34 +43,28 @@
         }
         .msie & { margin-bottom: 3rem; margin-left: 0rem; margin-top: 2rem; }
     }
-    &.fixed {
-        header {
-            margin-top: -99px;
-            position: fixed;
-            top: 90px;
-        }
-        nav.sub-top {
-            position: fixed;
-            padding-right: 3rem;
-            top: 1rem;
-            z-index: 12;
+    /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+    &.fixed nav.sub-top {
+        top: 1rem;
+        z-index: 12;
 
-            a {
-                color: $blu !important;
-                font-weight: 600;
-                text-shadow: none !important;
+        a {
+            color: $blu !important;
+            font-weight: 600;
+            text-shadow: none !important;
 
-                &:hover {
-                    color: $red !important;
-                }
-            }
+            &:hover { color: $red !important; }
         }
-        #___gcse_0 {
-            display: none;
-        }
-        #Programs {
-            top: 2rem;
-        }
+    }
+    nav.sub-top {
+        @include transition( top 0.1s linear translateZ(0px));
+        position: absolute;
+        right: 4rem;
+        top: -2.75rem;
+    }
+    /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+    &.fixed #Programs {
+        top: 1.5rem;
     }
     #Programs {
         @include transition( top 0.2s linear );
@@ -90,28 +81,23 @@
             text-align: right;
             text-decoration: none;
 
-            &:hover {
-                color: $blu;
-            }
-            &.active:before, &:hover:before {
-                color: $blu;
-            }
+            &:hover { color: $blu; }
+            &.active:before, &:hover:before { color: $blu; }
         }
     }
-
+    /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+    &.fixed #___gcse_0 {
+        display: none;
+    }
     #___gcse_0 {
-        @include transition( top 0.1s linear );
         position: absolute;
         right: 4rem;
         top: 0;
         width: 33%;
 
-        .gsc-search-button, .gsc-above-wrapper-area, .gsc-cursor-box, .gsst_b {
-            display: none;
-        }
-        .gsc-url-top, .gsc-thumbnail-inside {
-            padding: 0;
-        }
+        .gsc-search-button, .gsc-above-wrapper-area,
+        .gsc-cursor-box, .gsst_b { display: none; }
+        .gsc-url-top, .gsc-thumbnail-inside { padding: 0; }
         .gsc-control-cse {
             background-color: transparent;
             border: 0;
