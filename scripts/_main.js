@@ -35,7 +35,7 @@ var Main = (function ($, G, U) { // IIFE
                 Floater.jump('#Body');
             } else {
                 body.addClass('page ' + doc);
-                Floater.jump('#Main');
+                Floater.jump('#Body');
             }
             body.find('.content').slideDown(); // reveal again
             Anchor.write(doc);

@@ -4,48 +4,84 @@
 .harbor {
     header {
         /* background: rgba(255, 25, 25, 0.3); */
-        color: darkblue;
-        margin: 0 -1.25rem;
+        /* position: fixed; */
+        color: $blu;
+        margin: 0 -1.2rem;
         max-width: 70rem;
         min-width: 57rem;
+        padding: 0 0.8rem;
         position: absolute;
-        /* position: fixed; */
         text-align: left;
-        top: 2.5rem;
+        top: 3.5rem;
         z-index: 11;
 
-        .msie & { margin-bottom: 3rem; margin-left: 0rem; margin-top: 2rem; }
         h1 {
             left: -9999px;
             position: absolute;
         }
+        p {
+            height: 99px;
+            margin: 0 1.25rem;
+        }
+        nav.sub-top {
+            @include transition( top 0.1s linear );
+
+            position: absolute;
+            right: 4rem;
+            top: -2.75rem;
+        }
         .logo {
             display: inline-block;
-            margin-left: 2rem;
-            margin-top: 0.5rem;
+            margin-left: 1rem;
+            margin-top: 0rem;
             position: absolute;
+            top: 0;
             z-index: 1;
         }
+        .flow {
+            border-radius: 1rem;
+            position: relative;
+            width: 100%;
+            z-index: -1;
+        }
+        .msie & { margin-bottom: 3rem; margin-left: 0rem; margin-top: 2rem; }
     }
     &.fixed {
         header {
-            @include transition( top 0.25s linear );
-            background: url(../images/logos/logo-head.png) no-repeat;
             margin-top: -99px;
             position: fixed;
-            top: 99px;
-            .msie & { margin-top: 0; top: 0; }
+            top: 90px;
+        }
+        nav.sub-top {
+            position: fixed;
+            padding-right: 3rem;
+            top: 1rem;
+            z-index: 12;
 
-            .logo img {
-                visibility: hidden;
+            a {
+                color: $blu !important;
+                font-weight: 600;
+                text-shadow: none !important;
+
+                &:hover {
+                    color: $red !important;
+                }
             }
+        }
+        #___gcse_0 {
+            display: none;
+        }
+        #Programs {
+            top: 2rem;
         }
     }
     #Programs {
-        float: right;
-        margin: 3rem 3rem 1rem;
+        @include transition( top 0.2s linear );
+        margin: 1rem 6rem 1rem;
+        position: absolute;
+        right: 0;
+        top: 1rem;
 
-        .msie & { margin-bottom: 3rem; }
         a {
             color: $red;
             line-height: 2;
@@ -64,9 +100,10 @@
     }
 
     #___gcse_0 {
+        @include transition( top 0.1s linear );
         position: absolute;
-        right: 2rem;
-        top: 1rem;
+        right: 4rem;
+        top: 0;
         width: 33%;
 
         .gsc-search-button, .gsc-above-wrapper-area, .gsc-cursor-box, .gsst_b {
@@ -85,7 +122,7 @@
             left: 12.5%;
         }
         .gsc-input-box {
-            border: 1px solid #eee;
+            border: 1px solid #ccc;
             border-radius: 1rem;
             color: gray;
         }

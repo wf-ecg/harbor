@@ -62,6 +62,7 @@ var Tests = (function ($, G, U) { // IIFE
 
         s = W.document.getElementsByTagName('script')[0];
         s.parentNode.insertBefore(gcse, s);
+
     }
 
     function bindings() {
