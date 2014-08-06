@@ -11,6 +11,21 @@ ol {
 .content {
     display: none;
 }
+.dropdown {
+    cursor: pointer;
+
+    &:after {
+        content: '⋁'; // ▿ ▼
+        font-size: small;
+        line-height: 0;
+        padding-left: 0.25em;
+    }
+    &:hover:after {
+        color: gray;
+        content: 'Show/Hide';
+    }
+}
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 nav.sub-top.fixed {
     background: rgba(255, 255, 255, 0.3);
     border-radius: 0.5rem 0 0 0;

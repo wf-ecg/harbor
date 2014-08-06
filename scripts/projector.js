@@ -95,7 +95,7 @@ var Projector = (function ($, G, U) { // IIFE
         }
         var projector, scroller;
 
-        scroller = Scroller.attach(selector + '.iS-port');
+        scroller = Scroller.attach(selector);
         projector = decorate(scroller);
 
         $(selector + ' .control').on('click toggle', function (evt) {

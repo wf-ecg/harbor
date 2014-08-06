@@ -48,6 +48,10 @@
             clear: left;
             float: left;
             width: 66%;
+
+            hr {
+                border-bottom: 1px solid $blu;
+            }
         }
     }
 }

@@ -80,24 +80,24 @@ var Scroller = (function ($, G, U) { // IIFE
         return interva;
     }
 
-    function _attachPort(viewSelector) {
-        self.init();
-        if (U.debug(2)) {
-            C.debug(name, '_attachPort viewSelector:', viewSelector);
+    function _attachPort(sel) {
+        var port, proxy, scroller;
+
+        self.init(); // bueller?
+        port = $(sel);
+
+        if (U.debug(1)) {
+            C.debug(name, '_attachPort', sel);
         }
-        var viewPort, gauge, scroller;
-
-        viewPort = $(viewSelector);
-        gauge = viewPort.find('.iS-proxy');
-
-        if (U.debug(2)) {
-            C.debug(name, '_attachPort', viewPort, gauge);
+        if (!port.length) {
+            return {};
         }
+        proxy = port.find('.iS-proxy');
 
-        gauge.on('click', function (evt) {
-            var prox = {
+        proxy.on('click', function (evt) {
+            var aprox = ({
                 pg: null,
-                w: gauge.outerWidth(),
+                w: proxy.outerWidth(),
                 x: evt.offsetX,
                 y: evt.offsetY,
                 ln: scroller.pages.length,
@@ -105,34 +105,34 @@ var Scroller = (function ($, G, U) { // IIFE
                 ev: evt,
                 calc: function () {
                     this.pg = (this.x / this.w * this.ln) | 0;
+                    return this;
                 },
-            };
-            prox.calc();
+            }).calc();
 
             if (U.debug(2)) {
-                C.debug(name, '_attachPort gauge calc', evt.type, prox);
+                C.debug(name, '_attachPort proxy calc', evt.type, aprox);
             }
             scroller._execEvent('scrollStart'); // polyfill event
-            scroller.goToPage(prox.pg, 0);
+            scroller.goToPage(aprox.pg, 0);
         });
 
-        gauge.on('advance.' + name, function () {
+        proxy.on('advance.' + name, function () {
             scrollNext(scroller);
         });
 
-        Df.iscroll.indicators[0].el = gauge.get(0);
-        scroller = new IScroll(viewPort.get(0), Df.iscroll); //github.com/cubiq/iscroll
+        Df.iscroll.indicators[0].el = proxy.get(0);
+        scroller = new IScroll(port.get(0), Df.iscroll); //github.com/cubiq/iscroll
 
         scroller.on('scrollStart', function () {
-            viewPort.addClass('scrolling');
+            port.addClass('scrolling');
         });
         scroller.on('scrollEnd', function () {
-            viewPort.removeClass('scrolling');
+            port.removeClass('scrolling');
         });
 
         // store IScroll (internally and as data on wrapper)
         Df.all.push(scroller);
-        viewPort.data(name, scroller);
+        port.data(name, scroller);
         return scroller;
     }
 

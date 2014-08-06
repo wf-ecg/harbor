@@ -1,6 +1,6 @@
 /*jslint es5:true, white:false */
 /*globals _, C, W, Glob, Util, jQuery,
-        Anchor, Extract, Projector, */
+        Anchor, Extract, Floater, Projector, routie, */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var Main = (function ($, G, U) { // IIFE
     'use strict';
@@ -84,6 +84,27 @@ var Main = (function ($, G, U) { // IIFE
         }
     }
 
+    function bindTests() {
+        $('nav.sub-top').dblclick(function () {
+            $(this).toggleClass('fixed shadow');
+        });
+
+        $('.content').on('click', '.dropdown', function (evt) {
+            $(this).next().toggle('fast');
+        });
+
+        var header = $('#Body');
+
+        $('.slideshow').on('inview', function (a,b,c,d) {
+            C.log(b,c,d)
+            if (d === 'both') {
+                header.removeClass('fixed');
+            } else {
+                header.addClass('fixed');
+            }
+        });
+    }
+
     function bindings() {
         Anchor.init();
         Extract.init();
@@ -92,10 +113,7 @@ var Main = (function ($, G, U) { // IIFE
 
         bindProjector();
         bindExtractor();
-
-        $('nav.sub-top').dblclick(function () {
-            $(this).toggleClass('fixed shadow');
-        })
+        bindTests();
     }
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
