@@ -1,6 +1,6 @@
 /*jslint es5:true, white:false */
 /*globals _, C, W, Glob, Util, jQuery,
-        Anchor, Extract, Floater, Projector, routie, */
+        Anchor, Extract, Floater, Projector, Test, routie, */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var Main = (function ($, G, U) { // IIFE
     'use strict';
@@ -32,8 +32,10 @@ var Main = (function ($, G, U) { // IIFE
 
             if (doc === 'home') { // add class for page type
                 body.addClass('home');
+                Floater.jump('#Body');
             } else {
                 body.addClass('page ' + doc);
+                Floater.jump('#Body');
             }
             body.find('.content').slideDown(); // reveal again
             Anchor.write(doc);
@@ -46,6 +48,7 @@ var Main = (function ($, G, U) { // IIFE
     }
 
     function bindExtractor() {
+        Extract.init();
         var hash = Anchor.read() || 'home';
 
         runExtractor(hash); // auto retore from hash
@@ -85,35 +88,17 @@ var Main = (function ($, G, U) { // IIFE
     }
 
     function bindTests() {
-        $('nav.sub-top').dblclick(function () {
-            $(this).toggleClass('fixed shadow');
-        });
-
-        $('.content').on('click', '.dropdown', function (evt) {
-            $(this).next().toggle('fast');
-        });
-
-        var header = $('#Body');
-
-        $('.slideshow').on('inview', function (a,b,c,d) {
-            C.log(b,c,d)
-            if (d === 'both') {
-                header.removeClass('fixed');
-            } else {
-                header.addClass('fixed');
-            }
-        });
+        Tests.init();
+        Tests.bind();
     }
 
     function bindings() {
         Anchor.init();
-        Extract.init();
 
         routie('glossary', Floater.bind);
 
         bindProjector();
         bindExtractor();
-        bindTests();
     }
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */

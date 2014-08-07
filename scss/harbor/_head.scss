@@ -4,48 +4,57 @@
 .harbor {
     header {
         /* background: rgba(255, 25, 25, 0.3); */
-        color: darkblue;
-        margin: 0 -1.25rem;
+        /* position: fixed; */
+        margin: 0 -1.2rem;
         max-width: 70rem;
         min-width: 57rem;
+        padding: 0 0.8rem;
         position: absolute;
-        /* position: fixed; */
         text-align: left;
-        top: 2.5rem;
+        top: 3.5rem;
         z-index: 11;
+        .msie & { padding: 0; margin: 0; top: 4.25rem; }
 
-        .msie & { margin-bottom: 3rem; margin-left: 0rem; margin-top: 2rem; }
         h1 {
             left: -9999px;
             position: absolute;
         }
+        p {
+            height: 99px;
+            margin: 0 1.25rem;
+            .msie & { margin: 0 0.75rem; }
+        }
         .logo {
-            display: inline-block;
-            margin-left: 2rem;
-            margin-top: 0.5rem;
+            visibility: hidden;
+            margin-left: 1rem;
+            margin-top: 0rem;
             position: absolute;
-            z-index: 1;
+            top: 0;
+        }
+        .flow {
+            border-radius: 1rem;
+            position: relative;
+            width: 100%;
+            z-index: -1;
         }
     }
-    &.fixed {
-        header {
-            @include transition( top 0.5s ease-in );
-            background: url(../images/logos/logo-head.png) no-repeat;
-            margin-top: -99px;
-            position: fixed;
-            top: 99px;
-            .msie & { margin-top: 0; top: 0; }
-
-            .logo img {
-                visibility: hidden;
-            }
-        }
+    /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+    nav.sub-top {
+        @include transition( top 0.1s linear translateZ(0px));
+        position: absolute;
+        right: 4rem;
+        top: -2.75rem;
     }
+    /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     #Programs {
-        float: right;
-        margin: 3rem 3rem 1rem;
+        @include transition( top 0.2s linear );
+        margin: 1rem 6rem 1rem;
+        position: absolute;
+        right: 0;
+        top: 1rem;
 
-        .msie & { margin-bottom: 3rem; }
+        .msie & { margin-right: 4.5rem; }
+
         a {
             color: $red;
             line-height: 2;
@@ -54,27 +63,20 @@
             text-align: right;
             text-decoration: none;
 
-            &:hover {
-                color: $blu;
-            }
-            &.active:before, &:hover:before {
-                color: $blu;
-            }
+            &:hover { color: $blu; }
+            &.active:before, &:hover:before { color: $blu; }
         }
     }
-
+    /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     #___gcse_0 {
         position: absolute;
-        right: 2rem;
-        top: 1rem;
+        right: 4rem;
+        top: 0;
         width: 33%;
 
-        .gsc-search-button, .gsc-above-wrapper-area, .gsc-cursor-box, .gsst_b {
-            display: none;
-        }
-        .gsc-url-top, .gsc-thumbnail-inside {
-            padding: 0;
-        }
+        .gsc-search-button, .gsc-above-wrapper-area,
+        .gsc-cursor-box, .gsst_b { display: none; }
+        .gsc-url-top, .gsc-thumbnail-inside { padding: 0; }
         .gsc-control-cse {
             background-color: transparent;
             border: 0;
@@ -85,7 +87,7 @@
             left: 12.5%;
         }
         .gsc-input-box {
-            border: 1px solid #eee;
+            border: 1px solid #ccc;
             border-radius: 1rem;
             color: gray;
         }

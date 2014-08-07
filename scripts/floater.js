@@ -43,12 +43,19 @@ var Floater = (function ($, G, U) { // IIFE
 
         xtra = xtra || 0;
         ele = $(ele || Df.box);
-        amt = ele.offset().top | 0;
-        aprx = (amt * 0.95 - xtra) | 0;
 
         if (ele.length) {
             Df.last.removeClass('target');
-            Df.last = ele.addClass('target');
+
+            amt = ele.offset().top | 0;
+            aprx = (amt * 0.95 - xtra) | 0;
+            Df.last = ele;
+
+            if (ele.is('.dropdown')) {
+                ele.addClass('target');
+            } else {
+                aprx += xtra;
+            }
 
             Df.box.stop().animate({
                 scrollTop: aprx,
