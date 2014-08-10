@@ -56,10 +56,10 @@ var Main = (function ($, G, U) { // IIFE
         // func to triage event
         $('body').on('click', 'a', function (evt) {
             var url = this.attributes.getNamedItem('href').value;
-            var doc = url.split('.');
+            var doc = url.split(/\.|\/\#/);
 
             // refers to document or hash?
-            doc = doc[1] ? doc[0] : '#';
+            doc = doc[1] ? doc[0] || doc[1] : '#';
 
             function isInternal(url) {
                 var ext = /^(http|\/\/)/.exec(url);
