@@ -44,7 +44,7 @@ var Main = (function ($, G, U) { // IIFE
 
     // func to deliver content
     function runExtractor(doc) {
-        Extract.page(doc + '.html', classify(doc));
+        Extract.page('pages/' + doc + '.html', classify(doc));
     }
 
     function bindExtractor() {
