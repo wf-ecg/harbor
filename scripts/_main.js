@@ -51,8 +51,6 @@ var Main = (function ($, G, U) { // IIFE
         Extract.init();
         var hash = Anchor.read() || 'home';
 
-        runExtractor(hash); // auto retore from hash
-
         // func to triage event
         $('body').on('click', 'a', function (evt) {
             var url = this.attributes.getNamedItem('href').value;
@@ -95,10 +93,17 @@ var Main = (function ($, G, U) { // IIFE
     function bindings() {
         Anchor.init();
 
-        routie('glossary', Floater.bind);
-
         bindProjector();
         bindExtractor();
+
+        routie(':page', function (arg) {
+            C.warn('routie', arg, this);
+            runExtractor(arg); // auto retore from hash
+
+            if (arg === 'glossary') {
+                return Floater.bind();
+            };
+        });
     }
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
