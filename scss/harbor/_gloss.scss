@@ -15,12 +15,7 @@
     }
     aside {
         @include transition( right 0.5s ease-out );
-        //background-color: rgba(255,255,255,0.9);
-        //box-shadow: 3px 2px 11px black;
         height: 70%;
-        //position: fixed;
-        //right: -9rem;
-        //top: 20%;
         z-index: 11;
 
         &:hover {
@@ -34,14 +29,13 @@
             &:hover {
                 color: blue;
             }
-            // &:before { content: '¤'; left: 1rem; position: absolute; }
         }
         ul {
             margin-left: 0;
         }
         li {
             list-style-type: none;
-            margin-top: 1rem;
+            margin-top: 0.5rem;
         }
     }
 }
