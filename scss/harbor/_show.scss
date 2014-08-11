@@ -43,14 +43,14 @@ $gap: 5px;
 
         img {
             @include filter( blur(0px) );
-            @include transform( translate(0.5%, 0) scaleX(1.01) translateZ(0px) );
+            @include transform( translate(0.5%, 0) scaleX(1.01) );
             @include transition( 0.5s cubic() );
             top: $show_xtra / -2; /* half the dif */
         }
         &.scrolling {
             img {
                 @include filter( blur(2px) );
-                @include transform( translate(-0.5%, 0) scaleX(1.01) translateZ(0px) );
+                @include transform( translate(-0.5%, 0) scaleX(1.01) );
                 opacity: 0.9;
             }
         }
