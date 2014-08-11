@@ -43,6 +43,11 @@ var Anchor = (function ($, G, U) { // IIFE
     }
 
     function _write(str) {
+        var tmp = L.pathname.split('/');
+        if (tmp.pop()) {
+            C.warn(tmp);
+            L.pathname = tmp.join('/') + '/';
+        }
         L.hash = str;
     }
 
