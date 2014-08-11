@@ -60,10 +60,6 @@ Glob = new Global('Glob');
         ],
         complete: function () {
             U = Util;
-            routie('home:xxx', function (xxx, yyy, zzz) {
-                //this gets called when hash == #users
-                C.warn('routie use!', U.arrg(arguments), this);
-            });
         },
     };
 

@@ -3,8 +3,6 @@
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 .harbor {
     header {
-        /* background: rgba(255, 25, 25, 0.3); */
-        /* position: fixed; */
         margin: 0 -1.2rem;
         max-width: 70rem;
         min-width: 57rem;
@@ -18,6 +16,7 @@
         h1 {
             left: -9999px;
             position: absolute;
+            visibility: hidden;
         }
         p {
             height: 99px;
@@ -25,7 +24,6 @@
             .msie & { margin: 0 0.75rem; }
         }
         .logo {
-            visibility: hidden;
             margin-left: 1rem;
             margin-top: 0rem;
             position: absolute;
@@ -40,7 +38,7 @@
     }
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     nav.sub-top {
-        @include transition( top 0.1s linear translateZ(0px));
+        @include transition( top 0.1s linear );
         position: absolute;
         right: 4rem;
         top: -2.75rem;

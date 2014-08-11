@@ -17,7 +17,6 @@ html {
 }
 body {
     background-color: $sea;
-    // background-image: url('../images/bkgr/Brighton-Marina.jpg');
     background-size: cover;
     height: 100%;
     overflow-y: scroll;
@@ -44,7 +43,7 @@ body {
         h1, h2, h3, h4, h5, h6 {
             color: $blu;
             font-weight: 400;
-            margin: 0.5rem 0;
+            padding: 0.5rem 0;
         }
         h2, h3 {
             letter-spacing: -1px;
@@ -86,8 +85,8 @@ body {
                 text-decoration: none;
             }
         }
-        p {
-            margin: 0.8rem 1rem 0.8rem 0;
+        p, li {
+            margin: 0.25rem 1rem 0.5rem 0;
         }
         section {
             font-size: medium;

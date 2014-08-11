@@ -88,6 +88,9 @@
     padding: 0.7rem;
 }
 #Main {
+    * {
+        @include defani;
+    }
     @include skygrad();
     border: 2px solid $sky;
     border-radius: 1rem;
