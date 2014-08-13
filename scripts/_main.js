@@ -108,7 +108,6 @@ var Main = (function ($, G, U) { // IIFE
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     /// INTERNAL
-    /// attach expand/contract/status events to items with _reveal
 
     function _init() {
         if (self.inited(true)) {

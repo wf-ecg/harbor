@@ -20,7 +20,6 @@ var Projector = (function ($, G, U) { // IIFE
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     /// INTERNAL
-    //  attach expand/contract/status events to items with _reveal
 
     function decorate(scroller) {
         if (U.debug(2)) {
