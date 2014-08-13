@@ -97,7 +97,11 @@ var Main = (function ($, G, U) { // IIFE
         bindExtractor();
 
         routie(':page', function (arg) {
-            C.warn('routie', arg, this);
+            if (U.debug()) {
+                C.debug(name, 'routie', arg, this);
+            }
+
+            arg = Anchor.read(arg);
             runExtractor(arg); // auto retore from hash
 
             if (arg === 'glossary') {
