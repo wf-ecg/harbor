@@ -15,7 +15,7 @@
     a.rec:before {
         @extend %cursor;
     }
-    img.com {
+    img.com, img.any {
         display: none;
     }
 }
@@ -23,7 +23,7 @@
     a.com:before {
         @extend %cursor;
     }
-    img.rec {
+    img.rec, img.any {
         display: none;
     }
 }
