@@ -85,7 +85,7 @@ var Scroller = (function ($, G, U) { // IIFE
         self.init(); // bueller?
         port = $(sel);
 
-        if (U.debug(1)) {
+        if (U.debug(2)) {
             C.debug(name, '_attachPort', sel);
         }
         if (!port.length) {

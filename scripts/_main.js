@@ -25,7 +25,9 @@ var Main = (function ($, G, U) { // IIFE
         }
 
         return function (oldDom) {
-            C.debug(name, 'classify', doc);
+            if (U.debug(2)) {
+                C.debug(name, 'classify', doc);
+            }
 
             oldDom.hide();
             body.removeClass();
@@ -37,6 +39,7 @@ var Main = (function ($, G, U) { // IIFE
                 body.addClass('page ' + doc);
                 Floater.jump('#Body');
             }
+
             body.find('.content').slideDown(); // reveal again
             Anchor.write(doc);
         };
@@ -49,12 +52,13 @@ var Main = (function ($, G, U) { // IIFE
 
     function bindExtractor() {
         Extract.init();
-        var hash = Anchor.read() || 'home';
 
         // func to triage event
         $('body').on('click', 'a', function (evt) {
-            var url = this.attributes.getNamedItem('href').value;
-            var doc = url.split(/\.|\/\#!/);
+            var url, doc;
+
+            url = this.attributes.getNamedItem('href').value;
+            doc = url.split(/\.|\/\#!/);
 
             // refers to document or hash?
             doc = doc[1] ? doc[0] || doc[1] : '#';
@@ -105,8 +109,8 @@ var Main = (function ($, G, U) { // IIFE
             runExtractor(arg); // auto retore from hash
 
             if (arg === 'glossary') {
-                return Floater.bind();
-            };
+                Floater.bind();
+            }
         });
     }
 

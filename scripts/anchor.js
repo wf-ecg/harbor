@@ -41,19 +41,21 @@ var Anchor = (function ($, G, U) { // IIFE
         if (!nom) {
             _write('home');
         }
-
-        if (U.debug(1)) {
+        if (U.debug(2)) {
             C.debug(name, '_read', nom);
         }
+
         return nom;
     }
 
     function _write(str) {
         var tmp = L.pathname.split('/');
+
         if (tmp.pop()) {
             C.warn(tmp);
             L.pathname = tmp.join('/') + '/';
         }
+
         L.hash = '!' + str;
     }
 

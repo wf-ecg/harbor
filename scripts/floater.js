@@ -74,7 +74,9 @@ var Floater = (function ($, G, U) { // IIFE
                 if (!xtra || diff > Df.space) {
                     _jump(ele, diff || Df.space);
                 } else {
-                    C.debug(name, '_jump done');
+                    if (U.debug(1)) {
+                        C.debug(name, '_jump done');
+                    }
                     Df.last.click();
                 }
             });
@@ -85,7 +87,7 @@ var Floater = (function ($, G, U) { // IIFE
         these = $(these || '.content h5:visible');
         index = $(index || '.content aside ul:visible');
 
-        if (U.debug()) {
+        if (U.debug(2)) {
             C.debug(name, '_bind', [these, index]);
         }
 
