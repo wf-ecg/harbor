@@ -24,12 +24,18 @@ var Anchor = (function ($, G, U) { // IIFE
         L.href = L.origin + L.pathname;
     }
 
-    function _read() {
-        var nom = L.hash.slice(1);
-        var cut = /[\,\&\/]/;
+    function _read(str) {
+        var nom = str || L.hash;
+
+        if (nom.charAt(0) === '#') {
+            nom = nom.slice(1);
+        }
+        if (nom.charAt(0) === '!') {
+            nom = nom.slice(1);
+        }
 
         nom = (!nom || nom.length < 3) ? '' : nom;
-        nom = nom.split(cut);
+        nom = nom.split(/[\,\&\/]/g);
         nom = nom[0] || nom[1];
 
         if (!nom) {
@@ -48,7 +54,7 @@ var Anchor = (function ($, G, U) { // IIFE
             C.warn(tmp);
             L.pathname = tmp.join('/') + '/';
         }
-        L.hash = str;
+        L.hash = '!' + str;
     }
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
