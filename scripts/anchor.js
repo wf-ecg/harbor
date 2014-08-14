@@ -10,6 +10,8 @@ var Anchor = (function ($, G, U) { // IIFE
 
     Df = { // DEFAULTS
         inits: function () {
+            var tmp = self.read();
+
             if (U.debug()) {
                 C.debug(name, tmp);
             }

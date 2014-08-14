@@ -19,35 +19,37 @@ var Main = (function ($, G, U) { // IIFE
     // HELPERS (defaults dependancy only)
 
     // func to contextualize content
-    function classify(doc) {
-        if (body.is('.' + doc)) {
-            return;
-        }
-
+    function classify(nom) {
         return function (oldDom) {
             if (U.debug(2)) {
-                C.debug(name, 'classify', doc);
+                C.debug(name, 'classify', nom);
             }
 
             oldDom.hide();
             body.removeClass();
 
-            if (doc === 'home') { // add class for page type
+            if (nom === 'home') { // add class for page type
                 body.addClass('home');
                 Floater.jump('#Body');
             } else {
-                body.addClass('page ' + doc);
+                body.addClass('page ' + nom);
                 Floater.jump('#Body');
             }
 
             body.find('.content').slideDown(); // reveal again
-            Anchor.write(doc);
+            Anchor.write(nom);
         };
     }
 
     // func to deliver content
-    function runExtractor(doc) {
-        Extract.page('pages/' + doc + '.html', classify(doc));
+    function runExtractor(docnom) {
+        if (body.is('.' + docnom)) {
+            return;
+        }
+        if (U.debug()) {
+            C.debug(name, 'runExtractor', docnom);
+        }
+        Extract.page('pages/' + docnom + '.html', classify(docnom));
     }
 
     function bindExtractor() {
