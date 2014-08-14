@@ -51,7 +51,6 @@ var Scroller = (function ($, G, U) { // IIFE
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     /// INTERNAL
-    //  attach expand/contract/status events to items with _reveal
 
     function _autoScroll(scroller) {
         if (U.debug(2)) {
@@ -86,7 +85,7 @@ var Scroller = (function ($, G, U) { // IIFE
         self.init(); // bueller?
         port = $(sel);
 
-        if (U.debug(1)) {
+        if (U.debug(2)) {
             C.debug(name, '_attachPort', sel);
         }
         if (!port.length) {
