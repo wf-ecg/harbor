@@ -9,7 +9,11 @@ var Anchor = (function ($, G, U) { // IIFE
         Df, L;
 
     Df = { // DEFAULTS
-        inits: function () {},
+        inits: function () {
+            if (U.debug()) {
+                C.debug(name, tmp);
+            }
+        },
     };
     L = W.location;
 
@@ -52,7 +56,7 @@ var Anchor = (function ($, G, U) { // IIFE
         var tmp = L.pathname.split('/');
 
         if (tmp.pop()) {
-            C.warn(tmp);
+            C.warn(name, '_write', tmp);
             L.pathname = tmp.join('/') + '/';
         }
 

@@ -74,7 +74,7 @@ var Floater = (function ($, G, U) { // IIFE
                 if (!xtra || diff > Df.space) {
                     _jump(ele, diff || Df.space);
                 } else {
-                    if (U.debug(1)) {
+                    if (U.debug()) {
                         C.debug(name, '_jump done');
                     }
                     Df.last.click();

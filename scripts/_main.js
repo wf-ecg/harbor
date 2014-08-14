@@ -70,9 +70,8 @@ var Main = (function ($, G, U) { // IIFE
 
             if (doc.charAt(0) !== '#') {
 
-                if (isInternal(url)) {
+                if (isInternal(url)) { // load instead of open
                     evt.preventDefault();
-                    // load instead of open
                     runExtractor(doc);
                 } else {
                     this.setAttribute('target', 'external');
@@ -84,7 +83,7 @@ var Main = (function ($, G, U) { // IIFE
     function bindProjector() {
         Df.projector = Projector.attach('.iS-port');
 
-        if (html.is('.dev')) {
+        if (html.is('.dev')) { // stop annoying slideshow
             Df.projector.toggle();
         }
     }
