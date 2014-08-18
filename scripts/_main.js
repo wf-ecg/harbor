@@ -37,7 +37,7 @@ var Main = (function ($, G, U) { // IIFE
             }
 
             body.find('.content').slideDown(); // reveal again
-            Anchor.write(nom);
+            Anchor.write(nom); // force url update?
         };
     }
 
@@ -49,7 +49,7 @@ var Main = (function ($, G, U) { // IIFE
         if (U.debug()) {
             C.debug(name, 'runExtractor', docnom);
         }
-        Extract.page('pages/' + docnom + '.html', classify(docnom));
+        Extract.page('' + docnom + '.html', classify(docnom)); // do not drill down to 'pages'
     }
 
     function bindExtractor() {
