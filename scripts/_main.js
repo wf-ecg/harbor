@@ -95,11 +95,31 @@ var Main = (function ($, G, U) { // IIFE
         Tests.bind();
     }
 
+    function fillin(src, sel) {
+        var part = src.find(sel);
+
+        body.find(sel).replaceWith(part);
+    }
+
+    function bindParts() {
+        new G.Fetch('_parts.html', function (page) {
+
+            var parts = $(page.body); // attach standard parts
+
+            fillin(parts, 'header');
+            fillin(parts, 'section.slideshow');
+            fillin(parts, 'footer');
+            fillin(parts, 'nav.sub-bot');
+
+            bindProjector();
+        });
+    }
+
     function bindings() {
         Anchor.init();
 
-        bindProjector();
         bindExtractor();
+        bindParts();
 
         routie(':page', function (arg) {
             if (U.debug()) {
