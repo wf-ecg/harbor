@@ -43,11 +43,12 @@ Glob = new Global('Glob');
         both: [
             G.lib + 'jquery/mobile/1.4.2/jquery.mobile.js',
             G.loc + '_util.js',
-            G.loc + 'jq-inview.js',
-            G.loc + 'js-view.js',
-            G.loc + 'extract.js',
-            G.loc + 'fetch.js',
-            G.loc + 'routie.js',
+            //G.loc + 'jq-inview.js',
+            //G.loc + 'js-view.js',
+            //G.loc + 'extract.js',
+            //G.loc + 'fetch.js',
+            //G.loc + 'routie.js',
+            G.dir + 'build/lib.js',
         ],
         test: W.isIE,
         yep: [
@@ -79,11 +80,12 @@ Glob = new Global('Glob');
 
     Load.main = {
         both: [
-            G.src + 'anchor.js',
-            G.src + 'binders.js',
-            G.src + 'floater.js',
-            G.src + 'projector.js',
-            G.src + 'scroller.js',
+            //G.src + 'anchor.js',
+            //G.src + 'binders.js',
+            //G.src + 'floater.js',
+            //G.src + 'projector.js',
+            //G.src + 'scroller.js',
+            G.dir + 'build/src.js',
             G.src + '_main.js',
         ],
         complete: function () {
