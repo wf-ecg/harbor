@@ -40,23 +40,25 @@ Glob = new Global('Glob');
     }
 
     Load.base = {
-        test: W.isIE,
-        yep: [
-            G.lib + 'ie/split.js',
-            G.lib + 'ie/selectivizr-min.js',
-            G.lib + 'ie/rem.min.js',
-            G.lib + 'iscroll/5.0.4/iscroll.js',
-        ],
-        nope: [
-            G.lib + 'iscroll/5.1.1/iscroll.js',
-        ],
         both: [
+            G.lib + 'jquery/mobile/1.4.2/jquery.mobile.js',
             G.loc + '_util.js',
             G.loc + 'jq-inview.js',
             G.loc + 'js-view.js',
             G.loc + 'extract.js',
             G.loc + 'fetch.js',
             G.loc + 'routie.js',
+        ],
+        test: W.isIE,
+        yep: [
+            G.lib + 'ie/split.js',
+            G.lib + 'ie/selectivizr-min.js',
+            G.lib + 'ie/rem.min.js',
+            G.lib + 'iscroll/5.0.4/iscroll.js',
+            G.loc + '_util.poly.js',
+        ],
+        nope: [
+            G.lib + 'iscroll/5.1.1/iscroll.js',
         ],
         complete: function () {
             U = Util;
