@@ -90,11 +90,6 @@ var Main = (function ($, G, U) { // IIFE
         }
     }
 
-    function bindTests() {
-        Tests.init();
-        Tests.bind();
-    }
-
     function fillin(src, sel) {
         var part = src.find(sel);
 
@@ -117,6 +112,7 @@ var Main = (function ($, G, U) { // IIFE
 
     function bindings() {
         Anchor.init();
+        Binders.init();
 
         bindExtractor();
         bindParts();
