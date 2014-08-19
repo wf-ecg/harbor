@@ -17,8 +17,8 @@ var Main = (function ($, G, U) { // IIFE
     };
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     // HELPERS (defaults dependancy only)
-
     // func to contextualize content
+
     function classify(nom) {
         return function (oldDom) {
             if (U.debug(2)) {
@@ -43,7 +43,7 @@ var Main = (function ($, G, U) { // IIFE
 
     // func to deliver content
     function runExtractor(docnom) {
-        if (body.is('.' + docnom)) {
+        if (body.is('.' + docnom)) { // prevent unneeded calls
             return;
         }
         if (U.debug()) {
@@ -59,9 +59,8 @@ var Main = (function ($, G, U) { // IIFE
         $('body').on('click', 'a', function (evt) {
             var url, doc;
 
-            url = this.attributes.getNamedItem('href').value;
-            doc = url.split(/\.|\/\#!/);
-
+            url = this.attributes.getNamedItem('href').value; // extract link
+            doc = url.split(/\.|\/\#!/); // split tokens
             // refers to document or hash?
             doc = doc[1] ? doc[0] || doc[1] : '#';
 
