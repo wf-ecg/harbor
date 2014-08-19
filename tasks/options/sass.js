@@ -1,11 +1,10 @@
 module.exports = {
-  dist: {
-    options: {
-      // cssmin will minify later
-      style: 'expanded'
-    },
-    files: {
-      'css/build/global.css': 'css/global.scss'
+    dist: {
+        options: {
+            style: 'expanded' // cssmin will minify later
+        },
+//        files: {
+//            'css/build/global.css': 'css/global.scss'
+//        }
     }
-  }
-}
+};

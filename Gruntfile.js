@@ -1,12 +1,21 @@
 module.exports = function(grunt) {
+    // Utility to load the different option files based on their names
 
-    // Utility to load the different option files
-    // based on their names
-    function loadConfig(path) {
-        var glob = require('glob');
-        var object = {};
-        var key;
 
+    // Start initial config object
+    var config = {
+        pkg: grunt.file.readJSON('package.json')
+    };
+
+    // Load tasks from the tasks folder
+    grunt.loadTasks('tasks');
+
+    // Load tasks/options by the name: watch.js => watch{}
+    grunt.util._.extend(config, function (path) {
+        var glob, object, key;
+
+        glob = require('glob');
+        object = {};
         glob.sync('*', {
             cwd: path
         }).forEach(function(option) {
@@ -15,24 +24,8 @@ module.exports = function(grunt) {
         });
 
         return object;
-    }
-
-    // Initial config
-    var config = {
-        pkg: grunt.file.readJSON('package.json')
-    }
-
-    // Load tasks from the tasks folder
-    grunt.loadTasks('tasks');
-
-    // Load all the tasks options in tasks/options base on the name:
-    // watch.js => watch{}
-    grunt.util._.extend(config, loadConfig('./tasks/options/'));
+    }('./tasks/options/'));
 
     grunt.initConfig(config);
-
     require('load-grunt-tasks')(grunt);
-
-    grunt.registerTask('default', ['concat']);
-
 };
