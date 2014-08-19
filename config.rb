@@ -3,7 +3,7 @@ require "animation"
 
 # Set this to the root of your project when deployed:
 http_path = ""
-css_dir = "styles"
+css_dir = "build"
 fonts_dir = "fonts"
 sass_dir = "scss"
 images_dir = "images"
