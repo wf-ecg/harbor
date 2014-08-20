@@ -2,7 +2,6 @@
 /*globals _, C, W, ROOT, Global, Modernizr, jQuery,
     Glob:true, Main:true, */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-'use strict';
 var Glob = new Global('Glob');
 
 (function ($, M, G) {
