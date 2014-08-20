@@ -1,6 +1,6 @@
 /*jslint white:false */
 /*globals _, C, W, Glob, Util, jQuery,
-        IScroll, */
+        Scroller:true, IScroll, */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var Scroller = (function ($, G, U) { // IIFE
     'use strict';
@@ -56,27 +56,12 @@ var Scroller = (function ($, G, U) { // IIFE
         if (U.debug(2)) {
             C.debug(name, '_autoScroll', scroller);
         }
-        var interva, indicat;
-
         if (!scroller.pages) {
             return;
         }
-
-        interva = W.setInterval(function () {
+        return W.setInterval(function () {
             scrollNext(scroller);
         }, Df.speed);
-
-        indicat = W.isIE ? scroller.indicator1 : scroller.indicators[0];
-
-        $(indicat.wrapper) //
-        .parent() //
-        .one('click keypress touchend', function () {
-            if (U.debug(2)) {
-                C.debug(name, 'click keypress touchend', scroller);
-            }
-            $(this).find('.control').trigger('toggle');
-        });
-        return interva;
     }
 
     function _attachPort(sel) {
