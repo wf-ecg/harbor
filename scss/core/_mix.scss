@@ -32,6 +32,13 @@
         width: $width * 1px;
     }
 }
+@mixin text-size-adjust($value: none) {
+    -webkit-text-size-adjust: $value;
+    -moz-text-size-adjust: $value;
+    -ms-text-size-adjust: $value;
+    -o-text-size-adjust: $value;
+    text-size-adjust: $value;
+}
 @mixin vgrad($clr1: white, $clr2: black, $per1: 1%, $per2: 77% ){
     @include background-image( linear-gradient(top, $clr1 $per1, $clr2 $per2) );
 }
