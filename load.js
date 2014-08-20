@@ -3,15 +3,12 @@
     Glob:true, Main:true, */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 'use strict';
-var Glob, Load;
-
-Glob = new Global('Glob');
+var Glob = new Global('Glob');
 
 (function ($, M, G) {
     'use strict';
     var U;
-    W.G = G;
-    W.Load = {};
+    G.Load = {};
 
     _.defaults(G, { /// all stubs terminated
         top: ROOT.dir + '/',
@@ -39,7 +36,7 @@ Glob = new Global('Glob');
         W.debug++;
     }
 
-    Load.base = {
+    G.Load.base = {
         both: [
             G.lib + 'jquery/mobile/1.4.2/jquery.mobile.js',
             G.loc + '_util.js',
@@ -66,7 +63,7 @@ Glob = new Global('Glob');
         },
     };
 
-    Load.font = {
+    G.Load.font = {
         test: ROOT.conf.nom === 'localhost' || ROOT.conf.nom === 'qla1',
         yep: [
             /* G.lib + 'fonts/archer.ssm.css', */
@@ -78,7 +75,7 @@ Glob = new Global('Glob');
         ],
     };
 
-    Load.main = {
+    G.Load.main = {
         both: [
             //G.src + 'anchor.js',
             //G.src + 'binders.js',
@@ -94,7 +91,7 @@ Glob = new Global('Glob');
         },
     };
 
-    Load.test = {
+    G.Load.test = {
         test: W.debug >= 0,
         yep: [
             G.src + '_tests.js'
@@ -103,7 +100,7 @@ Glob = new Global('Glob');
             'http://www.wellsfargomedia.com/lib/js/ecg-ga.js',
         ],
     };
-    M.load([Load.base, Load.font, Load.main, Load.test]);
+    M.load([G.Load.base, G.Load.font, G.Load.main, G.Load.test]);
 
 }(jQuery, Modernizr, Glob));
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
