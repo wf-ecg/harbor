@@ -88,3 +88,15 @@
     text-shadow: 0 1px 2px $lightest;
 }
 // - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //
+@mixin oldAlpha($color) {
+    $hex: ie-hex-str($color);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#00000000, endColorstr=#00000000);
+    -ms-filter: 'progid:DXImageTransform.Microsoft.gradient(startColorstr='+$hex+', endColorstr='+$hex+')';
+}
+@mixin backTrans($color, $opacity: 0) { // opacity adjust +/-
+    $color: adjTrans($color, $opacity);
+    @include oldAlpha($color);
+    /* end fallbacks */
+    background-color: ie-hex-str($color);
+}
+// - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //
