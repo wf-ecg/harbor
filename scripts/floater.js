@@ -1,4 +1,4 @@
-/*jslint es5:true, white:false */
+/*jslint white:false */
 /*globals _, C, W, Glob, Util, jQuery,
         , */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -20,18 +20,18 @@ var Floater = (function ($, G, U) { // IIFE
     function indexHandler(evt) {
         evt.preventDefault();
 
-        var str = this.attributes.getNamedItem('href').value;
+        var str = evt.target.attributes.getNamedItem('href').value;
 
         self.jump(str);
     }
 
     // EASE
     $.extend($.easing, {
-        circ: function ( p ) {
-            function easeIn( p ) {
-                return 1 - Math.sqrt( 1 - p * p );
+        circ: function (p) {
+            function easeIn(p) {
+                return 1 - Math.sqrt(1 - p * p);
             }
-            return p < 0.5 ? easeIn( p * 2 ) / 2 : 1 - easeIn( p * -2 + 2 ) / 2;
+            return p < 0.5 ? easeIn(p * 2) / 2 : 1 - easeIn(p * - 2 + 2) / 2;
         },
     });
 
@@ -92,7 +92,6 @@ var Floater = (function ($, G, U) { // IIFE
         }
 
         if (index.children().length) {
-            return;
             throw new Error('indexed already');
         }
 
@@ -104,7 +103,6 @@ var Floater = (function ($, G, U) { // IIFE
 
             id = me.text().match(/\b\w/g); //   make id from initials
             id = '__' + id.join(''); //         prefix programatic id
-
             // add anchor # id to index
             me.attr('id', id);
             ele.attr('href', '#' + id).text(me.text());

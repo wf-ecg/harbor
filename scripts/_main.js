@@ -1,4 +1,4 @@
-/*jslint es5:true, white:false */
+/*jslint white:false, evil:true */
 /*globals _, C, W, Glob, Util, jQuery,
         Anchor, Extract, Floater, Projector, Test, routie, */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */

@@ -24,7 +24,7 @@ W.ROOT = ({
         '127.0.0.1:8972': {
             nom: 'localhost',
             sub: '',
-        },
+    },
     },
     dir: null,
     doc: null,

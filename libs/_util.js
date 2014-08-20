@@ -1,4 +1,4 @@
-/*jslint es5:true, white:false */
+/*jslint white:false */
 /*globals _, C, W, ROOT, Global, jQuery,
         Util:true, */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -144,7 +144,7 @@ var Util = (function ($) { /// IIFE
         });
     }
 
-    W.isIE && _fixIE();
+    void(W.isIE && _fixIE());
 
     $.extend(self, {
         testrict: "eval('var x=0'),(typeof(x)!=='number'?'':'non-')+'strict'",

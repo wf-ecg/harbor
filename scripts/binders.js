@@ -1,11 +1,10 @@
-/*jslint es5:true, white:false */
-/*globals _, C, W, Glob, Util, jQuery,
-        Tests:true, */
+/*jslint white:false */
+/*globals _, C, W, Glob, Util, jQuery, */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-var Tests = (function ($, G, U) { // IIFE
+var Binders = (function ($, G, U) { // IIFE
     'use strict';
-    var name = 'Tests',
-        self = new G.constructor(name, '(misc experiments)'),
+    var name = 'Binders',
+        self = new G.constructor(name, '(misc)'),
         Df;
 
     Df = { // DEFAULTS
@@ -65,6 +64,13 @@ var Tests = (function ($, G, U) { // IIFE
         s = W.document.getElementsByTagName('script')[0];
         s.parentNode.insertBefore(gcse, s);
 
+//        $('.gsc-thinWrapper').animate({
+//            width: '100%',
+//            border: 0,
+//        });
+//        $('.gsc-adBlockVertical').slideUp();
+//        $('.gsc-adBlock').slideUp();
+
     }
 
     function bindings() {
@@ -93,7 +99,7 @@ var Tests = (function ($, G, U) { // IIFE
         init: _init,
     });
 
-    return self.init();
+    return self;
 }(jQuery, Glob, Util));
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
