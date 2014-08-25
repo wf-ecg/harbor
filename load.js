@@ -52,6 +52,7 @@ Glob = new Global('Glob');
         ],
         both: [
             G.loc + '_util.js',
+            G.loc + 'jq-inview.js',
             G.loc + 'js-view.js',
             G.loc + 'extract.js',
             G.loc + 'fetch.js',
@@ -59,10 +60,6 @@ Glob = new Global('Glob');
         ],
         complete: function () {
             U = Util;
-            routie('home:xxx', function (xxx, yyy, zzz) {
-                //this gets called when hash == #users
-                C.warn('routie use!', U.arrg(arguments), this);
-            });
         },
     };
 
@@ -85,6 +82,7 @@ Glob = new Global('Glob');
             G.src + 'projector.js',
             G.src + 'scroller.js',
             G.src + '_main.js',
+            G.src + 'tests.js'
         ],
         complete: function () {
             ROOT.loaded($);
@@ -93,8 +91,8 @@ Glob = new Global('Glob');
     };
 
     Load.test = {
-        test: W.debug > 0,
-        yep: [G.src + 'tests.js'],
+        test: W.debug >= 0,
+        yep: [],
         nope: [
             'http://www.wellsfargomedia.com/lib/js/ecg-ga.js',
         ],

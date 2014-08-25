@@ -8,6 +8,8 @@
     padding: 0;
 }
 html {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
     font-family: "Arial Narrow";
     height: 100%;
     position: absolute;
@@ -15,15 +17,16 @@ html {
 }
 body {
     background-color: $sea;
-    // background-image: url('../images/bkgr/Brighton-Marina.jpg');
     background-size: cover;
     height: 100%;
     overflow-y: scroll;
-    padding: 2% 1%;
     position: relative;
+    text-align: center;
     width: 100%;
 
     .harbor {
+        text-align: left;
+
         button {
             cursor: pointer;
 
@@ -34,10 +37,13 @@ body {
                 border-style: inset;
             }
         }
+        div {
+            position: relative;
+        }
         h1, h2, h3, h4, h5, h6 {
             color: $blu;
             font-weight: 400;
-            margin: 0.5rem 0;
+            padding: 0.5rem 0;
         }
         h2, h3 {
             letter-spacing: -1px;
@@ -79,14 +85,17 @@ body {
                 text-decoration: none;
             }
         }
-        p {
-            margin: 0.8rem 1rem 0.8rem 0;
+        p, li {
+            margin: 0.25rem 1rem 0.5rem 0;
         }
         section {
             font-size: medium;
             font-weight: 100;
             padding: 0.5rem 2rem;
             position: relative;
+        }
+        td img {
+            display: inline-block; // fight html5 table looseness
         }
     }
 }

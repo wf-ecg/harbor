@@ -13,15 +13,13 @@
         margin-top: 1rem;
     }
     article {
-        clear: left;
         float: left;
         font-weight: 400;
         padding-left: 120px;
         padding-right: 1rem;
         width: 48%;
 
-        &:nth-child(odd) {
-            clear: none;
+        & + article {
             float: right;
         }
         img {

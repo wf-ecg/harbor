@@ -1,6 +1,6 @@
 /*jslint es5:true, white:false */
 /*globals _, C, W, Glob, Util, jQuery,
-        Anchor, Extract, Projector, */
+        Anchor, Extract, Floater, Projector, Test, routie, */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var Main = (function ($, G, U) { // IIFE
     'use strict';
@@ -20,17 +20,22 @@ var Main = (function ($, G, U) { // IIFE
 
     // func to contextualize content
     function classify(doc) {
-        body.find('.content').slideUp(0); // hide old content
+        if (body.is('.' + doc)) {
+            return;
+        }
 
-        return function () {
+        return function (oldDom) {
             C.debug(name, 'classify', doc);
 
+            oldDom.hide();
             body.removeClass();
 
             if (doc === 'home') { // add class for page type
                 body.addClass('home');
+                Floater.jump('#Body');
             } else {
                 body.addClass('page ' + doc);
+                Floater.jump('#Body');
             }
             body.find('.content').slideDown(); // reveal again
             Anchor.write(doc);
@@ -39,21 +44,20 @@ var Main = (function ($, G, U) { // IIFE
 
     // func to deliver content
     function runExtractor(doc) {
-        Extract.page(doc + '.html', classify(doc));
+        Extract.page('pages/' + doc + '.html', classify(doc));
     }
 
     function bindExtractor() {
+        Extract.init();
         var hash = Anchor.read() || 'home';
-
-        runExtractor(hash); // auto retore from hash
 
         // func to triage event
         $('body').on('click', 'a', function (evt) {
             var url = this.attributes.getNamedItem('href').value;
-            var doc = url.split('.');
+            var doc = url.split(/\.|\/\#/);
 
             // refers to document or hash?
-            doc = doc[1] ? doc[0] : '#';
+            doc = doc[1] ? doc[0] || doc[1] : '#';
 
             function isInternal(url) {
                 var ext = /^(http|\/\/)/.exec(url);
@@ -81,23 +85,25 @@ var Main = (function ($, G, U) { // IIFE
         }
     }
 
-    function bindFloater(delay) {
-        routie('glossary', Floater.bind);
-
-        if (delay) {
-            return _.delay(bindFloater);
-        }
-        if (body.is('.glossary')) {
-            Floater.bind('.content h5:visible','.content aside ul:visible');
-        }
+    function bindTests() {
+        Tests.init();
+        Tests.bind();
     }
 
     function bindings() {
         Anchor.init();
-        Extract.init();
-        bindFloater();
+
         bindProjector();
         bindExtractor();
+
+        routie(':page', function (arg) {
+            C.warn('routie', arg, this);
+            runExtractor(arg); // auto retore from hash
+
+            if (arg === 'glossary') {
+                return Floater.bind();
+            };
+        });
     }
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */

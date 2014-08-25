@@ -42,12 +42,11 @@ var Scroller = (function ($, G, U) { // IIFE
 
         ln = scroller.pages.length;
         pg = (1 + scroller.currentPage.pageX) % ln;
-        scroller._execEvent('beforeScrollStart'); // polyfill event
+        scroller._execEvent('scrollStart'); // polyfill event
 
         _.delay( function () {
             scroller.goToPage(pg, 0);
-            scroller._execEvent('scrollStart');
-        }, Df.iscroll.snapSpeed);
+        }, Df.iscroll.snapSpeed / 3);
     }
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -81,60 +80,59 @@ var Scroller = (function ($, G, U) { // IIFE
         return interva;
     }
 
-    function _attachPort(viewSelector) {
-        self.init();
-        if (U.debug(2)) {
-            C.debug(name, '_attachPort viewSelector:', viewSelector);
+    function _attachPort(sel) {
+        var port, proxy, scroller;
+
+        self.init(); // bueller?
+        port = $(sel);
+
+        if (U.debug(1)) {
+            C.debug(name, '_attachPort', sel);
         }
-        var viewPort, gauge, scroller;
+        if (!port.length) {
+            return {};
+        }
+        proxy = port.find('.iS-proxy');
 
-        viewPort = $(viewSelector);
-        gauge = viewPort.find('.iS-proxy');
-
-        gauge.on('mouseup touchend click', function (evt) {
-            var cds;
-            cds = {
-                t: $(evt.target),
+        proxy.on('click', function (evt) {
+            var aprox = ({
+                pg: null,
+                w: proxy.outerWidth(),
                 x: evt.offsetX,
                 y: evt.offsetY,
-                w: gauge.innerWidth(),
-                l: scroller.pages.length,
+                ln: scroller.pages.length,
+                et: $(evt.target),
+                ev: evt,
                 calc: function () {
-                    if (!cds.t.is(gauge)) {
-                        scroller._execEvent('scrollEnd');
-                        cds.x += cds.t.position().left;
-                    }
-                    cds.p = (cds.x / cds.w * cds.l) | 0;
-                    C.warn(cds);
-                    return (cds.p);
+                    this.pg = (this.x / this.w * this.ln) | 0;
+                    return this;
                 },
-            };
-            if (!cds.x) { // touch device has no offsetX?
-                evt.preventDefault();
-                gauge.trigger('advance.' + name);
-            } else {
-                scroller.goToPage(cds.calc(), 0);
+            }).calc();
+
+            if (U.debug(2)) {
+                C.debug(name, '_attachPort proxy calc', evt.type, aprox);
             }
+            scroller._execEvent('scrollStart'); // polyfill event
+            scroller.goToPage(aprox.pg, 0);
         });
 
-        gauge.on('advance.' + name, function () {
+        proxy.on('advance.' + name, function () {
             scrollNext(scroller);
         });
 
-        Df.iscroll.indicators[0].el = gauge.get(0);
-        scroller = new IScroll(viewPort.get(0), Df.iscroll); //github.com/cubiq/iscroll
+        Df.iscroll.indicators[0].el = proxy.get(0);
+        scroller = new IScroll(port.get(0), Df.iscroll); //github.com/cubiq/iscroll
 
         scroller.on('scrollStart', function () {
-            viewPort.addClass('scrolling');
+            port.addClass('scrolling');
         });
         scroller.on('scrollEnd', function () {
-            viewPort.removeClass('scrolling');
+            port.removeClass('scrolling');
         });
-        scroller.on('flick', U.echoing('flick'));
 
         // store IScroll (internally and as data on wrapper)
         Df.all.push(scroller);
-        viewPort.data(name, scroller);
+        port.data(name, scroller);
         return scroller;
     }
 

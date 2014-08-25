@@ -1,6 +1,6 @@
 /*jslint es5:true, white:false */
 /*globals _, C, W, Glob, Util, jQuery,
-        IScroll, */
+        , */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var Floater = (function ($, G, U) { // IIFE
     'use strict';
@@ -11,7 +11,7 @@ var Floater = (function ($, G, U) { // IIFE
     Df = { // DEFAULTS
         box: $(W.isIE ? 'html' : 'body'),
         last: $(null),
-        space: 33,
+        space: 99,
         inits: function () {},
     };
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -43,19 +43,26 @@ var Floater = (function ($, G, U) { // IIFE
 
         xtra = xtra || 0;
         ele = $(ele || Df.box);
-        amt = ele.offset().top | 0;
-        aprx = (amt * 0.95 - xtra) | 0;
 
         if (ele.length) {
             Df.last.removeClass('target');
-            Df.last = ele.addClass('target');
+
+            amt = ele.offset().top | 0;
+            aprx = (amt * 0.95 - xtra) | 0;
+            Df.last = ele;
+
+            if (ele.is('.dropdown')) {
+                ele.addClass('target');
+            } else {
+                aprx += xtra;
+            }
 
             Df.box.stop().animate({
                 scrollTop: aprx,
             }, 333, 'circ', function () {
                 diff = Math.abs(ele.offset().top - amt) | 0;
 
-                if (U.debug(1)) {
+                if (U.debug(2)) {
                     C.debug(name, '_jump', {
                         amt: amt,
                         xtra: xtra,
@@ -67,7 +74,8 @@ var Floater = (function ($, G, U) { // IIFE
                 if (!xtra || diff > Df.space) {
                     _jump(ele, diff || Df.space);
                 } else {
-                    C.debug('jumped');
+                    C.debug(name, '_jump done');
+                    Df.last.click();
                 }
             });
         }

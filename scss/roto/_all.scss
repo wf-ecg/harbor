@@ -8,7 +8,13 @@ x.dev *:hover {
     outline-style: solid;
     outline-width: 1px;
 }
-
+@mixin text-size-adjust($value: none) {
+    -webkit-text-size-adjust: $value;
+    -moz-text-size-adjust: $value;
+    -ms-text-size-adjust: $value;
+    -o-text-size-adjust: $value;
+    text-size-adjust: $value;
+}
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 @import "_base";
 // - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //

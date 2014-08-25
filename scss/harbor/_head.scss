@@ -3,14 +3,55 @@
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 .harbor {
     header {
-        color: darkblue;
-        position: relative;
-        width: 100%;
+        margin: 0 -1.2rem;
+        max-width: 70rem;
+        min-width: 57rem;
+        padding: 0 0.8rem;
+        position: absolute;
+        text-align: left;
+        top: 3.5rem;
         z-index: 11;
+        .msie & { padding: 0; margin: 0; top: 4.25rem; }
+
+        h1 {
+            left: -9999px;
+            position: absolute;
+            visibility: hidden;
+        }
+        p {
+            height: 99px;
+            margin: 0 1.25rem;
+            .msie & { margin: 0 0.75rem; }
+        }
+        .logo {
+            margin-left: 1rem;
+            margin-top: 0rem;
+            position: absolute;
+            top: 0;
+        }
+        .flow {
+            border-radius: 1rem;
+            position: relative;
+            width: 100%;
+            z-index: -1;
+        }
     }
-    nav#Programs {
-        float: right;
-        margin: 0.5rem;
+    /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+    nav.sub-top {
+        @include transition( top 0.1s linear );
+        position: absolute;
+        right: 4rem;
+        top: -2.75rem;
+    }
+    /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+    #Programs {
+        @include transition( top 0.2s linear );
+        margin: 1rem 6rem 1rem;
+        position: absolute;
+        right: 0;
+        top: 1rem;
+
+        .msie & { margin-right: 4.5rem; }
 
         a {
             color: $red;
@@ -20,29 +61,38 @@
             text-align: right;
             text-decoration: none;
 
-            &:hover {
-                color: $blu;
-            }
-            &.active::before, &:hover::before {
-                color: $blu;
-            }
+            &:hover { color: $blu; }
+            &.active:before, &:hover:before { color: $blu; }
         }
-        img {
-            display: inline;
-            left: 1.6rem;
-            margin-left: 3rem;
-            position: relative;
-            z-index: 1;
+    }
+    /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+    #___gcse_0 {
+        position: absolute;
+        right: 4rem;
+        top: 0;
+        width: 33%;
+
+        .gsc-search-button, .gsc-above-wrapper-area,
+        .gsc-cursor-box, .gsst_b { display: none; }
+        .gsc-url-top, .gsc-thumbnail-inside { padding: 0; }
+        .gsc-control-cse {
+            background-color: transparent;
+            border: 0;
+            padding: 0.5em;
         }
-        .search {
-            background-color: white;
+        .gsc-results-wrapper-overlay {
+            box-sizing: content-box;
+            left: 12.5%;
+        }
+        .gsc-input-box {
+            border: 1px solid #ccc;
             border-radius: 1rem;
-            border: 1px solid #eee;
             color: gray;
-            display: inline;
-            padding: 4px;
-            padding-left: 1.5rem;
-            width: 18rem;
+        }
+        .gsc-input {
+            color: gray;
+            font-size: 1em;
+            padding: 0;
         }
     }
 }

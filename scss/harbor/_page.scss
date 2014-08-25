@@ -22,6 +22,25 @@
                 }
             }
         }
+        .dropdown {
+            cursor: pointer;
+
+            &:after {
+                content: '⋁'; // ▿ ▼
+                font-size: small;
+                line-height: 0;
+                padding-left: 0.25em;
+            }
+            .msie &.hover { color: gray; }
+
+            &:hover:after {
+                color: gray;
+                content: 'Show/Hide';
+            }
+            & + div {
+                display: none;
+            }
+        }
         aside {
             background-color: lighten($sky, 3%);
             border: 2px solid $sky;
@@ -48,6 +67,10 @@
             clear: left;
             float: left;
             width: 66%;
+
+            hr {
+                border-bottom: 1px solid $blu;
+            }
         }
     }
 }
