@@ -19,42 +19,48 @@ var Main = (function ($, G, U) { // IIFE
     // HELPERS (defaults dependancy only)
 
     // func to contextualize content
-    function classify(doc) {
-        if (body.is('.' + doc)) {
-            return;
-        }
-
+    function classify(nom) {
         return function (oldDom) {
-            C.debug(name, 'classify', doc);
+            if (U.debug(2)) {
+                C.debug(name, 'classify', nom);
+            }
 
             oldDom.hide();
             body.removeClass();
 
-            if (doc === 'home') { // add class for page type
+            if (nom === 'home') { // add class for page type
                 body.addClass('home');
                 Floater.jump('#Body');
             } else {
-                body.addClass('page ' + doc);
+                body.addClass('page ' + nom);
                 Floater.jump('#Body');
             }
+
             body.find('.content').slideDown(); // reveal again
-            Anchor.write(doc);
+            Anchor.write(nom);
         };
     }
 
     // func to deliver content
-    function runExtractor(doc) {
-        Extract.page('pages/' + doc + '.html', classify(doc));
+    function runExtractor(docnom) {
+        if (body.is('.' + docnom)) {
+            return;
+        }
+        if (U.debug()) {
+            C.debug(name, 'runExtractor', docnom);
+        }
+        Extract.page('pages/' + docnom + '.html', classify(docnom));
     }
 
     function bindExtractor() {
         Extract.init();
-        var hash = Anchor.read() || 'home';
 
         // func to triage event
         $('body').on('click', 'a', function (evt) {
-            var url = this.attributes.getNamedItem('href').value;
-            var doc = url.split(/\.|\/\#/);
+            var url, doc;
+
+            url = this.attributes.getNamedItem('href').value;
+            doc = url.split(/\.|\/\#!/);
 
             // refers to document or hash?
             doc = doc[1] ? doc[0] || doc[1] : '#';
@@ -66,9 +72,8 @@ var Main = (function ($, G, U) { // IIFE
 
             if (doc.charAt(0) !== '#') {
 
-                if (isInternal(url)) {
+                if (isInternal(url)) { // load instead of open
                     evt.preventDefault();
-                    // load instead of open
                     runExtractor(doc);
                 } else {
                     this.setAttribute('target', 'external');
@@ -80,7 +85,7 @@ var Main = (function ($, G, U) { // IIFE
     function bindProjector() {
         Df.projector = Projector.attach('.iS-port');
 
-        if (html.is('.dev')) {
+        if (html.is('.dev')) { // stop annoying slideshow
             Df.projector.toggle();
         }
     }
@@ -97,18 +102,21 @@ var Main = (function ($, G, U) { // IIFE
         bindExtractor();
 
         routie(':page', function (arg) {
-            C.warn('routie', arg, this);
+            if (U.debug()) {
+                C.debug(name, 'routie', arg, this);
+            }
+
+            arg = Anchor.read(arg);
             runExtractor(arg); // auto retore from hash
 
             if (arg === 'glossary') {
-                return Floater.bind();
-            };
+                Floater.bind();
+            }
         });
     }
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     /// INTERNAL
-    /// attach expand/contract/status events to items with _reveal
 
     function _init() {
         if (self.inited(true)) {

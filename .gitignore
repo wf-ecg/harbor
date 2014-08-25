@@ -3,5 +3,6 @@
 *.pdf
 *.psd
 *.webm
+*.zip
 media*/*/*
 styles

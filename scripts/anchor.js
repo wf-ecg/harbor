@@ -9,7 +9,13 @@ var Anchor = (function ($, G, U) { // IIFE
         Df, L;
 
     Df = { // DEFAULTS
-        inits: function () {},
+        inits: function () {
+            var tmp = self.read();
+
+            if (U.debug()) {
+                C.debug(name, tmp);
+            }
+        },
     };
     L = W.location;
 
@@ -24,31 +30,39 @@ var Anchor = (function ($, G, U) { // IIFE
         L.href = L.origin + L.pathname;
     }
 
-    function _read() {
-        var nom = L.hash.slice(1);
-        var cut = /[\,\&\/]/;
+    function _read(str) {
+        var nom = str || L.hash;
+
+        if (nom.charAt(0) === '#') {
+            nom = nom.slice(1);
+        }
+        if (nom.charAt(0) === '!') {
+            nom = nom.slice(1);
+        }
 
         nom = (!nom || nom.length < 3) ? '' : nom;
-        nom = nom.split(cut);
+        nom = nom.split(/[\,\&\/]/g);
         nom = nom[0] || nom[1];
 
         if (!nom) {
             _write('home');
         }
-
-        if (U.debug(1)) {
+        if (U.debug(2)) {
             C.debug(name, '_read', nom);
         }
+
         return nom;
     }
 
     function _write(str) {
         var tmp = L.pathname.split('/');
+
         if (tmp.pop()) {
-            C.warn(tmp);
+            C.warn(name, '_write', tmp);
             L.pathname = tmp.join('/') + '/';
         }
-        L.hash = str;
+
+        L.hash = '!' + str;
     }
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */

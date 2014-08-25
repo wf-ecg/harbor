@@ -41,9 +41,11 @@ var Tests = (function ($, G, U) { // IIFE
     function bindFixed() {
         var header = $('#Body');
 
-        $('#Wrap').on('inview', function (a, b, c, d) {
-            C.log(b, c, d);
-            if (d === 'bottom') {
+        $('#Wrap').on('inview', function (evt, vis, lr, tb) { // visi?, left+right, top+bottom
+            if (U.debug(2)) {
+                C.debug(name, 'bindFixed', vis, lr, tb, [evt]);
+            }
+            if (tb === 'bottom') {
                 header.addClass('fixed');
             } else {
                 header.removeClass('fixed');
