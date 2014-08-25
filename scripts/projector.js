@@ -10,17 +10,17 @@ var Projector = (function ($, G, U) { // IIFE
 
     Df = { // DEFAULTS
         all: [],
-        speed: 999,
         current: null,
         inits: function () {},
     };
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-    // HELPERS (defaults dependancy only)
+    /// HELPERS
+    //  defaults dependancy only
     Projector.wrap = function () {};
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     /// INTERNAL
-    /// attach expand/contract/status events to items with _reveal
+    //  attach expand/contract/status events to items with _reveal
 
     function decorate(scroller) {
         if (U.debug(2)) {
@@ -30,19 +30,20 @@ var Projector = (function ($, G, U) { // IIFE
             port: $(scroller.wrapper),
             scroller: scroller,
             status: 'active',
+            timer: null,
             actuate: function () {
                 if (Df.current) {
                     Df.current.reset();
                 }
                 if (this.status === 'active') {
-                    this.scroller.interval = Scroller.auto(this.scroller);
+                    this.timer = Scroller.auto(this.scroller);
                 } else {
-                    W.clearInterval(this.scroller.interval);
+                    W.clearInterval(this.timer);
                 }
             },
             changes: function (state) {
                 if (this.status !== state) {
-                    this.port.removeClass(this.status);
+                    this.port.removeClass('scrolling ' + this.status);
                     this.status = state;
                     this.port.addClass(this.status);
                     return true;
@@ -60,7 +61,7 @@ var Projector = (function ($, G, U) { // IIFE
                 return false;
             },
             reset: function () {
-                if (this.changes('normal')) {
+                if (this.changes('paused')) {
                     Df.current = null;
                     this.actuate();
                     return true;

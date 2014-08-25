@@ -3,7 +3,6 @@
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 .iS-port {
-    $height: $fullsize;
     $width: $fullsize / $count;
 
     margin: auto;
@@ -25,23 +24,21 @@
             background-size: 100% 100%;
             cursor: -webkit-grab;
             float: left;
-            height: $height;
             position: relative;
             width: $width;
         }
     }
     .iS-proxy {
         cursor: pointer;
-        height: 1em;
+        height: 1rem;
         position: absolute;
-        width: 5em;
-
-        .iS-peg {
-            background-color: red;
-            height: 1em;
-            position: relative;
-            width: 1em;
-        }
+        width: 5rem;
+    }
+    .iS-peg {
+        background-color: red;
+        height: 1rem;
+        position: relative;
+        width: 1rem;
     }
 }
 

@@ -5,10 +5,11 @@
 'use strict';
 var Glob, Load;
 
-Glob = new Global('Globals');
+Glob = new Global('Glob');
 
 (function ($, M, G) {
     'use strict';
+    var U;
     W.G = G;
     W.Load = {};
 
@@ -52,27 +53,35 @@ Glob = new Global('Globals');
         both: [
             G.loc + '_util.js',
             G.loc + 'js-view.js',
-            G.loc + 'Page.js',
             G.loc + 'extract.js',
+            G.loc + 'fetch.js',
+            G.loc + 'routie.js',
         ],
         complete: function () {
+            U = Util;
+            routie('home:xxx', function (xxx, yyy, zzz) {
+                //this gets called when hash == #users
+                C.warn('routie use!', U.arrg(arguments), this);
+            });
         },
     };
 
     Load.font = {
         test: ROOT.conf.nom === 'localhost' || ROOT.conf.nom === 'qla1',
         yep: [
-            G.lib + 'fonts/archer.ssm.css',
-            G.lib + 'fonts/archer.ssm.itl.css',
+            // G.lib + 'fonts/archer.ssm.css',
+            // G.lib + 'fonts/archer.ssm.itl.css',
         ],
         nope: [
             /* '//cloud.typography.com/6819872/620964/css/fonts.css', Normal */
-            '//cloud.typography.com/6819872/633184/css/fonts.css', /* ScrnSmrt */
+            // '//cloud.typography.com/6819872/633184/css/fonts.css', /* ScrnSmrt */
         ],
     };
 
     Load.main = {
         both: [
+            G.src + 'anchor.js',
+            G.src + 'floater.js',
             G.src + 'projector.js',
             G.src + 'scroller.js',
             G.src + '_main.js',

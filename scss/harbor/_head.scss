@@ -10,13 +10,12 @@
     }
     nav#Programs {
         float: right;
-        margin: 0.5em;
+        margin: 0.5rem;
 
         a {
             color: $red;
-            font-weight: bold;
             line-height: 2;
-            margin-left: 1.5em;
+            margin-left: 1.5rem;
             position: relative;
             text-align: right;
             text-decoration: none;
@@ -30,20 +29,20 @@
         }
         img {
             display: inline;
-            left: 1.6em;
-            margin-left: 3em;
+            left: 1.6rem;
+            margin-left: 3rem;
             position: relative;
             z-index: 1;
         }
         .search {
             background-color: white;
-            border-radius: 1em;
+            border-radius: 1rem;
             border: 1px solid #eee;
             color: gray;
             display: inline;
             padding: 4px;
-            padding-left: 1.5em;
-            width: 18em;
+            padding-left: 1.5rem;
+            width: 18rem;
         }
     }
 }
