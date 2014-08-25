@@ -1,4 +1,4 @@
-/*jslint es5:true, white:false */
+/*jslint white:false */
 /*globals _, C, W, Glob, Util, jQuery,
         x, */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -57,9 +57,9 @@ var Anchor = (function ($, G, U) { // IIFE
     function _write(str) {
         var tmp = L.pathname.split('/');
 
-        if (tmp.pop()) {
+        if (tmp.pop()) { // document fragment
             C.warn(name, '_write', tmp);
-            L.pathname = tmp.join('/') + '/';
+            //L.pathname = tmp.join('/') + '/'; // rewrite without document
         }
 
         L.hash = '!' + str;

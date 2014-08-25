@@ -1,4 +1,4 @@
-/*jslint es5:true, white:false */
+/*jslint white:false, evil:true */
 /*globals _, C, W, Glob, Util, jQuery,
         Anchor, Extract, Floater, Projector, Test, routie, */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -17,8 +17,8 @@ var Main = (function ($, G, U) { // IIFE
     };
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     // HELPERS (defaults dependancy only)
-
     // func to contextualize content
+
     function classify(nom) {
         return function (oldDom) {
             if (U.debug(2)) {
@@ -37,19 +37,19 @@ var Main = (function ($, G, U) { // IIFE
             }
 
             body.find('.content').slideDown(); // reveal again
-            Anchor.write(nom);
+            Anchor.write(nom); // force url update?
         };
     }
 
     // func to deliver content
     function runExtractor(docnom) {
-        if (body.is('.' + docnom)) {
+        if (body.is('.' + docnom)) { // prevent unneeded calls
             return;
         }
         if (U.debug()) {
             C.debug(name, 'runExtractor', docnom);
         }
-        Extract.page('pages/' + docnom + '.html', classify(docnom));
+        Extract.page('' + docnom + '.html', classify(docnom)); // do not drill down to 'pages'
     }
 
     function bindExtractor() {
@@ -59,9 +59,8 @@ var Main = (function ($, G, U) { // IIFE
         $('body').on('click', 'a', function (evt) {
             var url, doc;
 
-            url = this.attributes.getNamedItem('href').value;
-            doc = url.split(/\.|\/\#!/);
-
+            url = this.attributes.getNamedItem('href').value; // extract link
+            doc = url.split(/\.|\/\#!/); // split tokens
             // refers to document or hash?
             doc = doc[1] ? doc[0] || doc[1] : '#';
 
@@ -90,16 +89,32 @@ var Main = (function ($, G, U) { // IIFE
         }
     }
 
-    function bindTests() {
-        Tests.init();
-        Tests.bind();
+    function fillin(src, sel) {
+        var part = src.find(sel);
+
+        body.find(sel).replaceWith(part);
+    }
+
+    function bindParts() {
+        new G.Fetch('_parts.html', function (page) {
+
+            var parts = $(page.body); // attach standard parts
+
+            fillin(parts, 'header');
+            fillin(parts, 'section.slideshow');
+            fillin(parts, 'footer');
+            fillin(parts, 'nav.sub-bot');
+
+            bindProjector();
+        });
     }
 
     function bindings() {
         Anchor.init();
+        Binders.init();
 
-        bindProjector();
         bindExtractor();
+        bindParts();
 
         routie(':page', function (arg) {
             if (U.debug()) {

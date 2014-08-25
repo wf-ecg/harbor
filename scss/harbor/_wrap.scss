@@ -2,8 +2,9 @@
 /* HARBOR / Wrap */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 #Flood {
-    background-image: url("../images/bkgr/12173454-marina-at-sunset.jpg");
-    background-size: cover;
+    background-image: url("../images/bkgr/12173454-marina-at-sunset.jpg") ;
+    @include background-size( cover );
+    -ms-behavior: url(../scss/backgroundsize.htc);
     height: 100%;
     left: 0;
     position: fixed;
@@ -12,9 +13,13 @@
     z-index: -1;
 }
 #Body {
-    background-color: rgba(255, 255, 255, 0.3);
+    $frost: rgba(255, 255, 255, 0.3);
+    background-color: $frost;
+    .msie & {
+        @include backTrans($frost, -0.1);
+    }
     margin: 1rem auto;
-    max-width: 70rem;
+    max-width: 69.9rem;
     min-width: 57rem;
     padding: 2.5rem 1.25rem 0.75rem;
     width: 98%;

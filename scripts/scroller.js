@@ -1,4 +1,4 @@
-/*jslint es5:true, white:false */
+/*jslint white:false */
 /*globals _, C, W, Glob, Util, jQuery,
         IScroll, */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -10,10 +10,12 @@ var Scroller = (function ($, G, U) { // IIFE
 
     Df = { // DEFAULTS
         all: [],
-        speed: 7777, /* auto advance */
+        speed: 7777,
+        /* auto advance */
         iscroll: {
             indicators: [{
-                el: null, /* later */
+                el: null,
+                /* later */
                 resize: false,
                 interactive: true,
             }],
@@ -31,7 +33,6 @@ var Scroller = (function ($, G, U) { // IIFE
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     /// HELPERS
     //  defaults dependancy only
-
     Scroller.wrap = function () {};
 
     function scrollNext(scroller) {
@@ -43,8 +44,7 @@ var Scroller = (function ($, G, U) { // IIFE
         ln = scroller.pages.length;
         pg = (1 + scroller.currentPage.pageX) % ln;
         scroller._execEvent('scrollStart'); // polyfill event
-
-        _.delay( function () {
+        _.delay(function () {
             scroller.goToPage(pg, 0);
         }, Df.iscroll.snapSpeed / 3);
     }
@@ -56,27 +56,12 @@ var Scroller = (function ($, G, U) { // IIFE
         if (U.debug(2)) {
             C.debug(name, '_autoScroll', scroller);
         }
-        var interva, indicat;
-
         if (!scroller.pages) {
             return;
         }
-
-        interva = W.setInterval(function () {
+        return W.setInterval(function () {
             scrollNext(scroller);
         }, Df.speed);
-
-        indicat = W.isIE ? scroller.indicator1 : scroller.indicators[0];
-
-        $(indicat.wrapper) //
-        .parent() //
-        .one('click keypress touchend', function () {
-            if (U.debug(2)) {
-                C.debug(name, 'click keypress touchend', scroller);
-            }
-            $(this).find('.control').trigger('toggle');
-        });
-        return interva;
     }
 
     function _attachPort(sel) {
@@ -121,7 +106,6 @@ var Scroller = (function ($, G, U) { // IIFE
 
         Df.iscroll.indicators[0].el = proxy.get(0);
         scroller = new IScroll(port.get(0), Df.iscroll); //github.com/cubiq/iscroll
-
         scroller.on('scrollStart', function () {
             port.addClass('scrolling');
         });
