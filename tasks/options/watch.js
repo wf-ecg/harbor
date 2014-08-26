@@ -17,7 +17,7 @@ module.exports = {
         tasks: ['sass'], // 'autoprefixer', 'cssmin', 'compass'
     },
     html: {
-        files: ['app/*.html'],
+        files: ['app/**/*.html'],
         options: {
             spawn: false,
         },
