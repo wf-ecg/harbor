@@ -1,19 +1,33 @@
+//github.com/gruntjs/grunt-contrib-watch
 module.exports = {
     options: {
-    // livereload: true,
+        livereload: 7001,
     },
-    scripts: {
-        files: ['scripts/*.js', 'lib/*.js'],
+    app: {
+        files: ['app/*.js'],
+        tasks: ['jshint'],
+        options: {
+            spawn: false,
+        },
+    },
+    js: {
+        files: ['libs/*.js', 'scripts/*.js'],
         tasks: ['jshint', 'concat'],
         options: {
             spawn: false,
-        }
+        },
     },
-//    css: {
-//        files: ['css/*.scss'],
-//        tasks: ['sass', 'autoprefixer', 'cssmin'],
-//        options: {
-//            spawn: false,
-//        }
-//    },
+    css: {
+        files: ['scss/**/*.scss'],
+        tasks: ['sass'], // 'autoprefixer', 'cssmin', 'compass'
+        options: {
+            spawn: false,
+        },
+    },
+    html: {
+        files: ['app/*.html'],
+        options: {
+            spawn: false,
+        },
+    },
 };
