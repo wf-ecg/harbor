@@ -3,7 +3,7 @@
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var W = window,
 C = W.console;
-W.debug = Number(new Date('2014/08/29') > new Date());
+W.debug = Number(new Date('2014/08/19') > new Date());
 W.ROOT = ({
     evil: "eval('var x=0'),(typeof(x)!=='number'?'':'non-')+'strict'",
     base: 0,
@@ -21,10 +21,10 @@ W.ROOT = ({
             nom: 'localhost',
             sub: '/wf-ecg/harbor',
         },
-        'localhost:8001': {
+        '127.0.0.1:8972': {
             nom: 'localhost',
             sub: '',
-    },
+        },
     },
     dir: null,
     doc: null,
