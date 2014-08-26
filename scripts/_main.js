@@ -60,9 +60,15 @@ var Main = (function ($, G, U) { // IIFE
             var url, doc;
 
             url = this.attributes.getNamedItem('href').value; // extract link
-            doc = url.split(/\.|\/\#!/); // split tokens
-            // refers to document or hash?
-            doc = doc[1] ? doc[0] || doc[1] : '#';
+
+            function getDocname(str) {
+                var arr = str.split(/\/\#!|\.\/|\./); // split tokens
+                // refers to document or hash?
+                str = arr[1] ? arr[0] || arr[1] : '#';
+                return str;
+            }
+
+            doc = getDocname(url);
 
             function isInternal(url) {
                 var ext = /^(http|\/\/)/.exec(url);
