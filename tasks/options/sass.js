@@ -1,10 +1,14 @@
+//github.com/gruntjs/grunt-contrib-sass
 module.exports = {
     dist: {
         options: {
-            style: 'expanded' // cssmin will minify later
+            compass: true,
+            require: 'animation',
+            sourcemap: 'auto',
+            style: 'compact',
         },
-//        files: {
-//            'css/build/global.css': 'css/global.scss'
-//        }
+        files: {
+            'app/build/screen.css': 'scss/screen.scss',
+        }
     }
 };
