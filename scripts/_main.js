@@ -30,13 +30,17 @@ var Main = (function ($, G, U) { // IIFE
 
             if (nom === 'home') { // add class for page type
                 body.addClass('home');
-                Floater.jump('#Body');
             } else {
                 body.addClass('page ' + nom);
-                Floater.jump('#Body');
             }
 
+            Floater.jump('#Body');
             body.find('.content').slideDown(); // reveal again
+
+            if (nom === 'glossary') {
+                Floater.bind();
+            }
+
             Anchor.write(nom); // force url update?
         };
     }
@@ -130,9 +134,6 @@ var Main = (function ($, G, U) { // IIFE
             arg = Anchor.read(arg);
             runExtractor(arg); // auto retore from hash
 
-            if (arg === 'glossary') {
-                Floater.bind();
-            }
         });
     }
 

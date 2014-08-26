@@ -19,4 +19,7 @@ html {
     &.mobile {.desktop {display: none;}}
     &.desktop {.mobile {display: none;}}
 }
+.ui-loader-default {
+    opacity: 0.1;
+}
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
