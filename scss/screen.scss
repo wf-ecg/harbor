@@ -5,4 +5,20 @@
 @import "core/_all";
 @import "harbor/_all";
 @import "roto/_all";
+@import "_misc";
+// - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //
+@media print {
+    body {
+        background: none;
+    }
+    .noprint {
+        display: none;
+    }
+    #Popup {
+        display: block;
+    }
+    #Wrap {
+        display: none;
+    }
+}
 /* >^º!º^< */

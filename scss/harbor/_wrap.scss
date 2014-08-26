@@ -4,7 +4,7 @@
 #Flood {
     background-image: url("../images/bkgr/12173454-marina-at-sunset.jpg") ;
     @include background-size( cover );
-    -ms-behavior: url(../scss/backgroundsize.htc);
+    -ms-behavior: url(../images/backgroundsize.htc);
     height: 100%;
     left: 0;
     position: fixed;
