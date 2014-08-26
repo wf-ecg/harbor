@@ -47,17 +47,19 @@ var Data, Glob = new Global('Glob');
         ],
         test: W.isIE,
         yep: [
-            G.lib + 'ie/split.js',
-            G.lib + 'ie/selectivizr-min.js',
             G.lib + 'ie/rem.min.js',
+            G.lib + 'ie/split.js',
             G.lib + 'iscroll/5.0.4/iscroll.js',
-            G.loc + '_util.poly.js',
         ],
         nope: [
             G.lib + 'iscroll/5.1.1/iscroll.js',
         ],
         complete: function () {
-            U = Util;
+            if (W.isIE) {
+                _.delay(function () {
+                    M.load(G.lib + 'ie/selectivizr-min.js');
+                }, 2222);
+            }
         },
     };
 

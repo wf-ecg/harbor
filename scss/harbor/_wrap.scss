@@ -4,7 +4,7 @@
 #Flood {
     background-image: url("../images/bkgr/12173454-marina-at-sunset.jpg") ;
     @include background-size( cover );
-    -ms-behavior: url(../images/backgroundsize.htc);
+    -ms-behavior: url("../images/backgroundsize.htc");
     height: 100%;
     left: 0;
     position: fixed;
@@ -27,7 +27,7 @@
     nav.sub-top, nav.sub-bot {
         color: white;
         text-align: right;
-            text-shadow: 0 0 3px black;
+        text-shadow: 0 0 3px black;
 
         a {
             color: white;
@@ -96,13 +96,20 @@
     * {
         @include defani;
     }
-    @include skygrad();
     border: 2px solid $sky;
     border-radius: 1rem;
     margin-bottom: 8rem;
     padding-bottom: 1rem;
     padding-top: 7rem;
 
-    .msie & { background: white; }
+    :not(.msie) & {
+        @include skygrad();
+    }
+    .msie & {
+        background: white;
+        @include background-size( cover );
+        -ms-behavior: url("../images/backgroundsize.htc");
+        background-image: url("../images/bkgr/ie-grad.png");
+    }
 }
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */

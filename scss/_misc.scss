@@ -12,9 +12,6 @@ ol {
     display: none;
 }
 // - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //
-.msie {
-    //behavior: url(pie/PIE.htc);
-}
 html {
     &.mobile {.desktop {display: none;}}
     &.desktop {.mobile {display: none;}}

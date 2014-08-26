@@ -13,6 +13,7 @@ $show_xtra: 4rem;
 @mixin skygrad(){
     background-color: $sky;
     @include background-image( linear-gradient(25deg, $sky 0%, white 30%, white 70%, $sky 100%) );
+    @include background-size( cover );
 }
 html {
     zoom: 1.0;
