@@ -13,7 +13,7 @@
     z-index: -1;
 }
 #Body {
-    $frost: rgba(255, 255, 255, 0.3);
+    $frost: rgba(155, 155, 155, 0.3);
     background-color: $frost;
     .msie & {
         @include backTrans($frost, -0.1);
@@ -27,10 +27,10 @@
     nav.sub-top, nav.sub-bot {
         color: white;
         text-align: right;
+            text-shadow: 0 0 3px black;
 
         a {
             color: white;
-            text-shadow: 0 0 3px black;
 
             &:before {
                 color: white;
@@ -43,7 +43,7 @@
             }
             &:hover {
                 color: $red;
-                text-shadow: none;
+                text-shadow: 0 0 9px white;
             }
         }
         &.sub-top {

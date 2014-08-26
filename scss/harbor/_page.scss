@@ -22,12 +22,17 @@
                 }
             }
         }
+        li.dropdown {
+            color: $blu;
+        }
         .dropdown {
             cursor: pointer;
 
             &:after {
                 content: '⋁'; // ▿ ▼
                 font-size: small;
+                font-weight: 800;
+                letter-spacing: 1px;
                 line-height: 0;
                 padding-left: 0.25em;
             }
@@ -36,10 +41,12 @@
             &:hover:after {
                 color: gray;
                 content: 'Show/Hide';
+                font-weight: 400;
             }
-            & + div {
+            & + * {
                 display: none;
             }
+
         }
         aside {
             background-color: lighten($sky, 3%);
