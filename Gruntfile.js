@@ -18,7 +18,7 @@ module.exports = function(grunt) {
 
     // Start initial config object
     var config = {
-        pkg: grunt.file.readJSON('./package.json')
+        pkg: grunt.file.readJSON('./package.json'),
     };
 
     // Load tasks from the tasks folder
@@ -30,4 +30,5 @@ module.exports = function(grunt) {
     // grunt.loadNpmTasks('grunt-contrib-compass');
 
     require('load-grunt-tasks')(grunt);
+    console.log(grunt['package']);
 };
