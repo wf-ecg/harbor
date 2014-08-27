@@ -8,7 +8,7 @@ module.exports = function(grunt) {
         object = {};
 
         glob.sync('*', {
-            cwd: path
+            cwd: path,
         }).forEach(function(option) {
             key = option.replace(/\.js$/,'');
             object[key] = require(path + option);
@@ -30,5 +30,5 @@ module.exports = function(grunt) {
     // grunt.loadNpmTasks('grunt-contrib-compass');
 
     require('load-grunt-tasks')(grunt);
-    console.log(grunt['package']);
+    console.log('Big old grunt load');
 };

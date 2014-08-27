@@ -6,6 +6,7 @@ module.exports = {
             require: 'animation',
             sourcemap: 'auto',
             style: 'compact',
+            update: true,
         },
         files: {
             'app/build/screen.css': 'scss/screen.scss',
