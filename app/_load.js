@@ -37,12 +37,6 @@ var Data, Glob = new Global('Glob');
     G.Load.base = {
         both: [
             G.lib + 'jquery/mobile/1.4.2/jquery.mobile.js',
-            //G.loc + '_util.js',
-            //G.loc + 'jq-inview.js',
-            //G.loc + 'js-view.js',
-            //G.loc + 'extract.js',
-            //G.loc + 'fetch.js',
-            //G.loc + 'routie.js',
             './build/lib.js',
         ],
         test: W.isIE,
@@ -77,12 +71,6 @@ var Data, Glob = new Global('Glob');
 
     G.Load.main = {
         both: [
-            //G.src + 'anchor.js',
-            //G.src + 'binders.js',
-            //G.src + 'floater.js',
-            //G.src + 'projector.js',
-            //G.src + 'scroller.js',
-            //G.src + '_main.js',
             './build/src.js',
         ],
         complete: function () {
