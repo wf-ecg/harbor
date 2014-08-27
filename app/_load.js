@@ -43,7 +43,7 @@ var Data, Glob = new Global('Glob');
             //G.loc + 'extract.js',
             //G.loc + 'fetch.js',
             //G.loc + 'routie.js',
-            '../build/lib.js',
+            './build/lib.js',
         ],
         test: W.isIE,
         yep: [
@@ -81,7 +81,7 @@ var Data, Glob = new Global('Glob');
             //G.src + 'projector.js',
             //G.src + 'scroller.js',
             //G.src + '_main.js',
-            '../build/src.js',
+            './build/src.js',
         ],
         complete: function () {
             ROOT.loaded($);
