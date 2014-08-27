@@ -64,6 +64,13 @@ var Binders = (function ($, G, U) { // IIFE
         s = W.document.getElementsByTagName('script')[0];
         s.parentNode.insertBefore(gcse, s);
 
+//        $('.gsc-thinWrapper').animate({
+//            width: '100%',
+//            border: 0,
+//        });
+//        $('.gsc-adBlockVertical').slideUp();
+//        $('.gsc-adBlock').slideUp();
+
     }
 
     function bindings() {

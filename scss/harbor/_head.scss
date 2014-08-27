@@ -68,10 +68,25 @@
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     #___gcse_0 {
         position: absolute;
-        visibility: hidden;
+        //visibility: hidden;
         right: 4rem;
         top: 0;
         width: 33%;
+
+/* whiteout */
+        .gsc-adBlockVertical, .gsc-adBlock {
+            display: none !important;
+            float: left !important;
+            height: 0 !important;
+            overflow: hidden !important;
+            width: 0 !important;
+            z-index: -1 !important;
+        }
+        .gsc-thinWrapper {
+            border: 0 !important;
+            width: 100% !important;
+        }
+/* wipeout */
 
         .gsc-search-button, .gsc-above-wrapper-area,
         .gsc-cursor-box, .gsst_b { display: none; }
