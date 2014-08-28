@@ -35,10 +35,7 @@ var Data, Glob = new Global('Glob');
     }
 
     G.Load.base = {
-        both: [
-            G.lib + 'jquery/mobile/1.4.2/jquery.mobile.js',
-            './build/lib.js',
-        ],
+        both: ['./build/lib.js'],
         test: W.isIE,
         yep: [
             G.lib + 'ie/rem.min.js',
@@ -70,9 +67,7 @@ var Data, Glob = new Global('Glob');
     };
 
     G.Load.main = {
-        both: [
-            './build/src.js',
-        ],
+        both: ['./build/src.js'],
         complete: function () {
             ROOT.loaded($);
             evil(W.Main && W.Main.init());
