@@ -1,17 +1,17 @@
-//github.com/gruntjs/grunt-contrib-compass
+// https://github.com/gruntjs/grunt-contrib-compass
 module.exports = {
-    dist: {
+    dev: {
         options: {
-            config: 'tasks/config.rb',
+            //config: 'tasks/config.rb',
+            cssDir: 'app/build',
             environment: 'development', // production
-            // cssDir: 'app/build',
-            // sassDir: 'styles',
+            fontDir: 'fonts',
+            imagesDir: 'app/images',
+            javascriptsDir: "scripts",
+            lineComments: false,
+            outputStyle: 'compact',
+            relativeAssets: true,
+            sassDir: 'scss',
         },
     },
-    // dev: { //  Another target
-    //     options: {
-    //         sassDir: 'sass',
-    //         cssDir: 'css',
-    //     },
-    // },
 };

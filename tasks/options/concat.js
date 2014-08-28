@@ -1,4 +1,4 @@
-//github.com/gruntjs/grunt-contrib-concat
+// https://github.com/gruntjs/grunt-contrib-concat
 module.exports = {
     options: {
         sourceMap: true,

@@ -1,4 +1,4 @@
-//github.com/gruntjs/grunt-contrib-jshint
+// https://github.com/gruntjs/grunt-contrib-jshint
 module.exports = {
     options: {
         force: true,

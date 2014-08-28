@@ -11,6 +11,6 @@ module.exports = function(grunt) {
     grunt.registerTask('dev', ['connect', 'watch']);
 
     grunt.event.on('watch', function(action, filepath, target) {
-        grunt.log.writeln('action, filepath, target', action, filepath, target);
+        grunt.log.writeln('action, filepath, target', action, [filepath, target]);
     });
 };
