@@ -1,5 +1,8 @@
-// https://github.com/gruntjs/grunt-contrib-concat
 module.exports = {
+
+    // CONCAT
+    // https://github.com/gruntjs/grunt-contrib-concat
+
     options: {
         sourceMap: true,
     },
