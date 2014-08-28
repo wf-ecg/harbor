@@ -60,19 +60,11 @@ var Main = (function ($, G, U) { // IIFE
         Extract.init();
 
         // func to triage event
-        $('body').on('click', 'a', function (evt) {
+        function extractEvtHref(evt) {
             var url, doc;
 
-            url = this.attributes.getNamedItem('href').value; // extract link
-
-            function getDocname(str) {
-                var arr = str.split(/\/\#!|\.\/|\./); // split tokens
-                // refers to document or hash?
-                str = arr[1] ? arr[0] || arr[1] : '#';
-                return str;
-            }
-
-            doc = getDocname(url);
+            url = evt.target.attributes.getNamedItem('href').value; // extract link
+            doc = Anchor.docFromHash(url);
 
             function isInternal(url) {
                 var ext = /^(http|\/\/)/.exec(url);
@@ -85,9 +77,15 @@ var Main = (function ($, G, U) { // IIFE
                     evt.preventDefault();
                     runExtractor(doc);
                 } else {
-                    this.setAttribute('target', 'external');
+                    evt.target.setAttribute('target', 'external');
                 }
             }
+        }
+
+        $('body').on('click', 'a', function (evt) {
+            extractEvtHref(evt);
+        }).on('extract', function (evt, str) {
+            runExtractor(str, evt); // evt is unused
         });
     }
 
