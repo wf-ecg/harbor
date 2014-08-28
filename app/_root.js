@@ -1,10 +1,11 @@
-/*jslint es5:true, white:false */
+/*jslint white:false, evil: true */
 /*globals window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var W = window,
 C = W.console;
-W.debug = Number(new Date('2014/07/29') > new Date());
+W.debug = Number(new Date('2014/08/29') > new Date());
 W.ROOT = ({
+    evil: "eval('var x=0'),(typeof(x)!=='number'?'':'non-')+'strict'",
     base: 0,
     // adjust built-in page depth? (e.g. '-1' == '..')
     conf: {
@@ -19,6 +20,10 @@ W.ROOT = ({
         'localhost:8000': {
             nom: 'localhost',
             sub: '/wf-ecg/harbor',
+        },
+        '127.0.0.1:8972': {
+            nom: 'localhost',
+            sub: '',
         },
     },
     dir: null,
@@ -47,7 +52,7 @@ W.ROOT = ({
         R.deep.pop(); //                        trim docname
         R.comp = R.deep.slice(0, R.base); //    hoist to top of subproject
         if (R.base && (R.deep.length + R.base) !== 0) {
-            R.comp.length && R.comp.push(''); //slash
+            evil(R.comp.length && R.comp.push('')); //slash
             R.base = R.L.protocol + R.conf.top + R.dir + '/' + R.comp.join('/');
         } else {
             delete R.base;
@@ -55,12 +60,8 @@ W.ROOT = ({
         delete R._down;
     },
     _wrap: function (R) { // write out bootstrap element
-        R.base && R.D.write('<base href="' + R.base + '">');
-        R.D.write('<script src="' + R.lib + '/jquery/1.8.2/jquery.js"></script>');
-        R.D.write('<script src="' + R.lib + '/modernizr/2.6.2/modernizr.js"></script>');
-        R.D.write('<script src="' + R.lib + '/underscore/js-1.4.4/lodash.underscore.js"></script>');
-        R.D.write('<script src="' + R.lib + '/js/console.js"></script>');
-        R.D.write('<script src="' + R.lib + '/js/global.js"></script>');
+        evil(R.base && R.D.write('<base href="' + R.base + '">'));
+        R.D.write('<script src="' + R.dir + '/app/build/boot.min.js"></script>');
         delete R._wrap;
     },
     loaded: function ($) {
@@ -73,7 +74,12 @@ W.ROOT = ({
         }
     },
     init: function () {
+        'use strict';
         var R = this;
+        R.evil = eval(R.evil);
+        W.evil = function () {
+            return R.evil;
+        };
         R.D = W.document;
         R.L = W.location;
         R._host(this);
