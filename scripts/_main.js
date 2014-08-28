@@ -58,6 +58,13 @@ var Main = (function ($, G, U) { // IIFE
 
     function bindExtractor() {
         Extract.init();
+        var loc = $.parseUrl(W.location.href);
+
+        if (loc.filename) {
+            var ext = loc.filename.match(/\w+/).toString();
+            ext = '#!' + (ext === 'index' ? 'home' : ext);
+            W.location.href = loc.directory + ext;
+        }
 
         // func to triage event
         function extractEvtHref(evt) {

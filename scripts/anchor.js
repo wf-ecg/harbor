@@ -29,7 +29,7 @@ var Anchor = (function ($, G, U) { // IIFE
         str = arr[1] ? arr[0] || arr[1] : '#';
         C.warn(str);
         return str;
-    }
+    };
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     /// INTERNAL

@@ -78,9 +78,6 @@ var Util = (function ($) { /// IIFE
     };
     // <parseUrl> like Location for hrefs... superparse
     $.parseUrl = function (str) {
-        if (!$.mobile) {
-            throw new Error('Where is jqm?');
-        }
         var parseUrl = function ( url ) { // from jquery.mobile.1.4.2
             if ( $.type( url ) === "object" ) {
                 return url;
@@ -109,6 +106,7 @@ var Util = (function ($) { /// IIFE
         var url = parseUrl(str);
 
         url.hashstring = url.hash.slice(1);
+        url.hashbang = /^!/.exec(url.hashstring) && url.hashstring.slice(1);
         url.params = (function () {
             var ret = {},
             seg = url.search.replace(/^\?/, '').split('&'),
