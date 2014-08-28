@@ -22,12 +22,11 @@ module.exports = function(grunt) {
     };
 
     // Load tasks from the tasks folder
-    // Load tasks/options by the name: watch.js => watch{}
     grunt.loadTasks('tasks');
+    // Load tasks/options by the name: watch.js => watch{}
     grunt.util._.extend(config, synthobj('./tasks/options/'));
 
     grunt.initConfig(config);
-    // grunt.loadNpmTasks('grunt-contrib-compass');
 
     require('load-grunt-tasks')(grunt);
     console.log('Big old grunt load');

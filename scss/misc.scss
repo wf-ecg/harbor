@@ -18,5 +18,9 @@ ol {
 html {
     &.mobile {.desktop {display: none;}}
     &.desktop {.mobile {display: none;}}
+
+    body { /* test */
+/*        border: 1em solid lime;*/
+    }
 }
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */

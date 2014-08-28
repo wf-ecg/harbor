@@ -1,12 +1,10 @@
-// https://github.com/gruntjs/grunt-contrib-watch
 module.exports = {
+
+    // WATCH
+    // https://github.com/gruntjs/grunt-contrib-watch
+
     options: {
-        //spawn: false,
-        livereload: true,
-    },
-    app: {
-        files: ['app/*.js'],
-        tasks: ['jshint'],
+        livereload: false,
     },
     lib: {
         files: ['libs/*.js'],
@@ -17,9 +15,6 @@ module.exports = {
         tasks: ['jshint', 'concat:src'],
     },
     css: {
-        options: {
-            livereload: false,
-        },
         files: ['scss/**/*.scss'],
         tasks: ['sass'], // 'autoprefixer', 'cssmin', 'compass'
     },
@@ -32,5 +27,11 @@ module.exports = {
         },
         files: ['Gruntfile.js', 'tasks/*.js', 'tasks/options/*.js'],
         tasks: ['default'],
+    },
+    reloads: {
+        options: {
+            livereload: true,
+        },
+        files: ['app/**/*'],
     },
 };
