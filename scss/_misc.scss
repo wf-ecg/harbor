@@ -1,4 +1,4 @@
-// - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 /* Misc */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 ol {
@@ -12,11 +12,15 @@ ol {
     display: none;
 }
 // - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //
-.msie {
-    //behavior: url(pie/PIE.htc);
-}
 html {
     &.mobile {.desktop {display: none;}}
     &.desktop {.mobile {display: none;}}
+
+    body { /* test */
+/*        border: 1em solid lime;*/
+    }
+}
+.ui-loader-default {
+    opacity: 0.1;
 }
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */

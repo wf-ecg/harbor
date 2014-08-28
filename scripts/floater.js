@@ -87,12 +87,12 @@ var Floater = (function ($, G, U) { // IIFE
         these = $(these || '.content h5:visible');
         index = $(index || '.content aside ul:visible');
 
-        if (U.debug(2)) {
-            C.debug(name, '_bind', [these, index]);
+        if (index.children().length) {
+            return; // indexed already
         }
 
-        if (index.children().length) {
-            throw new Error('indexed already');
+        if (U.debug(2)) {
+            C.debug(name, '_bind', [these, index]);
         }
 
         these.each(function () {

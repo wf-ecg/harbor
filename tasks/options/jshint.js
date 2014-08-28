@@ -1,5 +1,8 @@
-//github.com/gruntjs/grunt-contrib-jshint
 module.exports = {
+
+    // JSHINT
+    // https://github.com/gruntjs/grunt-contrib-jshint
+
     options: {
         force: true,
         '-W015': true,

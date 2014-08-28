@@ -30,13 +30,17 @@ var Main = (function ($, G, U) { // IIFE
 
             if (nom === 'home') { // add class for page type
                 body.addClass('home');
-                Floater.jump('#Body');
             } else {
                 body.addClass('page ' + nom);
-                Floater.jump('#Body');
             }
 
+            Floater.jump('#Body');
             body.find('.content').slideDown(); // reveal again
+
+            if (nom === 'glossary') {
+                Floater.bind();
+            }
+
             Anchor.write(nom); // force url update?
         };
     }
@@ -60,9 +64,15 @@ var Main = (function ($, G, U) { // IIFE
             var url, doc;
 
             url = this.attributes.getNamedItem('href').value; // extract link
-            doc = url.split(/\.|\/\#!/); // split tokens
-            // refers to document or hash?
-            doc = doc[1] ? doc[0] || doc[1] : '#';
+
+            function getDocname(str) {
+                var arr = str.split(/\/\#!|\.\/|\./); // split tokens
+                // refers to document or hash?
+                str = arr[1] ? arr[0] || arr[1] : '#';
+                return str;
+            }
+
+            doc = getDocname(url);
 
             function isInternal(url) {
                 var ext = /^(http|\/\/)/.exec(url);
@@ -124,9 +134,6 @@ var Main = (function ($, G, U) { // IIFE
             arg = Anchor.read(arg);
             runExtractor(arg); // auto retore from hash
 
-            if (arg === 'glossary') {
-                Floater.bind();
-            }
         });
     }
 

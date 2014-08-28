@@ -5,7 +5,7 @@
 
     .content {
         h3, h4 {
-            text-transform: uppercase;
+            // text-transform: uppercase;
         }
         .crumbs {
             color: $red;
@@ -22,12 +22,16 @@
                 }
             }
         }
+        li.dropdown {
+            color: $blu;
+        }
         .dropdown {
             cursor: pointer;
 
             &:after {
                 content: '⋁'; // ▿ ▼
                 font-size: small;
+                letter-spacing: 1px;
                 line-height: 0;
                 padding-left: 0.25em;
             }
@@ -35,11 +39,12 @@
 
             &:hover:after {
                 color: gray;
-                content: 'Show/Hide';
+                content: ' Show/Hide';
             }
-            & + div {
+            & + * {
                 display: none;
             }
+
         }
         aside {
             background-color: lighten($sky, 3%);
@@ -54,14 +59,6 @@
             margin-right: -2rem;
             padding: 2rem 1rem 2rem 1rem;
             width: 33%;
-
-            ul {
-                margin-left: 1.25rem;
-
-                li {
-                    margin-top: 0.25rem;
-                }
-            }
         }
         article {
             clear: left;

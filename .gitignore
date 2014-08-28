@@ -5,7 +5,6 @@
 *.webm
 *.zip
 media*/*/*
-styles
 
 npm-debug.log
 node_modules

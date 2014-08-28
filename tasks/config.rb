@@ -3,7 +3,7 @@
 require "animation"
 
 # Set this to the root of your project when deployed:
-http_path = ""
+http_path = "app"
 css_dir = "app/build"
 fonts_dir = "fonts"
 sass_dir = "scss"
@@ -62,5 +62,4 @@ line_comments = false
 # sass_path                   | String            | <project_path>/<sass_dir>                             | The full path to where sass stylesheets are kept.                                                                                                       |
 # sprite_engine               | Symbol            | :chunky_png                                           | -   -   -                                                                                                                                               |
 # sprite_load_path            | Array             | <images_path>                                         | -   -   -                                                                                                                                               |
-#   -   -   -   -   -   -   - | -   -   -   -   - | -   -   -   -   -   -   -   -   -   -   -   -   -   - | -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   |
 #   -   -   -   -   -   -   - | -   -   -   -   - | -   -   -   -   -   -   -   -   -   -   -   -   -   - | -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   |

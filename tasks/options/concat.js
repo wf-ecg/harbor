@@ -1,5 +1,8 @@
-//github.com/gruntjs/grunt-contrib-concat
 module.exports = {
+
+    // CONCAT
+    // https://github.com/gruntjs/grunt-contrib-concat
+
     options: {
         sourceMap: true,
     },
@@ -16,13 +19,13 @@ module.exports = {
         ],
         dest: 'app/build/boot.js',
     },
-    libs: {
+    lib: {
         src: [
             'libs/*.js',
         ],
         dest: 'app/build/lib.js',
     },
-    scripts: {
+    src: {
         src: [
             'scripts/[a-z]*.js', 'scripts/_main.js',
         ],

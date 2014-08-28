@@ -8,7 +8,7 @@ module.exports = function(grunt) {
         object = {};
 
         glob.sync('*', {
-            cwd: path
+            cwd: path,
         }).forEach(function(option) {
             key = option.replace(/\.js$/,'');
             object[key] = require(path + option);
@@ -18,16 +18,16 @@ module.exports = function(grunt) {
 
     // Start initial config object
     var config = {
-        pkg: grunt.file.readJSON('./package.json')
+        pkg: grunt.file.readJSON('./package.json'),
     };
 
     // Load tasks from the tasks folder
-    // Load tasks/options by the name: watch.js => watch{}
     grunt.loadTasks('tasks');
+    // Load tasks/options by the name: watch.js => watch{}
     grunt.util._.extend(config, synthobj('./tasks/options/'));
 
     grunt.initConfig(config);
-    // grunt.loadNpmTasks('grunt-contrib-compass');
 
     require('load-grunt-tasks')(grunt);
+    console.log('Big old grunt load');
 };

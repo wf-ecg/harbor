@@ -21,10 +21,10 @@ W.ROOT = ({
             nom: 'localhost',
             sub: '/wf-ecg/harbor',
         },
-        'localhost:8001': {
+        '127.0.0.1:8972': {
             nom: 'localhost',
             sub: '',
-    },
+        },
     },
     dir: null,
     doc: null,
@@ -61,7 +61,7 @@ W.ROOT = ({
     },
     _wrap: function (R) { // write out bootstrap element
         evil(R.base && R.D.write('<base href="' + R.base + '">'));
-        R.D.write('<script src="../build/boot.min.js"></script>');
+        R.D.write('<script src="' + R.dir + '/app/build/boot.min.js"></script>');
         delete R._wrap;
     },
     loaded: function ($) {

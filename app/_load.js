@@ -37,27 +37,23 @@ var Data, Glob = new Global('Glob');
     G.Load.base = {
         both: [
             G.lib + 'jquery/mobile/1.4.2/jquery.mobile.js',
-            //G.loc + '_util.js',
-            //G.loc + 'jq-inview.js',
-            //G.loc + 'js-view.js',
-            //G.loc + 'extract.js',
-            //G.loc + 'fetch.js',
-            //G.loc + 'routie.js',
-            '../build/lib.js',
+            './build/lib.js',
         ],
         test: W.isIE,
         yep: [
-            G.lib + 'ie/split.js',
-            G.lib + 'ie/selectivizr-min.js',
             G.lib + 'ie/rem.min.js',
+            G.lib + 'ie/split.js',
             G.lib + 'iscroll/5.0.4/iscroll.js',
-            G.loc + '_util.poly.js',
         ],
         nope: [
             G.lib + 'iscroll/5.1.1/iscroll.js',
         ],
         complete: function () {
-            U = Util;
+            if (W.isIE) {
+                _.delay(function () {
+                    M.load(G.lib + 'ie/selectivizr-min.js');
+                }, 2222);
+            }
         },
     };
 
@@ -75,13 +71,7 @@ var Data, Glob = new Global('Glob');
 
     G.Load.main = {
         both: [
-            //G.src + 'anchor.js',
-            //G.src + 'binders.js',
-            //G.src + 'floater.js',
-            //G.src + 'projector.js',
-            //G.src + 'scroller.js',
-            //G.src + '_main.js',
-            '../build/src.js',
+            './build/src.js',
         ],
         complete: function () {
             ROOT.loaded($);
