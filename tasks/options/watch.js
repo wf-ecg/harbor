@@ -16,7 +16,7 @@ module.exports = {
     },
     css: {
         files: ['scss/**/*.scss'],
-        tasks: ['sass'], // 'autoprefixer', 'cssmin', 'compass'
+        tasks: ['sass:base'],
     },
     html: {
         files: ['app/**/*.html'],
