@@ -19,10 +19,10 @@ var Main = (function ($, G, U) { // IIFE
     // HELPERS (defaults dependancy only)
     // func to contextualize content
 
-    function classify(nom) {
+    function classifyCB(nom) {
         return function (oldDom) {
             if (U.debug(2)) {
-                C.debug(name, 'classify', nom);
+                C.debug(name, 'classifyCB', nom);
             }
 
             oldDom.hide();
@@ -53,7 +53,7 @@ var Main = (function ($, G, U) { // IIFE
         if (U.debug()) {
             C.debug(name, 'runExtractor', docnom);
         }
-        Extract.page('' + docnom + '.html', classify(docnom)); // do not drill down to 'pages'
+        Extract.page('' + docnom + '.html', classifyCB(docnom)); // do not drill down to 'pages'
     }
 
     function bindExtractor() {
