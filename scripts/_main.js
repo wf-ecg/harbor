@@ -9,6 +9,7 @@ var Main = (function ($, G, U) { // IIFE
         Df, body, html;
 
     Df = { // DEFAULTS
+        current: '',
         projector: null,
         inits: function () {
             body = $('body');
@@ -26,7 +27,8 @@ var Main = (function ($, G, U) { // IIFE
             }
 
             oldDom.hide();
-            body.removeClass();
+            C.error(oldDom.attr('class'));
+            body.removeClass('page ' + Df.current);
 
             if (nom === 'home') { // add class for page type
                 body.addClass('home');
@@ -42,6 +44,7 @@ var Main = (function ($, G, U) { // IIFE
             }
 
             Anchor.write(nom); // force url update?
+            Df.current = nom;
         };
     }
 
@@ -110,6 +113,9 @@ var Main = (function ($, G, U) { // IIFE
         body.find(sel).replaceWith(part);
     }
 
+    /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+    /// INTERNAL
+
     function bindParts() {
         new G.Fetch('_parts.html', function (page) {
 
@@ -143,7 +149,6 @@ var Main = (function ($, G, U) { // IIFE
     }
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-    /// INTERNAL
 
     function _init() {
         if (self.inited(true)) {
