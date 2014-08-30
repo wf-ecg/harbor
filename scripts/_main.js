@@ -27,7 +27,6 @@ var Main = (function ($, G, U) { // IIFE
             }
 
             oldDom.hide();
-            C.error(oldDom.attr('class'));
             body.removeClass('page ' + Df.current);
 
             if (nom === 'home') { // add class for page type
