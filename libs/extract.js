@@ -35,10 +35,17 @@ var Extract = (function ($, G, U) { // IIFE
     }
 
     function srcFocus(page) {
+        var str = [
+        'Avast...',
+        'Shiver ye thithers',
+        'Ere I do heartily repent!',
+        'Aye, supposes you herein it were?',
+        ][$.now() % 4];
         if (!page.body) {
-            page.body = '<section class="content"><h4>try another link</h4><h2>Page Not Found</h2><section>';
+            page.body = '<section class="content"><h4>' + str +
+            '</h4><h2>Page not found</h2><h4><a href=".">' +
+            'Return to port</a></h4><section>';
         }
-//        page.body = page.body.replace(/\.\.\//g, './'); // adjust for depth
     }
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */

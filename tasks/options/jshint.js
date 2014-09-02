@@ -10,6 +10,6 @@ module.exports = {
         //        '-W033': true,
         '-W061': true,
     },
-    beforeconcat: ['app/*.js', 'scripts/*.js'],
-    afterconcat: ['app/build/src.js'],
+    precat: ['app/*.js', 'scripts/*.js'],
+    postcat: ['app/build/src.js'],
 };

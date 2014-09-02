@@ -3,7 +3,7 @@ module.exports = {
     // SASS
     // https://github.com/gruntjs/grunt-contrib-sass
 
-    dev: {
+    base: {
         options: {
             compass: true,
             require: 'animation',
@@ -18,6 +18,16 @@ module.exports = {
         },
         files: {
             'app/build/screen.css': 'scss/screen.scss',
-        }
-    }
+        },
+    },
+    maps: {
+        options: {
+            compass: true,
+            require: 'animation',
+            style: 'compact',
+        },
+        files: {
+            'app/build/screen.css': 'scss/screen.scss',
+        },
+    },
 };

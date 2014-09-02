@@ -23,6 +23,16 @@ var Anchor = (function ($, G, U) { // IIFE
     // HELPERS (defaults dependancy only)
     Anchor.wrap = function () {};
 
+    Anchor.docFromHash = function (str) {
+        var arr = str.split(/\/\#!|\.\/|\./); // split tokens
+        // refers to document or hash?
+        str = arr[1] ? (arr[0] || arr[1]) : '#';
+        if (U.debug(2)) {
+            C.debug(name, str);
+        }
+        return str;
+    };
+
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     /// INTERNAL
 

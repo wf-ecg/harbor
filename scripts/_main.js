@@ -9,6 +9,7 @@ var Main = (function ($, G, U) { // IIFE
         Df, body, html;
 
     Df = { // DEFAULTS
+        current: '',
         projector: null,
         inits: function () {
             body = $('body');
@@ -19,14 +20,14 @@ var Main = (function ($, G, U) { // IIFE
     // HELPERS (defaults dependancy only)
     // func to contextualize content
 
-    function classify(nom) {
+    function classifyCB(nom) {
         return function (oldDom) {
             if (U.debug(2)) {
-                C.debug(name, 'classify', nom);
+                C.debug(name, 'classifyCB', nom);
             }
 
             oldDom.hide();
-            body.removeClass();
+            body.removeClass('page ' + Df.current);
 
             if (nom === 'home') { // add class for page type
                 body.addClass('home');
@@ -42,6 +43,7 @@ var Main = (function ($, G, U) { // IIFE
             }
 
             Anchor.write(nom); // force url update?
+            Df.current = nom;
         };
     }
 
@@ -53,26 +55,25 @@ var Main = (function ($, G, U) { // IIFE
         if (U.debug()) {
             C.debug(name, 'runExtractor', docnom);
         }
-        Extract.page('' + docnom + '.html', classify(docnom)); // do not drill down to 'pages'
+        Extract.page('' + docnom + '.html', classifyCB(docnom)); // do not drill down to 'pages'
     }
 
     function bindExtractor() {
         Extract.init();
+        var loc = $.parseUrl(W.location.href);
+
+        if (loc.filename) {
+            var ext = loc.filename.match(/\w+/).toString();
+            ext = '#!' + (ext === 'index' ? 'home' : ext);
+            W.location.href = loc.directory + ext;
+        }
 
         // func to triage event
-        $('body').on('click', 'a', function (evt) {
+        function extractEvtHref(evt) {
             var url, doc;
 
-            url = this.attributes.getNamedItem('href').value; // extract link
-
-            function getDocname(str) {
-                var arr = str.split(/\/\#!|\.\/|\./); // split tokens
-                // refers to document or hash?
-                str = arr[1] ? arr[0] || arr[1] : '#';
-                return str;
-            }
-
-            doc = getDocname(url);
+            url = evt.target.attributes.getNamedItem('href').value; // extract link
+            doc = Anchor.docFromHash(url);
 
             function isInternal(url) {
                 var ext = /^(http|\/\/)/.exec(url);
@@ -85,9 +86,15 @@ var Main = (function ($, G, U) { // IIFE
                     evt.preventDefault();
                     runExtractor(doc);
                 } else {
-                    this.setAttribute('target', 'external');
+                    evt.target.setAttribute('target', 'external');
                 }
             }
+        }
+
+        $('body').on('click', 'a', function (evt) {
+            extractEvtHref(evt);
+        }).on('extract', function (evt, str) {
+            runExtractor(str, evt); // evt is unused
         });
     }
 
@@ -104,6 +111,9 @@ var Main = (function ($, G, U) { // IIFE
 
         body.find(sel).replaceWith(part);
     }
+
+    /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+    /// INTERNAL
 
     function bindParts() {
         new G.Fetch('_parts.html', function (page) {
@@ -138,7 +148,6 @@ var Main = (function ($, G, U) { // IIFE
     }
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-    /// INTERNAL
 
     function _init() {
         if (self.inited(true)) {

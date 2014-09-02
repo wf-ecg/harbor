@@ -16,7 +16,7 @@ module.exports = {
     },
     css: {
         files: ['scss/**/*.scss'],
-        tasks: ['sass'], // 'autoprefixer', 'cssmin', 'compass'
+        tasks: ['sass:base'],
     },
     html: {
         files: ['app/**/*.html'],
@@ -30,8 +30,9 @@ module.exports = {
     },
     reloads: {
         options: {
-            livereload: true,
+            livereload: 7972,
         },
         files: ['app/**/*'],
+        tasks: ['sync'],
     },
 };
