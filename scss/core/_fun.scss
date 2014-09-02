@@ -18,4 +18,19 @@ $fontServ3: 'http://www.wellsfargomedia.com/lib/fonts/';
     // @return linear;
     @return cubic-bezier(0.1, 0.57, 0.1, 1);
 }
+
+@function setTrans($color, $amount: 0.1) { // pos only
+    @return change-color($color, $alpha: $amount);
+}
+@function adjTrans($color, $amount: 0.1) { // pos or neg linear
+    @return adjust-color($color, $alpha: $amount);
+}
+@function scaTrans($color, $amount: 0.1) { // pos or neg percent
+    $amount: percentage($amount);
+    @return scale-color($color, $alpha: $amount);
+}
+@function simAlpha($color) {
+    @return lighten(setTrans($color, 1), percentage(1 - alpha($color)) / 2);
+}
+
 // - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //

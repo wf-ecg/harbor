@@ -25,4 +25,3 @@ Body text -- `mono text`
 0. 0
 
 [site]: http://site/
-
