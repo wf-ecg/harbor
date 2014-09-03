@@ -6,6 +6,10 @@ module.exports = function(grunt) {
         'uglify', 'sync', 'watch',
     ]);
 
+    grunt.registerTask('easy', [
+        'connect', 'sass:base', 'watch',
+    ]);
+
     grunt.registerTask('custom', 'Say hello!', function() {
         grunt.log.writeln("Custom task log");
     });
