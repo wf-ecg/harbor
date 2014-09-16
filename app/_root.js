@@ -13,6 +13,11 @@ W.ROOT = ({
             nom: 'wfmedia',
             sub: '/harbor-risk',
         },
+        'ecg.hosting.wellsfargo.com': {
+            nom: 'mfal',
+            lib: '/mfal/lib',
+            sub: '/mfal/harbor',
+        },
         '10.89.101.100': {
             nom: 'qla2',
             sub: '/wf-ecg/harbor',
