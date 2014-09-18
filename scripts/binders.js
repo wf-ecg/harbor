@@ -29,7 +29,7 @@ var Binders = (function ($, G, U) { // IIFE
         $('.content').on('click', '.dropdown', function (evt) {
             var me = $(this).next();
 
-            me.toggle('fast', function() {
+            me.toggle('fast', function () {
                 if (me.css('display') !== 'none') me.css({
                     display: 'inline-block',
                 });

@@ -79,7 +79,7 @@ var Main = (function ($, G, U) { // IIFE
         function extractEvtHref(evt) {
             var url, doc;
 
-            url = evt.target.attributes.getNamedItem('href').value; // extract link
+            url = evt.currentTarget.attributes.getNamedItem('href').value; // extract link
             doc = Anchor.docFromHash(url);
 
             function isInternal(url) {
@@ -131,7 +131,7 @@ var Main = (function ($, G, U) { // IIFE
             fillin(parts, 'nav.sub-bot');
 
             if (cb) {
-                bindProjector();
+                cb();
             }
         });
     }

@@ -61,9 +61,9 @@ var Anchor = (function ($, G, U) { // IIFE
             nom = nom.slice(1);
         }
 
-        nom = (!nom || nom.length < 3) ? '' : nom;
-        nom = nom.split(/[\,\&\/]/g);
-        nom = nom[0] || nom[1];
+        nom = (!nom || nom.length < 3) ? '' : nom; // filter name over 3 char
+        nom = nom.split(/[\,\&\/]/g); //            segments?
+        nom = nom[0] || nom[1]; //              in case started with slash
 
         if (!nom) {
             _write('home');
