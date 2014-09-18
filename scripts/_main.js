@@ -20,15 +20,6 @@ var Main = (function ($, G, U) { // IIFE
     // HELPERS (defaults dependancy only)
     // func to contextualize content
 
-    function capitalize(str) {
-        var a, b;
-        if (typeof str === 'string') {
-            a = str.charAt(0).toUpperCase();
-            b = str.slice(1);
-            return a + b;
-        }
-    }
-
     function classifyCB(nom) {
         return function (oldDom) {
             if (U.debug(2)) {
@@ -65,7 +56,6 @@ var Main = (function ($, G, U) { // IIFE
             C.debug(name, 'runExtractor', docnom);
         }
         Extract.page('' + docnom + '.html', classifyCB(docnom)); // do not drill down to 'pages'
-        W.document.title = capitalize(docnom) + ' | Harbor Risk';
     }
 
     function bindExtractor() {

@@ -40,10 +40,12 @@ var Extract = (function ($, G, U) { // IIFE
             'Aye, supposes you herein it were?',
         ][$.now() % 4]; // random choice
 
+        W.document.title = page.title || 'Page not found';
+
         if (!page.body) {
             page.body = '<section class="content"><h4>' + str +
             '</h4><h2>Page not found</h2><h4><a href=".">' +
-            'Return to port</a></h4></section>';
+            'Return to home port</a></h4></section>';
         }
     }
 
