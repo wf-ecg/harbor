@@ -62,7 +62,7 @@ var Main = (function ($, G, U) { // IIFE
             C.debug(name, 'runExtractor', docnom);
         }
         Extract.page('' + docnom + '.html', classifyCB(docnom)); // do not drill down to 'pages'
-        W.document.title = 'Harbor Risk | ' + capitalize(docnom);
+        W.document.title = capitalize(docnom) + ' | Harbor Risk';
     }
 
     function bindExtractor() {
