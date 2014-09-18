@@ -30,13 +30,19 @@ var jsView = (function (W, $) { // IIFE
             return this.ie ? this._e.offsetWidth : this._w.innerWidth;
         },
         visualHeight: function () {
-            return this.ie ? this.e.offsetHeight : this._w.innerHeight;
+            return this.ie ? this._e.offsetHeight : this._w.innerHeight;
         },
         orientation: function () {
             var diff = this.aspect();
 
             if (diff > 0.9 && diff < 1.1) {
                 return 'square';
+            }
+            if (diff < 0.5) {
+                return 'thin';
+            }
+            if (diff > 1.666) {
+                return 'wide';
             }
             return diff > 1 ? 'landscape' : 'portrait';
         },
@@ -78,7 +84,6 @@ var jsView = (function (W, $) { // IIFE
                 (vis < 973 && vis % 10 === 3) && // webdev responsive layouts add 13px
                 (/chrome/i).test(W.navigator.userAgent)) {
                 mob = true;
-                this.addBug();
             }
             if (mob) {
                 mob = W.navigator.platform;

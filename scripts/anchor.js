@@ -40,6 +40,17 @@ var Anchor = (function ($, G, U) { // IIFE
         L.href = L.origin + L.pathname;
     }
 
+    function _write(str) {
+        var tmp = L.pathname.split('/');
+
+        if (tmp.pop()) { // document fragment
+            C.warn(name, '_write', tmp);
+            //L.pathname = tmp.join('/') + '/'; // rewrite without document
+        }
+
+        L.hash = '!' + str;
+    }
+
     function _read(str) {
         var nom = str || L.hash;
 
@@ -62,17 +73,6 @@ var Anchor = (function ($, G, U) { // IIFE
         }
 
         return nom;
-    }
-
-    function _write(str) {
-        var tmp = L.pathname.split('/');
-
-        if (tmp.pop()) { // document fragment
-            C.warn(name, '_write', tmp);
-            //L.pathname = tmp.join('/') + '/'; // rewrite without document
-        }
-
-        L.hash = '!' + str;
     }
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */

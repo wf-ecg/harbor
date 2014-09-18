@@ -1,6 +1,6 @@
 /*jslint white:false, evil:true */
 /*globals _, C, W, Glob, Util, jQuery,
-        Anchor, Extract, Floater, Projector, Test, routie, */
+        Anchor, Binders, Extract, Floater, Projector, Test, routie, */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var Main = (function ($, G, U) { // IIFE
     'use strict';
@@ -19,6 +19,12 @@ var Main = (function ($, G, U) { // IIFE
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     // HELPERS (defaults dependancy only)
     // func to contextualize content
+
+    function capitalize(str) {
+        var a = str.charAt(0).toUpperCase();
+        var b = str.slice(1);
+        return a + b;
+    }
 
     function classifyCB(nom) {
         return function (oldDom) {
@@ -56,6 +62,7 @@ var Main = (function ($, G, U) { // IIFE
             C.debug(name, 'runExtractor', docnom);
         }
         Extract.page('' + docnom + '.html', classifyCB(docnom)); // do not drill down to 'pages'
+        W.document.title = capitalize(docnom) + ' | Harbor Risk';
     }
 
     function bindExtractor() {
@@ -76,7 +83,7 @@ var Main = (function ($, G, U) { // IIFE
             doc = Anchor.docFromHash(url);
 
             function isInternal(url) {
-                var ext = /^(http|\/\/)/.exec(url);
+                var ext = /^(mailto|http|\/\/)/.exec(url);
                 return !ext;
             }
 
@@ -85,8 +92,6 @@ var Main = (function ($, G, U) { // IIFE
                 if (isInternal(url)) { // load instead of open
                     evt.preventDefault();
                     runExtractor(doc);
-                } else {
-                    evt.target.setAttribute('target', 'external');
                 }
             }
         }
@@ -115,8 +120,8 @@ var Main = (function ($, G, U) { // IIFE
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     /// INTERNAL
 
-    function bindParts() {
-        new G.Fetch('_parts.html', function (page) {
+    function fetchParts(cb) {
+        return new G.Fetch('_parts.html', function (page) {
 
             var parts = $(page.body); // attach standard parts
 
@@ -125,7 +130,9 @@ var Main = (function ($, G, U) { // IIFE
             fillin(parts, 'footer');
             fillin(parts, 'nav.sub-bot');
 
-            bindProjector();
+            if (cb) {
+                bindProjector();
+            }
         });
     }
 
@@ -134,7 +141,7 @@ var Main = (function ($, G, U) { // IIFE
         Binders.init();
 
         bindExtractor();
-        bindParts();
+        fetchParts(bindProjector);
 
         routie(':page', function (arg) {
             if (U.debug()) {
@@ -163,6 +170,7 @@ var Main = (function ($, G, U) { // IIFE
         _: function () {
             return Df;
         },
+        __: Df,
         init: _init,
         mode: eval(U.testrict),
     });

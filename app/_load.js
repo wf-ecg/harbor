@@ -75,7 +75,7 @@ var Data, Glob = new Global('Glob');
     };
 
     G.Load.test = {
-        test: W.debug >= 0,
+        test: W.debug > 1,
         yep: [
             G.src + '_tests.js'
         ],

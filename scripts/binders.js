@@ -17,12 +17,6 @@ var Binders = (function ($, G, U) { // IIFE
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     /// INTERNAL
 
-    function bindAltnav() {
-        $('nav.sub-top').dblclick(function () {
-            $(this).toggleClass('fixed shadow');
-        });
-    }
-
     function bindBlur() {
         $('body').click(function (evt) {
             if (!W.isIE && $(evt.toElement).is(this)) {
@@ -33,7 +27,13 @@ var Binders = (function ($, G, U) { // IIFE
 
     function bindDrops() {
         $('.content').on('click', '.dropdown', function (evt) {
-            $(this).next().toggle('fast');
+            var me = $(this).next();
+
+            me.toggle('fast', function() {
+                if (me.css('display') !== 'none') me.css({
+                    display: 'inline-block',
+                });
+            });
         });
     }
 
@@ -63,18 +63,9 @@ var Binders = (function ($, G, U) { // IIFE
 
         s = W.document.getElementsByTagName('script')[0];
         s.parentNode.insertBefore(gcse, s);
-
-//        $('.gsc-thinWrapper').animate({
-//            width: '100%',
-//            border: 0,
-//        });
-//        $('.gsc-adBlockVertical').slideUp();
-//        $('.gsc-adBlock').slideUp();
-
     }
 
     function bindings() {
-        // bindAltnav();
         bindBlur();
         bindDrops();
         bindFixed();
