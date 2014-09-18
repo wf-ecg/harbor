@@ -27,7 +27,13 @@ var Binders = (function ($, G, U) { // IIFE
 
     function bindDrops() {
         $('.content').on('click', '.dropdown', function (evt) {
-            $(this).next().toggle('fast');
+            var me = $(this).next();
+
+            me.toggle('fast', function() {
+                me.css({
+                    display: 'inline-block',
+                });
+            });
         });
     }
 
