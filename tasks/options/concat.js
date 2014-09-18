@@ -4,11 +4,11 @@ module.exports = {
     // https://github.com/gruntjs/grunt-contrib-concat
 
     options: {
-        sourceMap: true,
+        sourceMap: false,
     },
     bootstrap: {
         options: {
-            sourceMap: false,
+            sourceMap: false, // see uglify for map
         },
         dest: 'app/build/boot.js',
         src: [
@@ -18,16 +18,21 @@ module.exports = {
             'libs/bootstrap/console.js',
             'libs/bootstrap/global.js',
         ],
+//        tasks: ['sync'],
     },
-    lib: {
+    base: {
+        options: { sourceMap: false, },
         files: {
             'app/build/lib.js': ['libs/*.js'],
-        }
+            'app/build/src.js': ['scripts/[a-z]*.js', 'scripts/_[a-z]*.js'],
     },
-    src: {
+    },
+    full: {
+        options: { sourceMap: true, },
         files: {
-            'app/build/src.js': ['scripts/[a-z]*.js', 'scripts/_main.js'],
-        }
+            'app/build/lib.js': ['libs/*.js'],
+            'app/build/src.js': ['scripts/[a-z]*.js', 'scripts/_[a-z]*.js'],
+    },
     },
 };
 

@@ -11,7 +11,12 @@ W.ROOT = ({
     conf: {
         'www.wellsfargomedia.com': {
             nom: 'wfmedia',
-            sub: '/harbor-risk',
+            sub: '/harborrisk',
+        },
+        'ecg.hosting.wellsfargo.com': {
+            nom: 'mfal',
+            lib: '/mfal/lib',
+            sub: '/mfal/harbor',
         },
         '10.89.101.100': {
             nom: 'qla2',
@@ -19,9 +24,9 @@ W.ROOT = ({
         },
         'localhost:8000': {
             nom: 'localhost',
-            sub: '/wf-ecg/harbor',
+            sub: '/wf-ecg/harbor/app',
         },
-        '127.0.0.1:8972': {
+        'localhost:8972': {
             nom: 'localhost',
             sub: '',
         },
@@ -61,12 +66,12 @@ W.ROOT = ({
     },
     _wrap: function (R) { // write out bootstrap element
         evil(R.base && R.D.write('<base href="' + R.base + '">'));
-        R.D.write('<script src="' + R.dir + '/app/build/boot.min.js"></script>');
+        R.D.write('<script src="' + R.dir + '/build/boot.min.js"></script>');
         delete R._wrap;
     },
     loaded: function ($) {
         $('body').removeClass('loading');
-        if (W.debug > 0) {
+        if (W.debug > 1) {
             $('html').addClass('dev');
         }
         if (C && C.groupCollapsed) {

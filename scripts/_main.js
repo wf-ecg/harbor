@@ -1,6 +1,6 @@
 /*jslint white:false, evil:true */
 /*globals _, C, W, Glob, Util, jQuery,
-        Anchor, Extract, Floater, Projector, Test, routie, */
+        Anchor, Binders, Extract, Floater, Projector, Test, routie, */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var Main = (function ($, G, U) { // IIFE
     'use strict';
@@ -60,23 +60,26 @@ var Main = (function ($, G, U) { // IIFE
 
     function bindExtractor() {
         Extract.init();
-        var loc = $.parseUrl(W.location.href);
+        var loc = $.parseUrl(W.location.href), ext = loc.hashbang;
 
         if (loc.filename) {
-            var ext = loc.filename.match(/\w+/).toString();
-            ext = '#!' + (ext === 'index' ? 'home' : ext);
+            ext = loc.filename.match(/\w+/).toString();
+            ext = '#!' + (loc.hashbang || (ext === 'index' ? 'home' : ext));
+            ext = 'index.html' + ext;
             W.location.href = loc.directory + ext;
+        } else if (!loc.hashbang) {
+            W.location.href = loc.directory + '#!home';
         }
 
         // func to triage event
         function extractEvtHref(evt) {
             var url, doc;
 
-            url = evt.target.attributes.getNamedItem('href').value; // extract link
+            url = evt.currentTarget.attributes.getNamedItem('href').value; // extract link
             doc = Anchor.docFromHash(url);
 
             function isInternal(url) {
-                var ext = /^(http|\/\/)/.exec(url);
+                var ext = /^(mailto|http|\/\/)/.exec(url);
                 return !ext;
             }
 
@@ -85,8 +88,6 @@ var Main = (function ($, G, U) { // IIFE
                 if (isInternal(url)) { // load instead of open
                     evt.preventDefault();
                     runExtractor(doc);
-                } else {
-                    evt.target.setAttribute('target', 'external');
                 }
             }
         }
@@ -115,8 +116,8 @@ var Main = (function ($, G, U) { // IIFE
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     /// INTERNAL
 
-    function bindParts() {
-        new G.Fetch('_parts.html', function (page) {
+    function fetchParts(cb) {
+        return new G.Fetch('_parts.html', function (page) {
 
             var parts = $(page.body); // attach standard parts
 
@@ -125,7 +126,9 @@ var Main = (function ($, G, U) { // IIFE
             fillin(parts, 'footer');
             fillin(parts, 'nav.sub-bot');
 
-            bindProjector();
+            if (cb) {
+                cb();
+            }
         });
     }
 
@@ -134,7 +137,7 @@ var Main = (function ($, G, U) { // IIFE
         Binders.init();
 
         bindExtractor();
-        bindParts();
+        fetchParts(bindProjector);
 
         routie(':page', function (arg) {
             if (U.debug()) {
@@ -163,6 +166,7 @@ var Main = (function ($, G, U) { // IIFE
         _: function () {
             return Df;
         },
+        __: Df,
         init: _init,
         mode: eval(U.testrict),
     });

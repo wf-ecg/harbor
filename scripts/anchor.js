@@ -40,6 +40,17 @@ var Anchor = (function ($, G, U) { // IIFE
         L.href = L.origin + L.pathname;
     }
 
+    function _write(str) {
+        var tmp = L.pathname.split('/');
+
+        if (tmp.pop()) { // document fragment
+            C.warn(name, '_write', tmp);
+            //L.pathname = tmp.join('/') + '/'; // rewrite without document
+        }
+
+        L.hash = '!' + str;
+    }
+
     function _read(str) {
         var nom = str || L.hash;
 
@@ -50,29 +61,15 @@ var Anchor = (function ($, G, U) { // IIFE
             nom = nom.slice(1);
         }
 
-        nom = (!nom || nom.length < 3) ? '' : nom;
-        nom = nom.split(/[\,\&\/]/g);
-        nom = nom[0] || nom[1];
+        nom = (!nom || nom.length < 3) ? '' : nom; // filter name over 3 char
+        nom = nom.split(/[\,\&\/]/g); //            segments?
+        nom = nom[0] || nom[1]; //              in case started with slash
 
-        if (!nom) {
-            _write('home');
-        }
         if (U.debug(2)) {
             C.debug(name, '_read', nom);
         }
 
         return nom;
-    }
-
-    function _write(str) {
-        var tmp = L.pathname.split('/');
-
-        if (tmp.pop()) { // document fragment
-            C.warn(name, '_write', tmp);
-            //L.pathname = tmp.join('/') + '/'; // rewrite without document
-        }
-
-        L.hash = '!' + str;
     }
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */

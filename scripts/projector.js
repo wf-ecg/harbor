@@ -67,6 +67,10 @@ var Projector = (function ($, G, U) { // IIFE
                 }
                 return false;
             },
+            throttle: function () {
+                W.clearInterval(this.timer);
+                this.timer = Scroller.auto(this.scroller);
+            },
             toggle: function () {
                 return (this.activate() || this.reset());
             },
@@ -82,6 +86,9 @@ var Projector = (function ($, G, U) { // IIFE
         projector.gauge = projector.control.parent();
         projector.actuate();
 
+        $(projector.scroller.wrapper).on('mousedown', function () {
+            projector.throttle(); // delay auto advance if clicking
+        });
         Df.all.push(projector);
 
         return projector;

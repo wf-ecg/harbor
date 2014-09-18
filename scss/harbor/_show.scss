@@ -42,7 +42,7 @@ $gap: 5px;
         background-color: $sea;
 
         img {
-            @include filter( blur(0px) );
+            @include filter( none );
             @include transform( translate(0.5%, 0) scaleX(1.01) );
             @include transition( 0.5s cubic() );
             top: $show_xtra / -2; /* half the dif */
@@ -50,6 +50,7 @@ $gap: 5px;
         &.scrolling {
             img {
                 @include filter( blur(2px) );
+                .msie & { @include filter( none );  }
                 @include transform( translate(-0.5%, 0) scaleX(1.01) );
                 opacity: 0.9;
             }
