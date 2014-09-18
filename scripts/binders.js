@@ -30,7 +30,7 @@ var Binders = (function ($, G, U) { // IIFE
             var me = $(this).next();
 
             me.toggle('fast', function() {
-                me.css({
+                if (me.css('display') !== 'none') me.css({
                     display: 'inline-block',
                 });
             });
