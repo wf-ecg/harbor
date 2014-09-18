@@ -1,6 +1,6 @@
 /*jslint white:false, evil:true */
 /*globals _, C, W, Glob, Util, jQuery,
-        Anchor, Extract, Floater, Projector, Test, routie, */
+        Anchor, Binders, Extract, Floater, Projector, Test, routie, */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var Main = (function ($, G, U) { // IIFE
     'use strict';
@@ -122,8 +122,8 @@ var Main = (function ($, G, U) { // IIFE
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     /// INTERNAL
 
-    function bindParts() {
-        new G.Fetch('_parts.html', function (page) {
+    function fetchParts(cb) {
+        return new G.Fetch('_parts.html', function (page) {
 
             var parts = $(page.body); // attach standard parts
 
@@ -132,7 +132,9 @@ var Main = (function ($, G, U) { // IIFE
             fillin(parts, 'footer');
             fillin(parts, 'nav.sub-bot');
 
-            bindProjector();
+            if (cb) {
+                bindProjector();
+            }
         });
     }
 
@@ -141,7 +143,7 @@ var Main = (function ($, G, U) { // IIFE
         Binders.init();
 
         bindExtractor();
-        bindParts();
+        fetchParts(bindProjector);
 
         routie(':page', function (arg) {
             if (U.debug()) {
