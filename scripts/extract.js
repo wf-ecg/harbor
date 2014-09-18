@@ -44,7 +44,7 @@ var Extract = (function ($, G, U) { // IIFE
 
         if (!page.body) {
             page.body = '<section class="content"><h4>' + str +
-            '</h4><h2>Page not found</h2><h4><a href=".">' +
+            '</h4><h2>Page not found</h2><h4><a href="home.html">' +
             'Return to home port</a></h4></section>';
         }
     }
