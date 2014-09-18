@@ -35,16 +35,15 @@ var Extract = (function ($, G, U) { // IIFE
     }
 
     function srcFocus(page) {
-        var str = [
-        'Avast...',
-        'Shiver ye thithers',
-        'Ere I do heartily repent!',
-        'Aye, supposes you herein it were?',
-        ][$.now() % 4];
+        var str = [ 'Avast...', 'Shiver yer thithers',
+            'Ere I do heartily repent!',
+            'Aye, supposes you herein it were?',
+        ][$.now() % 4]; // random choice
+
         if (!page.body) {
             page.body = '<section class="content"><h4>' + str +
             '</h4><h2>Page not found</h2><h4><a href=".">' +
-            'Return to port</a></h4><section>';
+            'Return to port</a></h4></section>';
         }
     }
 
@@ -55,9 +54,9 @@ var Extract = (function ($, G, U) { // IIFE
         if (U.debug(2)) {
             C.debug(name, 'fetchSource', url);
         }
-        SRCcache[url] = new G.Fetch(url, function (fetch) {
-            srcFocus(fetch);
-            addParts(fetch, Df.container);
+        SRCcache[url] = new G.Fetch(url, function (page) {
+            srcFocus(page);
+            addParts(page, Df.container);
             cb();
         });
     }
