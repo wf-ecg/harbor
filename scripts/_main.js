@@ -67,12 +67,15 @@ var Main = (function ($, G, U) { // IIFE
 
     function bindExtractor() {
         Extract.init();
-        var loc = $.parseUrl(W.location.href);
+        var loc = $.parseUrl(W.location.href), ext = loc.hashbang;
 
         if (loc.filename) {
-            var ext = loc.filename.match(/\w+/).toString();
-            ext = '#!' + (ext === 'index' ? 'home' : ext);
+            ext = loc.filename.match(/\w+/).toString();
+            ext = '#!' + (loc.hashbang || (ext === 'index' ? 'home' : ext));
+            ext = 'index.html' + ext;
             W.location.href = loc.directory + ext;
+        } else if (!loc.hashbang) {
+            W.location.href = loc.directory + '#!home';
         }
 
         // func to triage event

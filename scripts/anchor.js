@@ -65,9 +65,6 @@ var Anchor = (function ($, G, U) { // IIFE
         nom = nom.split(/[\,\&\/]/g); //            segments?
         nom = nom[0] || nom[1]; //              in case started with slash
 
-        if (!nom) {
-            _write('home');
-        }
         if (U.debug(2)) {
             C.debug(name, '_read', nom);
         }
