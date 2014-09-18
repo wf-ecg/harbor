@@ -64,6 +64,7 @@ Glob.Fetch = (function ($, G, U) { // IIFE
                     C.debug(name, ['_get', 'success', page.url]);
                 }
                 page.body = page._pick('body')[0];
+                page.title = page._pick('title')[0];
                 // page.paras = page._pick('p');
                 // page.head = page._pick('head');
             }).fail(function () {
