@@ -11,7 +11,7 @@ W.ROOT = ({
     conf: {
         'www.wellsfargomedia.com': {
             nom: 'wfmedia',
-            sub: '/harbor-risk',
+            sub: '/harborrisk',
         },
         'ecg.hosting.wellsfargo.com': {
             nom: 'mfal',
@@ -24,9 +24,9 @@ W.ROOT = ({
         },
         'localhost:8000': {
             nom: 'localhost',
-            sub: '/wf-ecg/harbor',
+            sub: '/wf-ecg/harbor/app',
         },
-        '127.0.0.1:8972': {
+        'localhost:8972': {
             nom: 'localhost',
             sub: '',
         },
@@ -71,7 +71,7 @@ W.ROOT = ({
     },
     loaded: function ($) {
         $('body').removeClass('loading');
-        if (W.debug > 0) {
+        if (W.debug > 1) {
             $('html').addClass('dev');
         }
         if (C && C.groupCollapsed) {

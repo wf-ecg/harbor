@@ -163,6 +163,7 @@ var Main = (function ($, G, U) { // IIFE
         _: function () {
             return Df;
         },
+        __: Df,
         init: _init,
         mode: eval(U.testrict),
     });
