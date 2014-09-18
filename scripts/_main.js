@@ -20,12 +20,6 @@ var Main = (function ($, G, U) { // IIFE
     // HELPERS (defaults dependancy only)
     // func to contextualize content
 
-    function capitalize(str) {
-        var a = str.charAt(0).toUpperCase();
-        var b = str.slice(1);
-        return a + b;
-    }
-
     function classifyCB(nom) {
         return function (oldDom) {
             if (U.debug(2)) {
@@ -62,24 +56,26 @@ var Main = (function ($, G, U) { // IIFE
             C.debug(name, 'runExtractor', docnom);
         }
         Extract.page('' + docnom + '.html', classifyCB(docnom)); // do not drill down to 'pages'
-        W.document.title = capitalize(docnom) + ' | Harbor Risk';
     }
 
     function bindExtractor() {
         Extract.init();
-        var loc = $.parseUrl(W.location.href);
+        var loc = $.parseUrl(W.location.href), ext = loc.hashbang;
 
         if (loc.filename) {
-            var ext = loc.filename.match(/\w+/).toString();
-            ext = '#!' + (ext === 'index' ? 'home' : ext);
+            ext = loc.filename.match(/\w+/).toString();
+            ext = '#!' + (loc.hashbang || (ext === 'index' ? 'home' : ext));
+            ext = 'index.html' + ext;
             W.location.href = loc.directory + ext;
+        } else if (!loc.hashbang) {
+            W.location.href = loc.directory + '#!home';
         }
 
         // func to triage event
         function extractEvtHref(evt) {
             var url, doc;
 
-            url = evt.target.attributes.getNamedItem('href').value; // extract link
+            url = evt.currentTarget.attributes.getNamedItem('href').value; // extract link
             doc = Anchor.docFromHash(url);
 
             function isInternal(url) {
@@ -131,7 +127,7 @@ var Main = (function ($, G, U) { // IIFE
             fillin(parts, 'nav.sub-bot');
 
             if (cb) {
-                bindProjector();
+                cb();
             }
         });
     }
