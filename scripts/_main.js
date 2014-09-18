@@ -21,9 +21,12 @@ var Main = (function ($, G, U) { // IIFE
     // func to contextualize content
 
     function capitalize(str) {
-        var a = str.charAt(0).toUpperCase();
-        var b = str.slice(1);
-        return a + b;
+        var a, b;
+        if (typeof str === 'string') {
+            a = str.charAt(0).toUpperCase();
+            b = str.slice(1);
+            return a + b;
+        }
     }
 
     function classifyCB(nom) {
