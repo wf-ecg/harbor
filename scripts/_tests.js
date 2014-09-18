@@ -30,7 +30,7 @@ var Tests = (function ($, G, U) { // IIFE
         init: _init,
     });
 
-    return self.init();
+    return self;
 }(jQuery, Glob, Util));
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
