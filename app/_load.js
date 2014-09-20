@@ -1,11 +1,14 @@
 /*jslint white:false */
-/*globals $, Global, Main, Modernizr, ROOT, _, jQuery, window */
+/*globals _, C, W, Glob:true, Util, jQuery,
+        Global, Modernizr, ROOT, */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var Data, Glob = new Global('Glob');
 
 (function ($, M, G) {
     'use strict';
     var U;
+    W.G = G;
+    W.Tests = $.Callbacks();
     G.Load = {};
 
     _.defaults(G, { /// all stubs terminated
@@ -55,7 +58,7 @@ var Data, Glob = new Global('Glob');
     };
 
     G.Load.font = {
-        test: ROOT.conf.nom === 'localhost' || ROOT.conf.nom === 'qla1',
+        test: ROOT.conf.nom === 'localhost',
         yep: [
             /* G.lib + 'fonts/archer.ssm.css', */
             /* G.lib + 'fonts/archer.ssm.itl.css', */
@@ -67,17 +70,21 @@ var Data, Glob = new Global('Glob');
     };
 
     G.Load.main = {
-        both: ['./build/src.js'],
+        both: [
+            'build/src.js',
+        ],
         complete: function () {
+            _.delay(function () {
             ROOT.loaded($);
+            }, 333);
             evil(W.Main && W.Main.init());
         },
     };
 
     G.Load.test = {
-        test: W.debug > 1,
+        test: W.debug >= 1,
         yep: [
-            G.src + '_tests.js'
+            //G.src + 'tests.js'
         ],
         nope: [
             'http://www.wellsfargomedia.com/lib/js/ecg-ga.js',
