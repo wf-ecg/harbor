@@ -75,7 +75,7 @@ var Data, Glob = new Global('Glob');
         ],
         complete: function () {
             _.delay(function () {
-            ROOT.loaded($);
+                ROOT.loaded($);
             }, 333);
             evil(W.Main && W.Main.init());
         },

@@ -3,9 +3,9 @@ module.exports = {
     // SASS
     // https://github.com/gruntjs/grunt-contrib-sass
 
-        options: {
-            compass: true,
-            require: 'animation',
+    options: {
+        compass: true,
+        require: 'animation',
         style: 'compact',
     },
     base: {

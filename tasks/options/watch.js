@@ -28,5 +28,6 @@ module.exports = {
     warn: {
         options: { reload: !false, },
         files: ['Gruntfile.js', 'tasks/**/*'],
+        tasks: ['foobar'],
     },
 };
