@@ -1,4 +1,4 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
     grunt.registerTask('default', [
         'jshint:precat', 'concat:full', 'concat:bootstrap', 'jshint:postcat',
@@ -14,14 +14,14 @@ module.exports = function(grunt) {
         'watch',
     ]);
 
-    grunt.registerTask('custom', 'Say hello!', function() {
+    grunt.registerTask('custom', 'Say hello!', function () {
         grunt.log.writeln("Custom task log");
     });
 
     grunt.registerTask('dev', ['connect', 'watch']);
 
         /*
-    grunt.event.on('watch', function(action, filepath, target) {
+    grunt.event.on('watch', function (action, filepath, target) {
         grunt.log.writeln('\n>>WATCH<< TARGET:', target, filepath);
        var cfgkey = ['copy', 'files'];
        grunt.config.set(cfgkey, [grunt.config.get(cfgkey)].map(function(file) {

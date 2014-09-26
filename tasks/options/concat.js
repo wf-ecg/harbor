@@ -25,14 +25,14 @@ module.exports = {
         files: {
             'app/build/lib.js': ['libs/*.js'],
             'app/build/src.js': ['scripts/[a-z]*.js', 'scripts/_[a-z]*.js'],
-    },
+        },
     },
     full: {
         options: { sourceMap: true, },
         files: {
             'app/build/lib.js': ['libs/*.js'],
             'app/build/src.js': ['scripts/[a-z]*.js', 'scripts/_[a-z]*.js'],
-    },
+        },
     },
 };
 
