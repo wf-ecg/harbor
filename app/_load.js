@@ -57,18 +57,6 @@ var Data, Glob = new Global('Glob');
         },
     };
 
-    G.Load.font = {
-        test: ROOT.conf.nom === 'localhost',
-        yep: [
-            /* G.lib + 'fonts/archer.ssm.css', */
-            /* G.lib + 'fonts/archer.ssm.itl.css', */
-        ],
-        nope: [
-            /* '//cloud.typography.com/6819872/620964/css/fonts.css', Normal */
-            /* '//cloud.typography.com/6819872/633184/css/fonts.css',  ScrnSmrt */
-        ],
-    };
-
     G.Load.main = {
         both: [
             'build/src.js',
@@ -87,10 +75,10 @@ var Data, Glob = new Global('Glob');
             //G.src + 'tests.js'
         ],
         nope: [
-            'http://www.wellsfargomedia.com/lib/js/ecg-ga.js',
+            'http://www.wellsfargomedia.com/lib/js/ga-ecg.js',
         ],
     };
-    M.load([G.Load.base, G.Load.font, G.Load.main, G.Load.test]);
+    M.load([G.Load.base, G.Load.main, G.Load.test]);
 
 }(jQuery, Modernizr, Glob));
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
