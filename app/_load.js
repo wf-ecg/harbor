@@ -38,7 +38,7 @@ var Data, Glob = new Global('Glob');
     }
 
     G.Load.base = {
-        both: ['./build/lib.js'],
+        both: ['./build/lib.js', './build/vendor.js'],
         test: W.isIE,
         yep: [
             G.lib + 'ie/rem.min.js',
