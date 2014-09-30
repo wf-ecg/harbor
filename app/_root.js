@@ -28,7 +28,9 @@ W.ROOT = ({
         },
         'localhost:8972': {
             nom: 'localhost',
-            sub: '',
+        },
+        'x': {
+            nom: '*',
         },
     },
     dir: null,
@@ -36,20 +38,20 @@ W.ROOT = ({
     lib: null,
     rev: null,
     _host: function (R) { // determine config for this server
-        R.conf = R.conf[R.L.host]; // overwrite host hash
+        R.conf = (R.conf[R.L.host] || R.conf.x); // overwrite host hash
         R.conf.top = '//' + R.L.host;
         delete R._host;
     },
     _tops: function (R) { // lookup main directories
         R.doc = R.L.pathname.toString().replace(R.conf.sub, '');
         // capture versioning number directory segment
-        R.rev = R.doc.match(/^(\/\d\w*)(.*)$/) || '';
+        R.rev = (R.doc.match(/^(\/\d\w*)(.*)$/) || '');
         if (R.rev) {
             R.doc = R.rev[2]; // isolate file name
             R.rev = R.rev[1]; // isolate version integer
         }
-        R.lib = R.conf.lib || '/lib';
-        R.dir = R.conf.sub + R.rev;
+        R.lib = (R.conf.lib || '/lib');
+        R.dir = (R.conf.sub || '') + R.rev;
         delete R._tops;
     },
     _down: function (R) { // levels relative to host.sub
