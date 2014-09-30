@@ -22,7 +22,7 @@ module.exports = {
         options: {
             livereload: 7972,
         },
-        files: ['app/**/*'],
+        files: ['app/**/*', '!**/*.map'],
         tasks: ['jshint:precat', 'sync:base'],
     },
     warn: {
