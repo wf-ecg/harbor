@@ -1,6 +1,6 @@
 /*jslint white:false */
 /*globals _, C, W, Glob:true, Util, jQuery,
-        Global, Modernizr, ROOT, */
+        Global, Main, Modernizr, ROOT, */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var Data, Glob = new Global('Glob');
 
@@ -15,8 +15,6 @@ var Data, Glob = new Global('Glob');
         top: ROOT.dir + '/',
         dir: ROOT.dir + '/',
         lib: ROOT.lib + '/',
-        loc: ROOT.dir + '/lib/',
-        src: ROOT.dir + '/scripts/',
     });
 
     if ($.browser.msie) {
@@ -39,41 +37,29 @@ var Data, Glob = new Global('Glob');
 
     G.Load.base = {
         both: ['./build/lib.js', './build/vendor.js'],
-        test: W.isIE,
-        yep: [
-            G.lib + 'ie/rem.min.js',
-            G.lib + 'ie/split.js',
-            G.lib + 'iscroll/5.0.4/iscroll.js',
-        ],
-        nope: [
-            G.lib + 'iscroll/5.1.1/iscroll.js',
-        ],
         complete: function () {
             if (W.isIE) {
-                _.delay(function () {
-                    M.load(G.lib + 'ie/selectivizr-min.js');
-                }, 2222);
+                IScroll = undefined;
             }
         },
     };
 
     G.Load.main = {
-        both: [
-            'build/src.js',
-        ],
+        test: W.isIE,
+        yep: ['./build/msie.js'],
+        both: ['./build/src.js'],
         complete: function () {
             _.delay(function () {
+                M.load('./msie/selectivizr-min.js');
                 ROOT.loaded($);
             }, 333);
-            evil(W.Main && W.Main.init());
+            evil(Main && Main.init());
         },
     };
 
     G.Load.test = {
-        test: W.debug >= 1,
-        yep: [
-            //G.src + 'tests.js'
-        ],
+        test: W.debug >= 0,
+        //yep: ['_tests.js'],
         nope: [
             'http://www.wellsfargomedia.com/lib/js/ga-ecg.js',
         ],
