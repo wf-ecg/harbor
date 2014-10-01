@@ -3,7 +3,7 @@
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var W = window,
 C = W.console;
-W.debug = Number(new Date('2014/08/29') > new Date());
+W.debug = Number(new Date('2014/09/29') > new Date());
 W.ROOT = ({
     evil: "eval('var x=0'),(typeof(x)!=='number'?'':'non-')+'strict'",
     base: 0,
@@ -40,7 +40,7 @@ W.ROOT = ({
     _host: function (R) { // determine config for this server
         R.conf = (R.conf[R.L.host] || R.conf.x); // overwrite host hash
         R.conf.top = '//' + R.L.host;
-        delete R._host;
+        return (delete R._host) && R;
     },
     _tops: function (R) { // lookup main directories
         R.doc = R.L.pathname.toString().replace(R.conf.sub, '');
@@ -52,24 +52,24 @@ W.ROOT = ({
         }
         R.lib = (R.conf.lib || '/lib');
         R.dir = (R.conf.sub || '') + R.rev;
-        delete R._tops;
+        return (delete R._tops) && R;
     },
     _down: function (R) { // levels relative to host.sub
         R.deep = R.doc.slice(1).split('/'); //  segment
         R.deep.pop(); //                        trim docname
         R.comp = R.deep.slice(0, R.base); //    hoist to top of subproject
         if (R.base && (R.deep.length + R.base) !== 0) {
-            evil(R.comp.length && R.comp.push('')); //slash
+            eval(R.comp.length && R.comp.push('')); //slash
             R.base = R.L.protocol + R.conf.top + R.dir + '/' + R.comp.join('/');
         } else {
             delete R.base;
         }
-        delete R._down;
+        return (delete R._down) && R;
     },
     _wrap: function (R) { // write out bootstrap element
-        evil(R.base && R.D.write('<base href="' + R.base + '">'));
+        eval(R.base && R.D.write('<base href="' + R.base + '">'));
         R.D.write('<script src="' + R.dir + '/build/boot.min.js"></script>');
-        delete R._wrap;
+        return (delete R._wrap) && R;
     },
     loaded: function ($) {
         $('body').removeClass('loading');
@@ -84,20 +84,23 @@ W.ROOT = ({
         'use strict';
         var R = this;
         R.evil = eval(R.evil);
-        W.evil = function () {
+        W.eval = function () {
             return R.evil;
         };
         R.D = W.document;
         R.L = W.location;
-        R._host(this);
-        R._tops(this);
-        R._down(this);
-        R._wrap(this);
-        delete R.init;
+        R._host(R)._tops(R)._down(R)._wrap(R);
         if (C && C.groupCollapsed) {
             C.groupCollapsed('ROOT', R);
         }
-        return R;
+        return (delete R.init) && R;
+    },
+    reload: function () {
+        var u = this.L.host.split(':');
+        if (u.length === 2 && u[1] > 8000) {
+            u = u[0] + ':' + (u[1] - 1000) + '/livereload.js?snipver=1';
+            this.D.write('<script src="http://' + u + '"><\/script>');
+        }
     },
 }.init());
 
