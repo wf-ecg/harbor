@@ -1,5 +1,5 @@
 /*jslint white:false */
-/*globals _, C, W, Global, Util, jQuery,
+/*globals _, C, W, Global, jQuery,
         Glob:true, Main, Modernizr, ROOT, */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var Data, Glob;
@@ -51,9 +51,6 @@ Glob = new Global('Glob');
             G.dir + 'build/lib.js',
         ],
         complete: function () {
-            if (W.isIE) {
-                IScroll = undefined;
-            }
             Data = new G.constructor('Data', '(catchall data fixture)');
         },
     };
@@ -65,10 +62,12 @@ Glob = new Global('Glob');
         ],
         complete: function () {
             _.delay(function () {
-                M.load(G.ven + 'msie/selectivizr-min.js');
+                if (W.isIE) {
+                    M.load(G.ven + 'msie/selectivizr-min.js');
+                }
                 ROOT.loaded($);
-                Main.init();
-            }, 333);
+            }, 1e3);
+            Main.init();
         },
     };
 
