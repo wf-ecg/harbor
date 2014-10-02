@@ -22,8 +22,8 @@ module.exports = {
         options: {
             livereload: 7972,
         },
-        files: ['app/**/*'],
-        tasks: ['sync:base'],
+        files: ['app/**/*', '!**/*.map'],
+        tasks: ['jshint:precat', 'sync:base'],
     },
     warn: {
         options: { reload: !false, },

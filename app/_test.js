@@ -1,10 +1,10 @@
 /*jslint white:false */
 /*globals _, C, W, Glob, Util, jQuery,
-        Tests:true, */
+        Test:true, */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-var Tests = (function ($, G, U) { // IIFE
+var Test = (function ($, G, U) { // IIFE
     'use strict';
-    var name = 'Tests',
+    var name = 'Test',
         self = new G.constructor(name, '(misc experiments)'),
         Df;
 

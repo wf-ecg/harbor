@@ -1,22 +1,20 @@
 /*jslint white:false */
-/*globals _, C, W, Glob:true, Util, jQuery,
-        Global, Modernizr, ROOT, */
+/*globals _, C, W, Global, jQuery,
+        Glob:true, Main, Modernizr, ROOT, */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-var Data, Glob = new Global('Glob');
+var Data, Glob;
+
+Glob = new Global('Glob');
 
 (function ($, M, G) {
     'use strict';
-    var U;
-    W.G = G;
-    W.Tests = $.Callbacks();
     G.Load = {};
+    W.Tests = $.Callbacks();
 
     _.defaults(G, { /// all stubs terminated
-        top: ROOT.dir + '/',
         dir: ROOT.dir + '/',
         lib: ROOT.lib + '/',
-        loc: ROOT.dir + '/lib/',
-        src: ROOT.dir + '/scripts/',
+        ven: ROOT.dir + '/vendor/',
     });
 
     if ($.browser.msie) {
@@ -38,59 +36,51 @@ var Data, Glob = new Global('Glob');
     }
 
     G.Load.base = {
-        both: ['./build/lib.js'],
         test: W.isIE,
         yep: [
-            G.lib + 'ie/rem.min.js',
-            G.lib + 'ie/split.js',
-            G.lib + 'iscroll/5.0.4/iscroll.js',
+            G.ven + 'msie/rem.min.js',
+            G.ven + 'msie/split.js',
+            G.ven + 'msie/iscroll.js', // fkin ie
         ],
         nope: [
-            G.lib + 'iscroll/5.1.1/iscroll.js',
+            G.ven + 'iscroll.js', // current standards
+        ],
+        both: [
+            G.ven + 'routie.js',
+            /* */
+            G.dir + 'build/lib.js',
         ],
         complete: function () {
-            if (W.isIE) {
-                _.delay(function () {
-                    M.load(G.lib + 'ie/selectivizr-min.js');
-                }, 2222);
-            }
+            Data = new G.constructor('Data', '(catchall data fixture)');
         },
-    };
-
-    G.Load.font = {
-        test: ROOT.conf.nom === 'localhost',
-        yep: [
-            /* G.lib + 'fonts/archer.ssm.css', */
-            /* G.lib + 'fonts/archer.ssm.itl.css', */
-        ],
-        nope: [
-            /* '//cloud.typography.com/6819872/620964/css/fonts.css', Normal */
-            /* '//cloud.typography.com/6819872/633184/css/fonts.css',  ScrnSmrt */
-        ],
     };
 
     G.Load.main = {
         both: [
-            'build/src.js',
+            G.dir + 'build/src.js',
+            G.dir + '_main.js',
         ],
         complete: function () {
             _.delay(function () {
+                if (W.isIE) {
+                    M.load(G.ven + 'msie/selectivizr-min.js');
+                }
                 ROOT.loaded($);
-            }, 333);
-            evil(W.Main && W.Main.init());
+            }, 1e3);
+            Main.init();
         },
     };
 
     G.Load.test = {
         test: W.debug >= 1,
         yep: [
-            //G.src + 'tests.js'
+            G.dir + '_test.js',
         ],
         nope: [
-            'http://www.wellsfargomedia.com/lib/js/ecg-ga.js',
+            'http://www.wellsfargomedia.com/lib/js/ga-ecg.js',
         ],
     };
-    M.load([G.Load.base, G.Load.font, G.Load.main, G.Load.test]);
+    M.load([G.Load.base, G.Load.main, G.Load.test]);
 
 }(jQuery, Modernizr, Glob));
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */

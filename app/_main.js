@@ -1,4 +1,4 @@
-/*jslint white:false, evil:true */
+/*jslint white:false */
 /*globals _, C, W, Glob, Util, jQuery,
         Anchor, Binders, Extract, Floater, Projector, Test, routie, */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -14,6 +14,10 @@ var Main = (function ($, G, U) { // IIFE
         inits: function () {
             body = $('body');
             html = $('html');
+
+            C.info('Main init @ ' + Date(), {
+                debug: W.debug,
+            });
         },
     };
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -106,6 +110,8 @@ var Main = (function ($, G, U) { // IIFE
             Df.projector.toggle();
         }
     }
+    /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+    /// HANDLERS
 
     function fillin(src, sel) {
         var part = src.find(sel);
@@ -113,11 +119,54 @@ var Main = (function ($, G, U) { // IIFE
         body.find(sel).replaceWith(part);
     }
 
+    function bindMisc() {
+        $('body').on('click', function (evt) {
+            if (!W.isIE && $(evt.toElement).is(this)) {
+                $('#Flood').toggleClass('blur');
+            }
+        });
+
+        $('.content').on('click', '.dropdown', function (evt) {
+            var me = $(this).next();
+
+            me.toggle('fast', function () {
+                if (me.css('display') !== 'none') me.css({
+                    display: 'inline-block',
+                });
+            });
+        });
+        // bind class follow to header parent to fix positioning
+        $('#Wrap').on('inview', function (evt, vis, lr, tb) { // visi?, left+right, top+bottom
+            var parent = $('#Body');
+
+            if (U.debug(2)) {
+                C.debug(name, 'bindMisc', vis, lr, tb, [evt]);
+            }
+            if (tb === 'bottom') {
+                parent.addClass('follow');
+            } else {
+                parent.removeClass('follow');
+            }
+        });
+    }
+
+    function bindSearch() {
+        var cx, gcse, s;
+        cx = '006146512309439838370:zwrrqyaixxi';
+
+        gcse = W.document.createElement('script');
+        gcse.async = true;
+        gcse.src = '//www.google.com/cse/cse.js?cx=' + cx;
+        gcse.type = 'text/javascript';
+
+        s = W.document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(gcse, s);
+    }
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     /// INTERNAL
 
     function fetchParts(cb) {
-        return new G.Fetch('_parts.html', function (page) {
+        return new G.Fetch('__parts.html', function (page) {
 
             var parts = $(page.body); // attach standard parts
 
@@ -134,22 +183,21 @@ var Main = (function ($, G, U) { // IIFE
 
     function bindings() {
         Anchor.init();
-        Binders.init();
 
+        bindMisc();
+        bindSearch();
         bindExtractor();
+
         fetchParts(bindProjector);
 
         routie(':page', function (arg) {
             if (U.debug()) {
                 C.debug(name, 'routie', arg, this);
             }
-
             arg = Anchor.read(arg);
             runExtractor(arg); // auto retore from hash
-
         });
     }
-
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
     function _init() {
@@ -157,7 +205,6 @@ var Main = (function ($, G, U) { // IIFE
             return null;
         }
         Df.inits();
-        C.info('Main inited @ ' + Date() + ' debug:', W.debug, self.mode);
 
         _.delay(bindings);
     }
@@ -168,7 +215,6 @@ var Main = (function ($, G, U) { // IIFE
         },
         __: Df,
         init: _init,
-        mode: eval(U.testrict),
     });
 
     return self;
