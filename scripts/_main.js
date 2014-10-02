@@ -160,7 +160,7 @@ var Main = (function ($, G, U) { // IIFE
     /// INTERNAL
 
     function fetchParts(cb) {
-        return new G.Fetch('_parts.html', function (page) {
+        return new G.Fetch('__parts.html', function (page) {
 
             var parts = $(page.body); // attach standard parts
 
