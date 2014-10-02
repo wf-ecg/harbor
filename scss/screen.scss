@@ -11,14 +11,20 @@
     body {
         background: none;
     }
-    .noprint {
+    * {
+        background: none !important;
+        box-shadow: none;
+        color: black !important;
+        text-shadow: none;
+    }
+    .noprint, .flow, .slideshow, nav, footer, #___gcse_0, #Flood {
         display: none;
+    }
+    #Body, #Main {
+        border: 0;
     }
     #Popup {
         display: block;
-    }
-    #Wrap {
-        display: none;
     }
 }
 @import "_misc";
