@@ -14,6 +14,11 @@ var Main = (function ($, G, U) { // IIFE
         inits: function () {
             body = $('body');
             html = $('html');
+
+            C.info('Main init @ ' + Date(), {
+                debug: W.debug,
+                mode: ROOT.evil,
+            });
         },
     };
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -106,6 +111,8 @@ var Main = (function ($, G, U) { // IIFE
             Df.projector.toggle();
         }
     }
+    /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+    /// HANDLERS
 
     function fillin(src, sel) {
         var part = src.find(sel);
@@ -199,7 +206,6 @@ var Main = (function ($, G, U) { // IIFE
             return null;
         }
         Df.inits();
-        C.info('Main inited @ ' + Date() + ' debug:', W.debug, self.mode);
 
         _.delay(bindings);
     }
@@ -210,7 +216,6 @@ var Main = (function ($, G, U) { // IIFE
         },
         __: Df,
         init: _init,
-        mode: eval(U.testrict),
     });
 
     return self;

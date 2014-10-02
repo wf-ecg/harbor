@@ -17,11 +17,9 @@ module.exports = {
                 'libs/bootstrap/lodash.underscore.js',
                 'libs/bootstrap/console.js',
                 'libs/bootstrap/global.js',
+                'libs/bootstrap/*.js',
             ],
-            'app/build/vendor.js': ['libs/vendor/*.js'],
-            'app/build/msie.js': ['libs/msie/*.js'],
-        }
-//        tasks: ['sync'],
+        },
     },
     base: {
         options: { sourceMap: false, },

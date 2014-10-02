@@ -1,8 +1,10 @@
 /*jslint white:false */
-/*globals _, C, W, Glob:true, Util, jQuery,
-        Global, Main, Modernizr, ROOT, */
+/*globals _, C, W, Global, Util, jQuery,
+        Glob:true, Main, Modernizr, ROOT, */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-var Data, Glob = new Global('Glob');
+var Data, Glob;
+
+Glob = new Global('Glob');
 
 (function ($, M, G) {
     'use strict';
@@ -12,9 +14,9 @@ var Data, Glob = new Global('Glob');
     G.Load = {};
 
     _.defaults(G, { /// all stubs terminated
-        top: ROOT.dir + '/',
         dir: ROOT.dir + '/',
         lib: ROOT.lib + '/',
+        ven: ROOT.dir + '/vendor/',
     });
 
     if ($.browser.msie) {
@@ -36,29 +38,44 @@ var Data, Glob = new Global('Glob');
     }
 
     G.Load.base = {
-        both: ['./build/lib.js', './build/vendor.js'],
+        test: W.isIE,
+        yep: [
+            G.ven + 'msie/rem.min.js',
+            G.ven + 'msie/split.js',
+            G.ven + 'msie/iscroll.js', // fkin ie
+        ],
+        nope: [
+            G.ven + 'iscroll.js', // current standards
+        ],
+        both: [
+            G.ven + 'routie.js',
+            /* */
+            G.dir + 'build/lib.js',
+        ],
         complete: function () {
             if (W.isIE) {
                 IScroll = undefined;
             }
+            U = Util;
+            Data = new G.constructor('Data', '(catchall data fixture)');
         },
     };
 
     G.Load.main = {
-        test: W.isIE,
-        yep: ['./build/msie.js'],
-        both: ['./build/src.js'],
+        both: [
+            G.dir + 'build/src.js',
+        ],
         complete: function () {
             _.delay(function () {
                 M.load('./msie/selectivizr-min.js');
                 ROOT.loaded($);
             }, 333);
-            evil(Main && Main.init());
+            eval(W.Main && W.Main.init());
         },
     };
 
     G.Load.test = {
-        test: W.debug >= 0,
+        test: W.debug >= 1,
         //yep: ['_tests.js'],
         nope: [
             'http://www.wellsfargomedia.com/lib/js/ga-ecg.js',
