@@ -7,7 +7,7 @@ module.exports = {
         files: [ {
             cwd: 'app',
             src: ['**/*'],
-            dest: '/web/docs/wf-ecg/harbor/5/'
+            dest: '/web/docs/wf-ecg/harbor/9/',
         }],
         //pretend: true,
         updateOnly: true, // Don't remove any files from `dest` (works around 30% faster)
@@ -17,10 +17,9 @@ module.exports = {
         files: [ {
             cwd: 'app',
             src: ['**/*'],
-            dest: '/web/docs/wf-ecg/harbor/5/'
+            dest: '/web/docs/wf-ecg/harbor/9/',
         }],
         //pretend: true,
         updateOnly: false, // Don't remove any files from `dest` (works around 30% faster)
-        verbose: true,
     },
 };
