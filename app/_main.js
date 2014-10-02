@@ -1,4 +1,4 @@
-/*jslint white:false, evil:true */
+/*jslint white:false */
 /*globals _, C, W, Glob, Util, jQuery,
         Anchor, Binders, Extract, Floater, Projector, Test, routie, */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -17,7 +17,6 @@ var Main = (function ($, G, U) { // IIFE
 
             C.info('Main init @ ' + Date(), {
                 debug: W.debug,
-                mode: ROOT.evil,
             });
         },
     };
