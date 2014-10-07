@@ -22,8 +22,8 @@ var Main = (function ($, G, U) { // IIFE
     };
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     // HELPERS (defaults dependancy only)
-    // func to contextualize content
 
+    // func to contextualize content
     function classifyCB(nom) {
         return function (oldDom) {
             if (U.debug(2)) {
@@ -49,6 +49,13 @@ var Main = (function ($, G, U) { // IIFE
             Anchor.write(nom); // force url update?
             Df.current = nom;
         };
+    }
+
+    // can url be an xhr request?
+    function isData(url) {
+        var ext = /^(mailto|http|https|\/\/)/i.exec(url);
+        var htm = /(html)$/i.exec(url);
+        return !ext && htm; // internal and html
     }
 
     // func to deliver content
@@ -82,15 +89,9 @@ var Main = (function ($, G, U) { // IIFE
             url = evt.currentTarget.attributes.getNamedItem('href').value; // extract link
             doc = Anchor.docFromHash(url);
 
-            function isInternal(url) {
-                var ext = /^(mailto|http|https|\/\/)/i.exec(url);
-                var htm = /(html)$/i.exec(url);
-                return !ext && htm;
-            }
-
             if (doc.charAt(0) !== '#') {
 
-                if (isInternal(url)) { // load instead of open
+                if (isData(url)) { // load instead of open
                     evt.preventDefault();
                     runExtractor(doc);
                 }
