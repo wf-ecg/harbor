@@ -102,7 +102,7 @@ W.ROOT = ({
         var u = this.L.host.split(':');
         if (u.length === 2 && u[1] > 8000 && !W.LiveReload) {
             u = u[0] + ':' + (u[1] - 1000) + '/livereload.js?snipver=1';
-            this.D.write('<script src="http://' + u + '"><\/script>');
+            this.D.write('<script src="//' + u + '"><\/script>');
         }
     },
 }.init());

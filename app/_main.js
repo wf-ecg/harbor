@@ -83,8 +83,9 @@ var Main = (function ($, G, U) { // IIFE
             doc = Anchor.docFromHash(url);
 
             function isInternal(url) {
-                var ext = /^(mailto|http|\/\/)/.exec(url);
-                return !ext;
+                var ext = /^(mailto|http|https|\/\/)/i.exec(url);
+                var htm = /(html)$/i.exec(url);
+                return !ext && htm;
             }
 
             if (doc.charAt(0) !== '#') {
