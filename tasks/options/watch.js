@@ -3,7 +3,10 @@ module.exports = {
     // WATCH
     // https://github.com/gruntjs/grunt-contrib-watch
 
-    js: {
+    options: {
+        debounceDelay: 3333,
+    },
+    cat: {
         files: ['libs/*.js', 'scripts/*.js'],
         tasks: ['jshint:precat', 'concat:base'],
     },
