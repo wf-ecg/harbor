@@ -108,7 +108,7 @@ var Main = (function ($, G, U) { // IIFE
     function bindProjector() {
         Df.projector = Projector.attach('.iS-port');
 
-        if (html.is('.dev')) { // stop annoying slideshow
+        if (U.debug()) { // stop annoying slideshow
             Df.projector.toggle();
         }
     }

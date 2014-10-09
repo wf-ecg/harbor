@@ -1,6 +1,6 @@
 /*jslint white:false */
 /*globals _, C, W, Global, jQuery,
-        Glob:true, Main, Modernizr, ROOT, */
+    Glob:true, Main, Modernizr, ROOT, */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var Data, Glob;
 
@@ -84,3 +84,7 @@ Glob = new Global('Glob');
 
 }(jQuery, Modernizr, Glob));
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+/*
+Originally built by WF-ECG INTERACTIVE (Wells Fargo Enterprise Creative Group).
+        We design and develop with a focus on web standards and best practices.
+*/
