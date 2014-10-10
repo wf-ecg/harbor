@@ -18,5 +18,10 @@
     "dependencies": {
         "grunt-sync": "^0.1.1",
         "load-grunt-tasks": "~0.2.0"
-    }
+    },
+    "bases": ["app", ".", "../.."],
+    "group": "wf-ecg/harbor/0",
+    "port0": 7972,
+    "port1": 8972,
+    "zzzzz": 0
 }
