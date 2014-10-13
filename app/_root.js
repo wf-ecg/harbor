@@ -17,8 +17,8 @@ W.ROOT = ({
             sub: '/harborrisk',
         },
         'ecg.hosting.wellsfargo.com': {
+            lib: '//www.wellsfargomedia.com/lib',
             nom: 'mfal',
-            lib: '/mfal/lib',
             sub: '/mfal/harbor',
         },
         '10.89.101.100': {
