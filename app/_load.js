@@ -77,7 +77,7 @@ Glob = new Global('Glob');
             G.dir + '_test.js',
         ],
         nope: [
-            'http://www.wellsfargomedia.com/lib/js/ga-ecg.js',
+            '//www.wellsfargomedia.com/lib/js/ga-ecg.js',
         ],
     };
     M.load([G.Load.base, G.Load.main, G.Load.test]);
