@@ -48,7 +48,7 @@ Glob = new Global('Glob');
         both: [
             G.ven + 'routie.js',
             /* */
-            G.dir + 'build/lib.js',
+            G.dir + 'build/libs.min.js',
         ],
         complete: function () {
             Data = new G.constructor('Data', '(catchall data fixture)');
@@ -57,7 +57,7 @@ Glob = new Global('Glob');
 
     G.Load.main = {
         both: [
-            G.dir + 'build/src.js',
+            G.dir + 'build/main.js',
             G.dir + '_main.js',
         ],
         complete: function () {
