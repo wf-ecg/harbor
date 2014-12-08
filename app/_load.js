@@ -77,7 +77,7 @@ Glob = new Global('Glob');
             G.dir + '_test.js',
         ],
         nope: [
-            '//www.wellsfargomedia.com/lib/js/ga-ecg.js',
+            'http://www.wellsfargomedia.com/lib/js/ga-ecg.js', // only non-secure is available
         ],
     };
     M.load([G.Load.base, G.Load.main, G.Load.test]);
