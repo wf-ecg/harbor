@@ -1,6 +1,6 @@
 /*jslint white:false */
 /*globals _, C, W, Global, jQuery,
-        Glob:true, Main, Modernizr, ROOT, */
+    Glob:true, Main, Modernizr, ROOT, */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var Data, Glob;
 
@@ -48,7 +48,7 @@ Glob = new Global('Glob');
         both: [
             G.ven + 'routie.js',
             /* */
-            G.dir + 'build/lib.js',
+            G.dir + 'build/libs.min.js',
         ],
         complete: function () {
             Data = new G.constructor('Data', '(catchall data fixture)');
@@ -57,7 +57,7 @@ Glob = new Global('Glob');
 
     G.Load.main = {
         both: [
-            G.dir + 'build/src.js',
+            G.dir + 'build/main.js',
             G.dir + '_main.js',
         ],
         complete: function () {
@@ -77,10 +77,14 @@ Glob = new Global('Glob');
             G.dir + '_test.js',
         ],
         nope: [
-            'http://www.wellsfargomedia.com/lib/js/ga-ecg.js',
+            'http://www.wellsfargomedia.com/lib/js/ga-ecg.js', // only non-secure is available
         ],
     };
     M.load([G.Load.base, G.Load.main, G.Load.test]);
 
 }(jQuery, Modernizr, Glob));
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+/*
+Originally built by WF-ECG INTERACTIVE (Wells Fargo Enterprise Creative Group).
+        We design and develop with a focus on web standards and best practices.
+*/

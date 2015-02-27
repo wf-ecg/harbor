@@ -1,7 +1,7 @@
 /*jslint white:false, evil: true */
 /*globals window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-var W = window,
+var W = window, /// change to Boot
 C = W.console;
 W.debug = Number(new Date('2014/09/29') > new Date());
 W.ROOT = ({
@@ -17,8 +17,8 @@ W.ROOT = ({
             sub: '/harborrisk',
         },
         'ecg.hosting.wellsfargo.com': {
+            lib: '//www.wellsfargomedia.com/lib',
             nom: 'mfal',
-            lib: '/mfal/lib',
             sub: '/mfal/harbor',
         },
         '10.89.101.100': {
@@ -77,8 +77,8 @@ W.ROOT = ({
     },
     loaded: function ($) {
         $('body').removeClass('loading');
-        if (W.debug > 1) {
-            $('html').addClass('dev');
+        if (W.debug > 0) {
+            $('html').addClass('debug');
         }
         if (C && C.groupCollapsed) {
             C.groupEnd();
@@ -102,9 +102,13 @@ W.ROOT = ({
         var u = this.L.host.split(':');
         if (u.length === 2 && u[1] > 8000 && !W.LiveReload) {
             u = u[0] + ':' + (u[1] - 1000) + '/livereload.js?snipver=1';
-            this.D.write('<script src="http://' + u + '"><\/script>');
+            this.D.write('<script src="//' + u + '"><\/script>');
         }
     },
 }.init());
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+/*
+Originally built by WF-ECG INTERACTIVE (Wells Fargo Enterprise Creative Group).
+        We design and develop with a focus on web standards and best practices.
+*/
