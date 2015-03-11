@@ -33,7 +33,7 @@ var Scroller = (function ($, G, U) { // IIFE
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     /// HELPERS
     //  defaults dependancy only
-    Scroller.wrap = function () {};
+    self.wrap = function () {};
 
     function scrollNext(scroller) {
         if (U.debug(2)) {
@@ -122,7 +122,7 @@ var Scroller = (function ($, G, U) { // IIFE
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
     function _init() {
-        if (self.inited(true)) {
+        if (self.isInited(true)) {
             return null;
         }
         Df.inits();

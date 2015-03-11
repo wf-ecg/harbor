@@ -21,9 +21,9 @@ var Anchor = (function ($, G, U) { // IIFE
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     // HELPERS (defaults dependancy only)
-    Anchor.wrap = function () {};
+    self.wrap = function () {};
 
-    Anchor.docFromHash = function (str) {
+    self.docFromHash = function (str) {
         var arr = str.split(/\/\#!|\.\/|\./); // split tokens
         // refers to document or hash?
         str = arr[1] ? (arr[0] || arr[1]) : '#';
@@ -68,7 +68,7 @@ var Anchor = (function ($, G, U) { // IIFE
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
     function _init() {
-        if (self.inited(true)) {
+        if (self.isInited(true)) {
             return null;
         }
         Df.inits();
